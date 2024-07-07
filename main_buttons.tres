@@ -1,0 +1,12 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://b0jmoyuhh2cat"]
+
+[ext_resource type="StyleBox" uid="uid://c5bf5ltm0wvgn" path="res://empty.tres" id="1_2ick6"]
+
+[resource]
+Button/colors/icon_hover_color = Color(0.860369, 0.860369, 0.860369, 1)
+Button/colors/icon_pressed_color = Color(0.720467, 0.720468, 0.720467, 1)
+Button/styles/disabled = ExtResource("1_2ick6")
+Button/styles/focus = ExtResource("1_2ick6")
+Button/styles/hover = ExtResource("1_2ick6")
+Button/styles/normal = ExtResource("1_2ick6")
+Button/styles/pressed = ExtResource("1_2ick6")

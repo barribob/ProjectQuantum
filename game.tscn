@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://cv71vrnggoxyu"]
+[gd_scene load_steps=16 format=3 uid="uid://cv71vrnggoxyu"]
 
 [ext_resource type="Shader" path="res://bloom.gdshader" id="1_5asy8"]
 [ext_resource type="Script" path="res://Game.gd" id="1_mn4wp"]
@@ -9,6 +9,10 @@
 [ext_resource type="Script" path="res://Waveforms.gd" id="7_i18gp"]
 [ext_resource type="Texture2D" uid="uid://d0hi7hpolh4qv" path="res://art/waveform.png" id="7_wiv8f"]
 [ext_resource type="Script" path="res://Energy.gd" id="9_1hj87"]
+[ext_resource type="Texture2D" uid="uid://dwemwlpina6ny" path="res://art/upgrades_icon.png" id="10_fy23g"]
+[ext_resource type="Theme" uid="uid://b0jmoyuhh2cat" path="res://main_buttons.tres" id="10_okyxx"]
+[ext_resource type="Script" path="res://MainButtons.gd" id="11_0j8xa"]
+[ext_resource type="StyleBox" uid="uid://v73grfgcak1" path="res://main_panel.tres" id="13_ml6hv"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_75424"]
 shader = ExtResource("1_5asy8")
@@ -79,7 +83,7 @@ grow_vertical = 2
 mouse_filter = 2
 theme = ExtResource("6_1ppx1")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="UI/Control"]
+[node name="Top" type="HBoxContainer" parent="UI/Control"]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -89,30 +93,31 @@ offset_right = 41.5
 offset_bottom = 40.0
 grow_horizontal = 2
 
-[node name="Waveforms" type="HBoxContainer" parent="UI/Control/HBoxContainer"]
+[node name="Waveforms" type="HBoxContainer" parent="UI/Control/Top"]
 layout_mode = 2
 script = ExtResource("7_i18gp")
 
-[node name="TextureRect" type="TextureRect" parent="UI/Control/HBoxContainer/Waveforms"]
+[node name="TextureRect" type="TextureRect" parent="UI/Control/Top/Waveforms"]
 layout_mode = 2
 texture = ExtResource("7_wiv8f")
 stretch_mode = 3
 
-[node name="WaveformsLabel" type="Label" parent="UI/Control/HBoxContainer/Waveforms"]
+[node name="WaveformsLabel" type="Label" parent="UI/Control/Top/Waveforms"]
+custom_minimum_size = Vector2(50, 0)
 layout_mode = 2
 text = "14.5K"
 
-[node name="Spacer" type="MarginContainer" parent="UI/Control/HBoxContainer"]
+[node name="Spacer" type="MarginContainer" parent="UI/Control/Top"]
 custom_minimum_size = Vector2(20, 0)
 layout_mode = 2
 
-[node name="Energy" type="HBoxContainer" parent="UI/Control/HBoxContainer"]
+[node name="Energy" type="HBoxContainer" parent="UI/Control/Top"]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_constants/separation = 6
 script = ExtResource("9_1hj87")
 
-[node name="EnergyBar" type="ProgressBar" parent="UI/Control/HBoxContainer/Energy"]
+[node name="EnergyBar" type="ProgressBar" parent="UI/Control/Top/Energy"]
 custom_minimum_size = Vector2(200, 20)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -120,7 +125,184 @@ size_flags_vertical = 4
 value = 18.79
 show_percentage = false
 
-[node name="EnergyLabel" type="Label" parent="UI/Control/HBoxContainer/Energy"]
+[node name="EnergyLabel" type="Label" parent="UI/Control/Top/Energy"]
+custom_minimum_size = Vector2(50, 0)
 layout_mode = 2
 text = "14.5K"
+
+[node name="Bottom" type="HBoxContainer" parent="UI/Control"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -100.0
+offset_top = -64.0
+offset_right = 100.0
+offset_bottom = -16.0
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("10_okyxx")
+theme_override_constants/separation = 10
+alignment = 1
+script = ExtResource("11_0j8xa")
+
+[node name="UnlocksButton" type="Button" parent="UI/Control/Bottom"]
+custom_minimum_size = Vector2(0, 72)
+layout_mode = 2
+icon = ExtResource("10_fy23g")
+icon_alignment = 1
+
+[node name="UpgradeButton" type="Button" parent="UI/Control/Bottom"]
+custom_minimum_size = Vector2(0, 72)
+layout_mode = 2
+icon = ExtResource("10_fy23g")
+icon_alignment = 1
+
+[node name="DimensionButton" type="Button" parent="UI/Control/Bottom"]
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+icon = ExtResource("10_fy23g")
+icon_alignment = 1
+
+[node name="Unlocks" type="PanelContainer" parent="UI/Control"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(1000, 800)
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -11.5
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = ExtResource("13_ml6hv")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/Control/Unlocks"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="UI/Control/Unlocks/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_font_sizes/font_size = 32
+text = "Unlocks"
 horizontal_alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="UI/Control/Unlocks/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 100
+theme_override_constants/margin_right = 100
+theme_override_constants/margin_bottom = 32
+
+[node name="GridContainer" type="GridContainer" parent="UI/Control/Unlocks/VBoxContainer/MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+columns = 4
+
+[node name="PanelContainer" type="PanelContainer" parent="UI/Control/Unlocks/VBoxContainer/MarginContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="UI/Control/Unlocks/VBoxContainer/MarginContainer/GridContainer/PanelContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/Control/Unlocks/VBoxContainer/MarginContainer/GridContainer/PanelContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="UI/Control/Unlocks/VBoxContainer/MarginContainer/GridContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Unlock Upgrades"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="UI/Control/Unlocks/VBoxContainer/MarginContainer/GridContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Unlock upgrades such as energy gain and max energy"
+
+[node name="Button" type="Button" parent="UI/Control/Unlocks/VBoxContainer/MarginContainer/GridContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Unlock"
+
+[node name="PanelContainer2" type="PanelContainer" parent="UI/Control/Unlocks/VBoxContainer/MarginContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="PanelContainer3" type="PanelContainer" parent="UI/Control/Unlocks/VBoxContainer/MarginContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="PanelContainer4" type="PanelContainer" parent="UI/Control/Unlocks/VBoxContainer/MarginContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="PanelContainer5" type="PanelContainer" parent="UI/Control/Unlocks/VBoxContainer/MarginContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="PanelContainer6" type="PanelContainer" parent="UI/Control/Unlocks/VBoxContainer/MarginContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="PanelContainer7" type="PanelContainer" parent="UI/Control/Unlocks/VBoxContainer/MarginContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="PanelContainer8" type="PanelContainer" parent="UI/Control/Unlocks/VBoxContainer/MarginContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Upgrades" type="PanelContainer" parent="UI/Control"]
+unique_name_in_owner = true
+visible = false
+custom_minimum_size = Vector2(1000, 800)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -500.0
+offset_top = -400.0
+offset_right = 500.0
+offset_bottom = 400.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="UI/Control/Upgrades"]
+layout_mode = 2
+size_flags_vertical = 0
+text = "Dimensions"
+
+[node name="Dimensions" type="PanelContainer" parent="UI/Control"]
+unique_name_in_owner = true
+visible = false
+custom_minimum_size = Vector2(1000, 800)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="UI/Control/Dimensions"]
+layout_mode = 2
+size_flags_vertical = 0
+text = "Dimensions"
