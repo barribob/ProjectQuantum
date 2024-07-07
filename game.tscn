@@ -1,10 +1,14 @@
-[gd_scene load_steps=8 format=3 uid="uid://cv71vrnggoxyu"]
+[gd_scene load_steps=12 format=3 uid="uid://cv71vrnggoxyu"]
 
 [ext_resource type="Shader" path="res://bloom.gdshader" id="1_5asy8"]
 [ext_resource type="Script" path="res://Game.gd" id="1_mn4wp"]
 [ext_resource type="Script" path="res://World.gd" id="2_2uow4"]
 [ext_resource type="Texture2D" uid="uid://iq0e85x5kjha" path="res://art/particle.png" id="3_suppd"]
 [ext_resource type="Script" path="res://Particle.gd" id="4_u7xo4"]
+[ext_resource type="Theme" uid="uid://cod55u25keq0j" path="res://theme.tres" id="6_1ppx1"]
+[ext_resource type="Script" path="res://Waveforms.gd" id="7_i18gp"]
+[ext_resource type="Texture2D" uid="uid://d0hi7hpolh4qv" path="res://art/waveform.png" id="7_wiv8f"]
+[ext_resource type="Script" path="res://Energy.gd" id="9_1hj87"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_75424"]
 shader = ExtResource("1_5asy8")
@@ -32,6 +36,7 @@ use_hdr_2d = true
 size = Vector2i(1920, 1080)
 
 [node name="World" type="Node2D" parent="SubViewport"]
+unique_name_in_owner = true
 script = ExtResource("2_2uow4")
 
 [node name="Camera2D" type="Camera2D" parent="SubViewport/World"]
@@ -61,3 +66,61 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.0509804, 0.0509804, 0.0509804, 1)
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="UI"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme = ExtResource("6_1ppx1")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UI/Control"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -41.5
+offset_right = 41.5
+offset_bottom = 40.0
+grow_horizontal = 2
+
+[node name="Waveforms" type="HBoxContainer" parent="UI/Control/HBoxContainer"]
+layout_mode = 2
+script = ExtResource("7_i18gp")
+
+[node name="TextureRect" type="TextureRect" parent="UI/Control/HBoxContainer/Waveforms"]
+layout_mode = 2
+texture = ExtResource("7_wiv8f")
+stretch_mode = 3
+
+[node name="WaveformsLabel" type="Label" parent="UI/Control/HBoxContainer/Waveforms"]
+layout_mode = 2
+text = "14.5K"
+
+[node name="Spacer" type="MarginContainer" parent="UI/Control/HBoxContainer"]
+custom_minimum_size = Vector2(20, 0)
+layout_mode = 2
+
+[node name="Energy" type="HBoxContainer" parent="UI/Control/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/separation = 6
+script = ExtResource("9_1hj87")
+
+[node name="EnergyBar" type="ProgressBar" parent="UI/Control/HBoxContainer/Energy"]
+custom_minimum_size = Vector2(200, 20)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+value = 18.79
+show_percentage = false
+
+[node name="EnergyLabel" type="Label" parent="UI/Control/HBoxContainer/Energy"]
+layout_mode = 2
+text = "14.5K"
+horizontal_alignment = 1
