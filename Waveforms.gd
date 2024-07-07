@@ -19,9 +19,20 @@ func dodge():
 func add_waveforms(amt):
     waveforms += amt
     waveforms_updated.emit()
-    waveforms_label.text = Utils.format_number(waveforms)
+    update_ui()
 
 func consume(amount):
     waveforms -= amount
     waveforms_updated.emit()
+    update_ui()
+
+func update_ui():
     waveforms_label.text = Utils.format_number(waveforms)
+
+func save_data(data):
+    data["waveforms"] = waveforms
+
+func load_data(data):
+    waveforms = data["waveforms"]
+    waveforms_updated.emit()
+    update_ui()

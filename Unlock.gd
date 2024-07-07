@@ -27,3 +27,11 @@ func _on_unlock_button_pressed():
 func update_ui():
     var cant_afford = def.cost > CurrentRun.waveforms.waveforms
     unlock_button.disabled = cant_afford || bought
+
+func save_data(data):
+    data["bought"] = bought
+
+func load_data(data):
+    if data.has("bought"):
+        bought = data["bought"]
+    update_ui()

@@ -95,6 +95,7 @@ offset_bottom = 40.0
 grow_horizontal = 2
 
 [node name="Waveforms" type="HBoxContainer" parent="UI/Control/Top"]
+unique_name_in_owner = true
 layout_mode = 2
 script = ExtResource("7_i18gp")
 
@@ -131,7 +132,8 @@ custom_minimum_size = Vector2(50, 0)
 layout_mode = 2
 text = "14.5K"
 
-[node name="Bottom" type="HBoxContainer" parent="UI/Control"]
+[node name="MainButtons" type="HBoxContainer" parent="UI/Control"]
+unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -149,19 +151,19 @@ theme_override_constants/separation = 10
 alignment = 1
 script = ExtResource("11_0j8xa")
 
-[node name="UnlocksButton" type="Button" parent="UI/Control/Bottom"]
+[node name="UnlocksButton" type="Button" parent="UI/Control/MainButtons"]
 custom_minimum_size = Vector2(0, 72)
 layout_mode = 2
 icon = ExtResource("10_fy23g")
 icon_alignment = 1
 
-[node name="UpgradeButton" type="Button" parent="UI/Control/Bottom"]
+[node name="UpgradeButton" type="Button" parent="UI/Control/MainButtons"]
 custom_minimum_size = Vector2(0, 72)
 layout_mode = 2
 icon = ExtResource("10_fy23g")
 icon_alignment = 1
 
-[node name="DimensionButton" type="Button" parent="UI/Control/Bottom"]
+[node name="DimensionButton" type="Button" parent="UI/Control/MainButtons"]
 custom_minimum_size = Vector2(0, 80)
 layout_mode = 2
 icon = ExtResource("10_fy23g")
