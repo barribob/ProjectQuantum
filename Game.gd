@@ -14,3 +14,4 @@ func save_data(data):
 
 func load_game(data):
     pass
+

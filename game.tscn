@@ -1,6 +1,63 @@
-[gd_scene load_steps=2 format=3 uid="uid://dvn0msybxqq40"]
+[gd_scene load_steps=8 format=3 uid="uid://cv71vrnggoxyu"]
 
-[ext_resource type="Script" path="res://Game.gd" id="1_748y1"]
+[ext_resource type="Shader" path="res://bloom.gdshader" id="1_5asy8"]
+[ext_resource type="Script" path="res://Game.gd" id="1_mn4wp"]
+[ext_resource type="Script" path="res://World.gd" id="2_2uow4"]
+[ext_resource type="Texture2D" uid="uid://iq0e85x5kjha" path="res://art/particle.png" id="3_suppd"]
+[ext_resource type="Script" path="res://Particle.gd" id="4_u7xo4"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_75424"]
+shader = ExtResource("1_5asy8")
+shader_parameter/bloomRadius = 7.0
+shader_parameter/bloomThreshold = 0.0
+shader_parameter/bloomIntensity = 1.441
+shader_parameter/bloomPasses = 3
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_d3jvo"]
+viewport_path = NodePath("SubViewport")
 
 [node name="Game" type="Node"]
-script = ExtResource("1_748y1")
+script = ExtResource("1_mn4wp")
+
+[node name="Bloom" type="CanvasLayer" parent="."]
+layer = 0
+
+[node name="Bloom" type="Sprite2D" parent="Bloom"]
+material = SubResource("ShaderMaterial_75424")
+texture = SubResource("ViewportTexture_d3jvo")
+centered = false
+
+[node name="SubViewport" type="SubViewport" parent="."]
+use_hdr_2d = true
+size = Vector2i(1920, 1080)
+
+[node name="World" type="Node2D" parent="SubViewport"]
+script = ExtResource("2_2uow4")
+
+[node name="Camera2D" type="Camera2D" parent="SubViewport/World"]
+
+[node name="Particle" type="Sprite2D" parent="SubViewport/World"]
+texture = ExtResource("3_suppd")
+script = ExtResource("4_u7xo4")
+
+[node name="Background" type="CanvasLayer" parent="SubViewport"]
+layer = -1
+
+[node name="ColorRect2" type="ColorRect" parent="SubViewport/Background"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.0509804, 0.0509804, 0.0509804, 1)
+
+[node name="Background" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="ColorRect2" type="ColorRect" parent="Background"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.0509804, 0.0509804, 0.0509804, 1)
