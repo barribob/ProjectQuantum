@@ -15,7 +15,7 @@ func save_data(data):
 
     sd.call("waveforms", waveforms)
     sd.call("energy", energy)
-    #sd.call("main_buttons", main_buttons)
+    sd.call("main_buttons", main_buttons)
     sd.call("unlocks", unlocks)
 
 func load_game(data):
@@ -25,5 +25,5 @@ func load_game(data):
 
     ld.call("waveforms", waveforms)
     ld.call("energy", energy)
-    #ld.call("main_buttons", main_buttons)
+    ld.call("main_buttons", main_buttons)
     ld.call("unlocks", unlocks)
