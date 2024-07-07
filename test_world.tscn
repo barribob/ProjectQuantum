@@ -1,12 +1,12 @@
 [gd_scene load_steps=7 format=3 uid="uid://bvt7xueivykvj"]
 
-[ext_resource type="Shader" path="res://bloom.gdshader" id="1_hjnxc"]
-[ext_resource type="Script" path="res://World.gd" id="2_dlx67"]
-[ext_resource type="Texture2D" uid="uid://iq0e85x5kjha" path="res://art/particle.png" id="3_jucw6"]
-[ext_resource type="Script" path="res://Particle.gd" id="4_fhfqh"]
+[ext_resource type="Shader" path="res://bloom.gdshader" id="1_5asy8"]
+[ext_resource type="Script" path="res://World.gd" id="2_2uow4"]
+[ext_resource type="Texture2D" uid="uid://iq0e85x5kjha" path="res://art/particle.png" id="3_suppd"]
+[ext_resource type="Script" path="res://Particle.gd" id="4_u7xo4"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_75424"]
-shader = ExtResource("1_hjnxc")
+shader = ExtResource("1_5asy8")
 shader_parameter/bloomRadius = 7.0
 shader_parameter/bloomThreshold = 0.0
 shader_parameter/bloomIntensity = 1.441
@@ -30,13 +30,13 @@ use_hdr_2d = true
 size = Vector2i(1920, 1080)
 
 [node name="World" type="Node2D" parent="SubViewport"]
-script = ExtResource("2_dlx67")
+script = ExtResource("2_2uow4")
 
 [node name="Camera2D" type="Camera2D" parent="SubViewport/World"]
 
 [node name="Particle" type="Sprite2D" parent="SubViewport/World"]
-texture = ExtResource("3_jucw6")
-script = ExtResource("4_fhfqh")
+texture = ExtResource("3_suppd")
+script = ExtResource("4_u7xo4")
 
 [node name="Background" type="CanvasLayer" parent="SubViewport"]
 layer = -1
