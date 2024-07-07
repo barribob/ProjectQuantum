@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="UnlockDef" load_steps=2 format=3 uid="uid://brntp1tjnyru"]
+
+[ext_resource type="Script" path="res://UnlockDef.gd" id="1_444t1"]
+
+[resource]
+script = ExtResource("1_444t1")
+id = "unlock_upgrades"
+name = "Unlock Upgrades"
+description = "Unlock upgrades such as energy gain and max energy"
+cost = 10.0

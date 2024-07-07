@@ -8,47 +8,46 @@ extends HBoxContainer
 @onready var dimensions = %Dimensions
 @onready var unlocks = %Unlocks
 
-var screens: Dictionary
-var current_screen = null
+var buttons_to_screens: Dictionary
+var current_button = null
 
 func _ready():
-    upgrade_button.pressed.connect(func(): toggle_screen("upgrade"))
-    dimension_button.pressed.connect(func(): toggle_screen("dimension"))
-    unlocks_button.pressed.connect(func(): toggle_screen("unlocks"))
+    Console.add_command("ushow", unlocks_button.show)
+    upgrade_button.pressed.connect(func(): toggle_screen(upgrade_button))
+    dimension_button.pressed.connect(func(): toggle_screen(dimension_button))
+    unlocks_button.pressed.connect(func(): toggle_screen(unlocks_button))
 
-    screens = {
-        "upgrade": upgrades,
-        "dimension": dimensions,
-        "unlocks": unlocks
+    buttons_to_screens = {
+        upgrade_button: upgrades,
+        dimension_button: dimensions,
+        unlocks_button: unlocks
     }
 
-    for screen in screens.values():
+    for screen in buttons_to_screens.values():
         screen.hide()
+    for button in buttons_to_screens:
+        button.hide()
 
     update_button_states()
 
-func toggle_screen(screen_name):
-    if current_screen == screen_name:
-        screens[screen_name].hide()
-        current_screen = null
+func toggle_screen(button):
+    if current_button == button:
+        buttons_to_screens[button].hide()
+        current_button = null
     else:
-        if current_screen != null:
-            screens[current_screen].hide()
-        screens[screen_name].show()
-        current_screen = screen_name
+        if current_button != null:
+            buttons_to_screens[current_button].hide()
+        buttons_to_screens[button].show()
+        current_button = button
 
     update_button_states()
 
 func update_button_states():
-    update_button_alignment(upgrade_button, current_screen == "upgrade")
-    update_button_alignment(dimension_button, current_screen == "dimension")
-    update_button_alignment(unlocks_button, current_screen == "unlocks")
+    for button in buttons_to_screens:
+        update_button_alignment(button)
 
-    upgrade_button.set_pressed_no_signal(current_screen == "upgrade")
-    dimension_button.set_pressed_no_signal(current_screen == "dimension")
-    unlocks_button.set_pressed_no_signal(current_screen == "unlocks")
-
-func update_button_alignment(button: Button, is_selected: bool):
+func update_button_alignment(button: Button):
+    var is_selected = current_button == button
     if is_selected:
         button.vertical_icon_alignment = VERTICAL_ALIGNMENT_TOP
     else:
