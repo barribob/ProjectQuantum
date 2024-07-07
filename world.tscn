@@ -1,0 +1,63 @@
+[gd_scene load_steps=6 format=3 uid="uid://bvt7xueivykvj"]
+
+[ext_resource type="Texture2D" uid="uid://iq0e85x5kjha" path="res://art/particle.png" id="1_rookj"]
+[ext_resource type="Shader" path="res://bloom.gdshader" id="2_jarg1"]
+[ext_resource type="Script" path="res://Particle.gd" id="3_ovm8y"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_75424"]
+shader = ExtResource("2_jarg1")
+shader_parameter/bloomRadius = 7.0
+shader_parameter/bloomThreshold = 0.0
+shader_parameter/bloomIntensity = 1.441
+shader_parameter/bloomPasses = 3
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_d3jvo"]
+viewport_path = NodePath("SubViewport")
+
+[node name="World" type="Node"]
+
+[node name="Bloom" type="CanvasLayer" parent="."]
+layer = 0
+
+[node name="Bloom" type="Sprite2D" parent="Bloom"]
+material = SubResource("ShaderMaterial_75424")
+texture = SubResource("ViewportTexture_d3jvo")
+centered = false
+
+[node name="SubViewport" type="SubViewport" parent="."]
+use_hdr_2d = true
+size = Vector2i(1920, 1080)
+
+[node name="Node2D" type="Node2D" parent="SubViewport"]
+
+[node name="Camera2D" type="Camera2D" parent="SubViewport/Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="SubViewport/Node2D"]
+modulate = Color(1.5, 1.5, 1.5, 1)
+texture = ExtResource("1_rookj")
+script = ExtResource("3_ovm8y")
+
+[node name="Line2D" type="Line2D" parent="SubViewport/Node2D"]
+points = PackedVector2Array(90, 49, 45, 49)
+
+[node name="Background" type="CanvasLayer" parent="SubViewport"]
+layer = -1
+
+[node name="ColorRect2" type="ColorRect" parent="SubViewport/Background"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Background" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="ColorRect2" type="ColorRect" parent="Background"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)

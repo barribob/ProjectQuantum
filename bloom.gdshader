@@ -1,0 +1,54 @@
+shader_type canvas_item;
+
+uniform float bloomRadius : hint_range(0.1, 10.0) = 1.0;
+uniform float bloomThreshold : hint_range(0.0, 2.0) = 1.0;
+uniform float bloomIntensity : hint_range(0.0, 5.0) = 1.0;
+uniform int bloomPasses : hint_range(1, 8) = 4;
+
+vec3 GetBloomPixel(sampler2D tex, vec2 uv, vec2 texPixelSize) {
+    vec2 uv2 = floor(uv / texPixelSize) * texPixelSize;
+    uv2 += texPixelSize * 0.001;
+    vec3 tl = max(texture(tex, uv2).rgb - bloomThreshold, vec3(0.0));
+    vec3 tr = max(texture(tex, uv2 + vec2(texPixelSize.x, 0.0)).rgb - bloomThreshold, vec3(0.0));
+    vec3 bl = max(texture(tex, uv2 + vec2(0.0, texPixelSize.y)).rgb - bloomThreshold, vec3(0.0));
+    vec3 br = max(texture(tex, uv2 + vec2(texPixelSize.x, texPixelSize.y)).rgb - bloomThreshold, vec3(0.0));
+    vec2 f = fract(uv / texPixelSize);
+    vec3 tA = mix(tl, tr, f.x);
+    vec3 tB = mix(bl, br, f.x);
+    return mix(tA, tB, f.y);
+}
+
+vec3 GetBloom(sampler2D tex, vec2 uv, vec2 texPixelSize, float radius) {
+    vec3 bloom = vec3(0.0);
+    vec2 off = vec2(1.0) * texPixelSize * radius;
+
+    bloom += GetBloomPixel(tex, uv + off * vec2(-1.0, -1.0), texPixelSize * radius) * 0.292893;
+    bloom += GetBloomPixel(tex, uv + off * vec2(-1.0, 0.0), texPixelSize * radius) * 0.5;
+    bloom += GetBloomPixel(tex, uv + off * vec2(-1.0, 1.0), texPixelSize * radius) * 0.292893;
+    bloom += GetBloomPixel(tex, uv + off * vec2(0.0, -1.0), texPixelSize * radius) * 0.5;
+    bloom += GetBloomPixel(tex, uv + off * vec2(0.0, 0.0), texPixelSize * radius) * 1.0;
+    bloom += GetBloomPixel(tex, uv + off * vec2(0.0, 1.0), texPixelSize * radius) * 0.5;
+    bloom += GetBloomPixel(tex, uv + off * vec2(1.0, -1.0), texPixelSize * radius) * 0.292893;
+    bloom += GetBloomPixel(tex, uv + off * vec2(1.0, 0.0), texPixelSize * radius) * 0.5;
+    bloom += GetBloomPixel(tex, uv + off * vec2(1.0, 1.0), texPixelSize * radius) * 0.292893;
+
+    return bloom / 4.171573;
+}
+
+void fragment() {
+    vec4 col = texture(TEXTURE, UV);
+    vec3 bloom = vec3(0.0);
+    float totalWeight = 0.0;
+
+    for (int i = 0; i < bloomPasses; i++) {
+        float weight = 1.0 / float(i + 1);
+        float radius = bloomRadius * float(i + 1) / float(bloomPasses);
+        bloom += GetBloom(TEXTURE, UV, TEXTURE_PIXEL_SIZE, radius) * weight;
+        totalWeight += weight;
+    }
+
+    bloom /= totalWeight;
+    col.rgb += bloom * bloomIntensity;
+
+    COLOR = col;
+}

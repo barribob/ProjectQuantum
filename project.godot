@@ -11,8 +11,13 @@ config_version=5
 [application]
 
 config/name="Project Quantum"
+run/main_scene="res://world.tscn"
 config/features=PackedStringArray("4.2", "GL Compatibility")
 config/icon="res://icon.svg"
+
+[autoload]
+
+Console="*res://addons/console/Console.gd"
 
 [display]
 
@@ -21,7 +26,12 @@ window/size/viewport_height=1080
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
 
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/console/plugin.cfg", "res://addons/previous-tab/plugin.cfg", "res://addons/quickopenfix/plugin.cfg", "res://addons/script-ide/plugin.cfg")
+
 [rendering]
 
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
+viewport/hdr_2d=true
