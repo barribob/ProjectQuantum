@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://b58onxg2w750u"]
+
+[ext_resource type="Script" path="res://ParticleLine.gd" id="1_10wlu"]
+
+[node name="Line2D" type="Line2D"]
+width = 8.0
+default_color = Color(0.205117, 0.205117, 0.205117, 1)
+script = ExtResource("1_10wlu")
