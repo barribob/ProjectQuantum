@@ -4,6 +4,7 @@ extends Node
 @onready var energy = %Energy
 @onready var main_buttons = %MainButtons
 @onready var unlocks = %Unlocks
+@onready var dimensions = %Dimensions
 
 func start_run():
     pass
@@ -17,6 +18,7 @@ func save_data(data):
     sd.call("energy", energy)
     sd.call("main_buttons", main_buttons)
     sd.call("unlocks", unlocks)
+    sd.call("dimensions", dimensions)
 
 func load_game(data):
     var ld = func(key, obj):
@@ -27,3 +29,4 @@ func load_game(data):
     ld.call("energy", energy)
     ld.call("main_buttons", main_buttons)
     ld.call("unlocks", unlocks)
+    ld.call("dimensions", dimensions)

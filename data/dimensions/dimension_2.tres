@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="DimensionDef" load_steps=2 format=3 uid="uid://bcg4d4eagx2yp"]
+
+[ext_resource type="Script" path="res://DimensionDef.gd" id="1_onnwu"]
+
+[resource]
+script = ExtResource("1_onnwu")
+id = "2"
+name = "2nd Dimension"
+description = "Low energy particles, particles can come in bursts"
+cost = 20.0

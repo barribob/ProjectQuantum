@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="UnlockDef" load_steps=2 format=3 uid="uid://b21bi4vlstx47"]
+
+[ext_resource type="Script" path="res://UnlockDef.gd" id="1_vjcad"]
+
+[resource]
+script = ExtResource("1_vjcad")
+id = "unlock_dimensions"
+name = "Unlock Dimensions"
+description = "Unlock new dimensions with different particles and higher difficulty"
+cost = 30.0

@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="DimensionDef" load_steps=2 format=3 uid="uid://2wwogsew1vxq"]
+
+[ext_resource type="Script" path="res://DimensionDef.gd" id="1_5bnq8"]
+
+[resource]
+script = ExtResource("1_5bnq8")
+id = "1"
+name = "1st Dimension"
+description = "Low energy particles, sparsely populated"
+cost = 0.0

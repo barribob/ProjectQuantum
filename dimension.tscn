@@ -1,0 +1,59 @@
+[gd_scene load_steps=3 format=3 uid="uid://qfls8dcby5h"]
+
+[ext_resource type="Script" path="res://Dimension.gd" id="1_c0srs"]
+[ext_resource type="Texture2D" uid="uid://d0hi7hpolh4qv" path="res://art/waveform.png" id="2_p40ja"]
+
+[node name="Dimension" type="PanelContainer"]
+script = ExtResource("1_c0srs")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="NameLabel" type="Label" parent="MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_font_sizes/font_size = 24
+text = "1st Dimension"
+
+[node name="DescriptionLabel" type="Label" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+text = "Low energy threats, sparsely populated"
+
+[node name="Spacer" type="MarginContainer" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="CostUI" type="HBoxContainer" parent="MarginContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="Label3" type="Label" parent="MarginContainer/HBoxContainer/CostUI"]
+layout_mode = 2
+text = "Cost:"
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer/CostUI"]
+layout_mode = 2
+texture = ExtResource("2_p40ja")
+stretch_mode = 3
+
+[node name="CostLabel" type="Label" parent="MarginContainer/HBoxContainer/CostUI"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="UnlockButton" type="Button" parent="MarginContainer/HBoxContainer/CostUI"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+text = "Unlock"
+
+[node name="SwitchButton" type="Button" parent="MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+text = "Switch"
+
+[node name="Marker2D" type="Marker2D" parent="MarginContainer/HBoxContainer/SwitchButton"]
+position = Vector2(169, 10)

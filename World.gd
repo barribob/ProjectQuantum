@@ -1,6 +1,7 @@
 extends Node2D
 
 @onready var energy = %Energy
+@onready var dimensions = %Dimensions
 
 signal successful_dodge()
 
@@ -11,6 +12,19 @@ const PARTICLE_LINE = preload("res://particle_line.tscn")
 var collision_cooldown = 3.0
 var collision_time = collision_cooldown
 var num_collisions = 1
+
+func _ready():
+    dimensions.switch_dimension.connect(switch_dimension)
+
+func switch_dimension():
+    if dimensions.get_current_dimension() == Registries.DIMENSION_1:
+        collision_cooldown = 3.0
+        num_collisions = 1
+        collision_time = collision_cooldown
+    elif dimensions.get_current_dimension() == Registries.DIMENSION_2:
+        collision_cooldown = 0.5
+        num_collisions = 1
+        collision_time = collision_cooldown
 
 func _process(delta):
     collision_time -= delta

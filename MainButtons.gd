@@ -41,6 +41,8 @@ func _ready():
 func unlock_bought():
     if unlocks.is_unlocked(Registries.UNLOCK_UPGRADES):
         upgrade_button.show()
+    if unlocks.is_unlocked(Registries.UNLOCK_DIMENSIONS):
+        dimension_button.show()
 
 func toggle_screen(button):
     if current_button == button:
