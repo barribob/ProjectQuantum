@@ -1,10 +1,8 @@
 extends Node
 
-const UNLOCK_UPGRADES = preload("res://data/unlocks/unlock_upgrades.tres")
 const UNLOCK_DIMENSIONS = preload("res://data/unlocks/unlock_dimensions.tres")
 
 const unlocks = [
-    UNLOCK_UPGRADES,
     UNLOCK_DIMENSIONS
 ]
 

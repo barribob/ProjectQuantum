@@ -1,10 +1,8 @@
 extends HBoxContainer
 
-@onready var upgrade_button = $UpgradeButton
 @onready var dimension_button = $DimensionButton
 @onready var unlocks_button = $UnlocksButton
 
-@onready var upgrades = %Upgrades
 @onready var dimensions = %Dimensions
 @onready var unlocks = %Unlocks
 
@@ -14,17 +12,14 @@ var current_button = null
 
 func _ready():
     Console.add_command("ushow", unlocks_button.show)
-    upgrade_button.pressed.connect(func(): toggle_screen(upgrade_button))
     dimension_button.pressed.connect(func(): toggle_screen(dimension_button))
     unlocks_button.pressed.connect(func(): toggle_screen(unlocks_button))
 
     buttons_to_screens = {
-        upgrade_button: upgrades,
         dimension_button: dimensions,
         unlocks_button: unlocks
     }
     ids_to_buttons = {
-        "upgrade_button": upgrade_button,
         "dimension_button": dimension_button,
         "unlocks_button": unlocks_button
     }
@@ -39,8 +34,6 @@ func _ready():
     unlocks.unlock_bought.connect(unlock_bought)
 
 func unlock_bought():
-    if unlocks.is_unlocked(Registries.UNLOCK_UPGRADES):
-        upgrade_button.show()
     if unlocks.is_unlocked(Registries.UNLOCK_DIMENSIONS):
         dimension_button.show()
 
