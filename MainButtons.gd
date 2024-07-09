@@ -2,9 +2,11 @@ extends HBoxContainer
 
 @onready var dimension_button = $DimensionButton
 @onready var unlocks_button = $UnlocksButton
+@onready var entanglements_button = $EntanglementsButton
 
 @onready var dimensions = %Dimensions
 @onready var unlocks = %Unlocks
+@onready var entanglements = %Entanglements
 
 var buttons_to_screens: Dictionary
 var ids_to_buttons: Dictionary
@@ -14,14 +16,17 @@ func _ready():
     Console.add_command("ushow", unlocks_button.show)
     dimension_button.pressed.connect(func(): toggle_screen(dimension_button))
     unlocks_button.pressed.connect(func(): toggle_screen(unlocks_button))
+    entanglements_button.pressed.connect(func(): toggle_screen(entanglements_button))
 
     buttons_to_screens = {
         dimension_button: dimensions,
-        unlocks_button: unlocks
+        unlocks_button: unlocks,
+        entanglements_button: entanglements
     }
     ids_to_buttons = {
         "dimension_button": dimension_button,
-        "unlocks_button": unlocks_button
+        "unlocks_button": unlocks_button,
+        "entanglements_button": entanglements_button
     }
 
     for screen in buttons_to_screens.values():
@@ -36,6 +41,8 @@ func _ready():
 func unlock_bought():
     if unlocks.is_unlocked(Registries.UNLOCK_DIMENSIONS):
         dimension_button.show()
+    if unlocks.is_unlocked(Registries.UNLOCK_ENTANGLEMENTS):
+        entanglements_button.show()
 
 func toggle_screen(button):
     if current_button == button:

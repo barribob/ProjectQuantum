@@ -166,6 +166,12 @@ layout_mode = 2
 icon = ExtResource("10_fy23g")
 icon_alignment = 1
 
+[node name="EntanglementsButton" type="Button" parent="UI/Control/MainButtons"]
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+icon = ExtResource("10_fy23g")
+icon_alignment = 1
+
 [node name="Unlocks" type="PanelContainer" parent="UI/Control"]
 unique_name_in_owner = true
 visible = false

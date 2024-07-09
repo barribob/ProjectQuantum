@@ -7,4 +7,4 @@ script = ExtResource("1_vjcad")
 id = "unlock_dimensions"
 name = "Unlock Dimensions"
 description = "Unlock new dimensions with different particles and higher difficulty"
-cost = 30.0
+cost = 10.0
