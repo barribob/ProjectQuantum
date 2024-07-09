@@ -1,0 +1,21 @@
+[gd_scene load_steps=2 format=3 uid="uid://ds1owr18l1fy1"]
+
+[ext_resource type="Script" path="res://Entanglement.gd" id="1_uakri"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 2
+script = ExtResource("1_uakri")
+
+[node name="Button" type="Button" parent="."]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 1
+offset_left = -96.0
+offset_top = -17.0
+offset_right = 104.0
+offset_bottom = 14.0
+focus_mode = 0
+text = "Max Energy"

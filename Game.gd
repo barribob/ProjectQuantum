@@ -5,6 +5,7 @@ extends Node
 @onready var main_buttons = %MainButtons
 @onready var unlocks = %Unlocks
 @onready var dimensions = %Dimensions
+@onready var entanglements = %Entanglements
 
 func start_run():
     pass
@@ -19,6 +20,7 @@ func save_data(data):
     sd.call("main_buttons", main_buttons)
     sd.call("unlocks", unlocks)
     sd.call("dimensions", dimensions)
+    sd.call("entanglements", entanglements)
 
 func load_game(data):
     var ld = func(key, obj):
@@ -30,3 +32,4 @@ func load_game(data):
     ld.call("main_buttons", main_buttons)
     ld.call("unlocks", unlocks)
     ld.call("dimensions", dimensions)
+    ld.call("entanglements", entanglements)

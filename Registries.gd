@@ -14,8 +14,17 @@ const dimensions = [
     DIMENSION_2
 ]
 
+const ENTANGLE_MAX_ENERGY_1 = preload("res://data/entanglements/entangle_max_energy_1.tres")
+const ENTANGLE_ENERGY_CHARGE_1 = preload("res://data/entanglements/entangle_energy_charge_1.tres")
+
+const entanglements = [
+    ENTANGLE_MAX_ENERGY_1,
+    ENTANGLE_ENERGY_CHARGE_1
+]
+
 var ids_to_unlocks: Dictionary
 var ids_to_dimensions: Dictionary
+var ids_to_entanglements: Dictionary
 
 func _ready():
     for unlock in unlocks:
@@ -23,3 +32,6 @@ func _ready():
 
     for dimension in dimensions:
         ids_to_dimensions[dimension.id] = dimension
+
+    for entangle in entanglements:
+        ids_to_entanglements[entangle.id] = entangle
