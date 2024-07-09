@@ -9,7 +9,7 @@ const AFTERIMAGE = preload("res://afterimage.tscn")
 const PARTICLE_LINE = preload("res://particle_line.tscn")
 @onready var particle = $Particle
 
-var collision_cooldown = 3.0
+var collision_cooldown = 2.0
 var collision_time = collision_cooldown
 var num_collisions = 1
 var collisions_enabled = true
@@ -20,7 +20,7 @@ func _ready():
 
 func switch_dimension():
     if dimensions.get_current_dimension() == Registries.DIMENSION_1:
-        collision_cooldown = 3.0
+        collision_cooldown = 2.0
         num_collisions = 1
         collision_time = collision_cooldown
     elif dimensions.get_current_dimension() == Registries.DIMENSION_2:
@@ -39,7 +39,7 @@ func _process(delta):
     if collision_time <= 0.0:
         collision_time = collision_cooldown
         for i in range(num_collisions):
-            if energy.energy > 1:
+            if Utils.geq(energy.energy, 1):
                 energy.consume(1)
                 create_collision(true)
             else:

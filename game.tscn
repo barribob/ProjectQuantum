@@ -255,6 +255,16 @@ custom_minimum_size = Vector2(50, 0)
 layout_mode = 2
 text = "14.5K"
 
+[node name="MarginContainer" type="MarginContainer" parent="UI/Control/Top/Energy"]
+layout_mode = 2
+
+[node name="GainEnergyButton" type="Button" parent="UI/Control/Top/Energy/MarginContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+focus_mode = 0
+text = "Gain Energy"
+
 [node name="MainButtons" type="HBoxContainer" parent="UI/Control"]
 unique_name_in_owner = true
 layout_mode = 1

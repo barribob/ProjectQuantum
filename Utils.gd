@@ -41,3 +41,9 @@ static func parse_meta(tag_value, resource: Resource):
     else:
         var tag_meta = resource.get_meta(tag_value, "")
         return tag_meta
+
+static func geq(f1: float, f2: float):
+    return f1 > f2 || is_equal_approx(f1, f2)
+
+static func leq(f1: float, f2: float):
+    return f1 < f2 || is_equal_approx(f1, f2)
