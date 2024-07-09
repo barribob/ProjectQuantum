@@ -7,13 +7,13 @@ extends HBoxContainer
 var energy: float
 var max_energy: float
 var energy_gain: float
+var energy_depleted = false
 
 func _ready():
     energy_gain = 0.5
     max_energy = 10
-    energy =  max_energy
+    energy = max_energy
     update_ui()
-
     entanglements.entanglement_bought.connect(entanglement_bought)
 
 func entanglement_bought(entanglement):
@@ -24,12 +24,20 @@ func entanglement_bought(entanglement):
 
 func consume(amount):
     energy -= amount
+    if energy <= 0:
+        energy = 0
+        energy_depleted = true
     update_ui()
 
 func _physics_process(delta):
     if energy < max_energy:
         energy += delta * energy_gain
+        if energy > max_energy:
+            energy = max_energy
         update_ui()
+
+    if energy_depleted and energy >= max_energy:
+        energy_depleted = false
 
 func update_ui():
     energy_bar.max_value = max_energy
@@ -46,3 +54,6 @@ func load_data(data):
     max_energy = data["max_energy"]
     energy_gain = data["energy_gain"]
     update_ui()
+
+func is_energy_depleted() -> bool:
+    return energy_depleted

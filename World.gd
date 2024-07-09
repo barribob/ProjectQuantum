@@ -2,7 +2,7 @@ extends Node2D
 
 @onready var energy = %Energy
 @onready var dimensions = %Dimensions
-
+@onready var animation_player = $Particle/AnimationPlayer
 signal successful_dodge()
 
 const AFTERIMAGE = preload("res://afterimage.tscn")
@@ -12,9 +12,11 @@ const PARTICLE_LINE = preload("res://particle_line.tscn")
 var collision_cooldown = 3.0
 var collision_time = collision_cooldown
 var num_collisions = 1
+var collisions_enabled = true
 
 func _ready():
     dimensions.switch_dimension.connect(switch_dimension)
+    animation_player.play("undissolve")
 
 func switch_dimension():
     if dimensions.get_current_dimension() == Registries.DIMENSION_1:
@@ -27,27 +29,46 @@ func switch_dimension():
         collision_time = collision_cooldown
 
 func _process(delta):
-    collision_time -= delta
+    if not collisions_enabled:
+        if energy.energy >= energy.max_energy:
+            collisions_enabled = true
+            animation_player.play("undissolve")
+        return
 
+    collision_time -= delta
     if collision_time <= 0.0:
         collision_time = collision_cooldown
         for i in range(num_collisions):
-
             if energy.energy > 1:
                 energy.consume(1)
+                create_collision(true)
             else:
-                print("destroyed!")
+                collisions_enabled = false
+                animation_player.play("dissolve")
+                create_collision(false)
+                break
 
-            var direction = Vector2(randf_range(-1.0, 1.0), randf_range(-1.0, 1.0)).normalized()
-            var particle_line = PARTICLE_LINE.instantiate()
-            var offset = particle.global_position
-            particle_line.add_point(direction * 1500 + offset)
-            particle_line.add_point(direction * -1500 + offset)
-            add_child(particle_line)
+func create_collision(is_successful: bool):
+    var direction = Vector2(randf_range(-1.0, 1.0), randf_range(-1.0, 1.0)).normalized()
+    var particle_line = PARTICLE_LINE.instantiate()
+    var offset = particle.global_position
+    particle_line.add_point(direction * 1500 + offset)
+    particle_line.add_point(direction * -1500 + offset)
+    add_child(particle_line)
+    if is_successful:
+        particle.position = Vector2.RIGHT.rotated(randf_range(0, TAU)) * randf_range(32, 100)
+        successful_dodge.emit()
 
-            #var afterimage = AFTERIMAGE.instantiate()
-            #afterimage.global_position = particle.global_position
-            #add_child(afterimage)
+func save_data(data):
+    data["num_collisions"] = num_collisions
+    data["collisions_enabled"] = collisions_enabled
+    data["collision_cooldown"] = collision_cooldown
+    data["collision_time"] = collision_time
 
-            particle.position = Vector2.RIGHT.rotated(randf_range(0, TAU)) * randf_range(32, 100)
-            successful_dodge.emit()
+func load_data(data):
+    num_collisions = data["num_collisions"]
+    collisions_enabled = data["collisions_enabled"]
+    collision_cooldown = data["collision_cooldown"]
+    collision_time = data["collision_time"]
+    if not collisions_enabled:
+        animation_player.play("hide_instantly")
