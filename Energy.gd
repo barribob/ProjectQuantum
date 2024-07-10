@@ -6,6 +6,7 @@ signal energy_consumed
 @onready var energy_label = $EnergyLabel
 @onready var entanglements = %Entanglements
 @onready var gain_energy_button = %GainEnergyButton
+@onready var energy_button_bar = %EnergyButtonBar
 
 var energy: float
 var max_energy: float
@@ -15,6 +16,7 @@ var _energy_consumed = 0
 
 var button_energy_gain = 0.0
 var button_energy_gain_time = 0.0
+var max_button_energy_time = 3.0
 
 func _ready():
     energy_gain = 0.0
@@ -52,22 +54,20 @@ func _physics_process(delta):
         energy_depleted = false
 
     button_energy_gain_time -= delta
+    energy_button_bar.value = button_energy_gain_time
     if button_energy_gain_time <= 0.0:
         button_energy_gain = 0.0
-        finish_energy_restoration()
 
 func update_ui():
     energy_bar.max_value = max_energy
     energy_bar.value = energy
     energy_label.text = Utils.format_number(energy)
+    energy_button_bar.max_value = max_button_energy_time
+    gain_energy_button.disabled = button_energy_gain_time > 0.0
 
 func _on_gain_energy_button_pressed():
-    gain_energy_button.disabled = true
     button_energy_gain = 1.0
-    button_energy_gain_time = 3.0
-
-func finish_energy_restoration():
-    gain_energy_button.disabled = false
+    button_energy_gain_time = max_button_energy_time
 
 func save_data(data):
     data["energy"] = energy
