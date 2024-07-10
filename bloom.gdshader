@@ -1,13 +1,13 @@
 shader_type canvas_item;
 
-uniform float bloomRadius : hint_range(0.1, 10.0) = 1.0;
+uniform float bloomRadius : hint_range(0.0, 10.0, 2.0) = 1.0;
 uniform float bloomThreshold : hint_range(0.0, 2.0) = 1.0;
 uniform float bloomIntensity : hint_range(0.0, 5.0) = 1.0;
 uniform int bloomPasses : hint_range(1, 8) = 4;
+uniform sampler2D screen_texture : hint_screen_texture, repeat_disable, filter_linear_mipmap;
 
 vec3 GetBloomPixel(sampler2D tex, vec2 uv, vec2 texPixelSize) {
     vec2 uv2 = floor(uv / texPixelSize) * texPixelSize;
-    uv2 += texPixelSize * 0.001;
     vec3 tl = max(texture(tex, uv2).rgb - bloomThreshold, vec3(0.0));
     vec3 tr = max(texture(tex, uv2 + vec2(texPixelSize.x, 0.0)).rgb - bloomThreshold, vec3(0.0));
     vec3 bl = max(texture(tex, uv2 + vec2(0.0, texPixelSize.y)).rgb - bloomThreshold, vec3(0.0));
@@ -36,14 +36,14 @@ vec3 GetBloom(sampler2D tex, vec2 uv, vec2 texPixelSize, float radius) {
 }
 
 void fragment() {
-    vec4 col = texture(TEXTURE, UV);
+    vec4 col = texture(screen_texture, SCREEN_UV);
     vec3 bloom = vec3(0.0);
     float totalWeight = 0.0;
 
     for (int i = 0; i < bloomPasses; i++) {
-        float weight = 1.0 / float(i + 1);
+        float weight = 1.0;
         float radius = bloomRadius * float(i + 1) / float(bloomPasses);
-        bloom += GetBloom(TEXTURE, UV, TEXTURE_PIXEL_SIZE, radius) * weight;
+        bloom += GetBloom(screen_texture, SCREEN_UV, SCREEN_PIXEL_SIZE, radius) * weight;
         totalWeight += weight;
     }
 

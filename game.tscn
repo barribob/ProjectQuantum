@@ -20,20 +20,37 @@
 [ext_resource type="StyleBox" uid="uid://k8o11cfuveoi" path="res://header.tres" id="16_o22y3"]
 [ext_resource type="Texture2D" uid="uid://c2gt1m4giqwfd" path="res://art/Skill Tree.png" id="17_eun44"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_75424"]
-shader = ExtResource("1_5asy8")
-shader_parameter/bloomRadius = 7.0
-shader_parameter/bloomThreshold = 0.0
-shader_parameter/bloomIntensity = 1.441
-shader_parameter/bloomPasses = 3
-
-[sub_resource type="ViewportTexture" id="ViewportTexture_d3jvo"]
-viewport_path = NodePath("SubViewport")
-
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_yhtry"]
 shader = ExtResource("4_km36t")
 shader_parameter/fragment_number = Vector2(20, 20)
 shader_parameter/dissolve_state = 1.0
+
+[sub_resource type="Animation" id="Animation_i5018"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:material:shader_parameter/dissolve_state")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
 
 [sub_resource type="Animation" id="Animation_7jcle"]
 resource_name = "dissolve"
@@ -63,7 +80,8 @@ tracks/1/keys = {
 "values": [Vector2(1, 1), Vector2(2, 2)]
 }
 
-[sub_resource type="Animation" id="Animation_i5018"]
+[sub_resource type="Animation" id="Animation_6jiba"]
+resource_name = "hide_instantly"
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -75,19 +93,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [1.0]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:scale")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(1, 1)]
+"values": [0.0]
 }
 
 [sub_resource type="Animation" id="Animation_a0tr4"]
@@ -118,22 +124,6 @@ tracks/1/keys = {
 "values": [Vector2(2, 2), Vector2(1, 1)]
 }
 
-[sub_resource type="Animation" id="Animation_6jiba"]
-resource_name = "hide_instantly"
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:material:shader_parameter/dissolve_state")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_xjlws"]
 _data = {
 "RESET": SubResource("Animation_i5018"),
@@ -141,6 +131,15 @@ _data = {
 "hide_instantly": SubResource("Animation_6jiba"),
 "undissolve": SubResource("Animation_a0tr4")
 }
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_75424"]
+shader = ExtResource("1_5asy8")
+shader_parameter/bloomRadius = 4.0
+shader_parameter/bloomThreshold = 0.2
+shader_parameter/bloomIntensity = 4.0
+shader_parameter/bloomPasses = 4
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_3ogwu"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_pgkg8"]
 
@@ -154,45 +153,31 @@ corner_radius_bottom_left = 20
 [node name="Game" type="Node"]
 script = ExtResource("1_mn4wp")
 
-[node name="Bloom" type="CanvasLayer" parent="."]
-layer = 0
-
-[node name="Bloom" type="Sprite2D" parent="Bloom"]
-material = SubResource("ShaderMaterial_75424")
-texture = SubResource("ViewportTexture_d3jvo")
-centered = false
-
-[node name="SubViewport" type="SubViewport" parent="."]
-use_hdr_2d = true
-size = Vector2i(1920, 1080)
-
-[node name="World" type="Node2D" parent="SubViewport"]
+[node name="World" type="Node2D" parent="."]
 unique_name_in_owner = true
 script = ExtResource("2_2uow4")
 
-[node name="Camera2D" type="Camera2D" parent="SubViewport/World"]
-
-[node name="Particle" type="Sprite2D" parent="SubViewport/World"]
+[node name="Particle" type="Sprite2D" parent="World"]
+modulate = Color(2, 2, 2, 1)
 material = SubResource("ShaderMaterial_yhtry")
-position = Vector2(14.29, 15.055)
+position = Vector2(33, 18)
 texture = ExtResource("3_suppd")
 script = ExtResource("4_u7xo4")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="SubViewport/World/Particle"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="World/Particle"]
 libraries = {
 "": SubResource("AnimationLibrary_xjlws")
 }
 
-[node name="Background" type="CanvasLayer" parent="SubViewport"]
-layer = -1
+[node name="Camera2D" type="Camera2D" parent="."]
 
-[node name="ColorRect2" type="ColorRect" parent="SubViewport/Background"]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.0509804, 0.0509804, 0.0509804, 1)
+[node name="Bloom" type="CanvasLayer" parent="."]
+
+[node name="Bloom2" type="Sprite2D" parent="Bloom"]
+material = SubResource("ShaderMaterial_75424")
+scale = Vector2(1918, 1080)
+texture = SubResource("PlaceholderTexture2D_3ogwu")
+centered = false
 
 [node name="Background" type="CanvasLayer" parent="."]
 layer = -1
@@ -203,7 +188,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.0509804, 0.0509804, 0.0509804, 1)
+color = Color(0.12549, 0.12549, 0.12549, 1)
 
 [node name="UI" type="CanvasLayer" parent="."]
 
