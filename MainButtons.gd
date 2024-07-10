@@ -7,6 +7,7 @@ extends HBoxContainer
 @onready var dimensions = %Dimensions
 @onready var unlocks = %Unlocks
 @onready var entanglements = %Entanglements
+@onready var energy = %Energy
 
 var buttons_to_screens: Dictionary
 var ids_to_buttons: Dictionary
@@ -37,6 +38,12 @@ func _ready():
     update_button_states()
 
     unlocks.unlock_bought.connect(unlock_bought)
+    energy.energy_consumed.connect(energy_consumed)
+
+func energy_consumed():
+    if energy._energy_consumed >= 10:
+        unlocks_button.show()
+        energy.energy_consumed.disconnect(energy_consumed)
 
 func unlock_bought():
     if unlocks.is_unlocked(Registries.UNLOCK_DIMENSIONS):

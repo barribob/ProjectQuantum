@@ -1,5 +1,7 @@
 extends HBoxContainer
 
+signal energy_consumed
+
 @onready var energy_bar = $EnergyBar
 @onready var energy_label = $EnergyLabel
 @onready var entanglements = %Entanglements
@@ -9,7 +11,7 @@ var energy: float
 var max_energy: float
 var energy_gain: float
 var energy_depleted = false
-var energy_consumed = 0
+var _energy_consumed = 0
 
 var button_energy_gain = 0.0
 var button_energy_gain_time = 0.0
@@ -31,11 +33,12 @@ func entanglement_bought(entanglement):
 
 func consume(amount):
     energy -= amount
-    energy_consumed += amount
+    _energy_consumed += amount
+    energy_consumed.emit()
     if energy <= 0:
         energy = 0
         energy_depleted = true
-    if energy_consumed >= 5:
+    if _energy_consumed >= 5:
         gain_energy_button.show()
     update_ui()
 
@@ -70,7 +73,7 @@ func save_data(data):
     data["energy"] = energy
     data["max_energy"] = max_energy
     data["energy_gain"] = energy_gain
-    data["energy_consumed"] = energy_consumed
+    data["energy_consumed"] = _energy_consumed
     data["button_energy_gain"] = button_energy_gain
     data["button_energy_gain_time"] = button_energy_gain_time
 
@@ -78,11 +81,11 @@ func load_data(data):
     energy = data["energy"]
     max_energy = data["max_energy"]
     energy_gain = data["energy_gain"]
-    energy_consumed = data.get("energy_consumed", 0)
+    _energy_consumed = data.get("energy_consumed", 0)
     button_energy_gain = data.get("button_energy_gain", 0.0)
     button_energy_gain_time = data.get("button_energy_gain_time", 0.0)
     update_ui()
-    if energy_consumed >= 5:
+    if _energy_consumed >= 5:
         gain_energy_button.show()
 
 func is_energy_depleted() -> bool:
