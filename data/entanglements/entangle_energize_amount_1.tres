@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="EntanglementDef" load_steps=2 format=3 uid="uid://dqaa4akf41i07"]
+
+[ext_resource type="Script" path="res://EntanglementDef.gd" id="1_dcnqg"]
+
+[resource]
+script = ExtResource("1_dcnqg")
+id = "energize_amount_1"
+name = "Energize Power"
+description = "Increases energy restored per second from energize by $a
+{\"value\":\"increase\", \"replace\":\"$a\"}"
+cost = 20.0
+metadata/increase = 3.0

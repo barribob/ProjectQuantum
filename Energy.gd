@@ -16,7 +16,8 @@ var _energy_consumed = 0
 
 var button_energy_gain = 0.0
 var button_energy_gain_time = 0.0
-var max_button_energy_time = 3.0
+const max_button_energy_time = 3.0
+var stat_button_energy_gain = 1.0
 
 func _ready():
     energy_gain = 0.0
@@ -32,6 +33,8 @@ func entanglement_bought(entanglement):
         max_energy += Registries.ENTANGLE_MAX_ENERGY_1.get_meta("increase")
     if entanglement == Registries.ENTANGLE_ENERGY_CHARGE_1:
         energy_gain += Registries.ENTANGLE_ENERGY_CHARGE_1.get_meta("increase")
+    if entanglement == Registries.ENTANGLE_ENERGIZE_AMOUNT_1:
+        stat_button_energy_gain += Registries.ENTANGLE_ENERGIZE_AMOUNT_1.get_meta("increase")
 
 func consume(amount):
     energy -= amount
@@ -66,7 +69,7 @@ func update_ui():
     gain_energy_button.disabled = button_energy_gain_time > 0.0
 
 func _on_gain_energy_button_pressed():
-    button_energy_gain = 1.0
+    button_energy_gain = stat_button_energy_gain
     button_energy_gain_time = max_button_energy_time
 
 func save_data(data):
@@ -76,6 +79,7 @@ func save_data(data):
     data["energy_consumed"] = _energy_consumed
     data["button_energy_gain"] = button_energy_gain
     data["button_energy_gain_time"] = button_energy_gain_time
+    data["stat_button_energy_gain"] = stat_button_energy_gain
 
 func load_data(data):
     energy = data["energy"]
@@ -84,6 +88,7 @@ func load_data(data):
     _energy_consumed = data.get("energy_consumed", 0)
     button_energy_gain = data.get("button_energy_gain", 0.0)
     button_energy_gain_time = data.get("button_energy_gain_time", 0.0)
+    stat_button_energy_gain = data.get("stat_button_energy_gain", 1.0)
     update_ui()
     if _energy_consumed >= 5:
         gain_energy_button.show()
