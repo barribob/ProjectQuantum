@@ -1,0 +1,4 @@
+[gd_scene format=3 uid="uid://djplbget4qfpq"]
+
+[node name="Dimension" type="PanelContainer"]
+custom_minimum_size = Vector2(0, 62)

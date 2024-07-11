@@ -351,6 +351,7 @@ columns = 4
 
 [node name="Dimensions" type="PanelContainer" parent="UI/Control"]
 unique_name_in_owner = true
+visible = false
 custom_minimum_size = Vector2(1000, 800)
 layout_mode = 1
 anchors_preset = 14
@@ -402,7 +403,6 @@ text = "Current"
 
 [node name="Entanglements" type="PanelContainer" parent="UI/Control"]
 unique_name_in_owner = true
-visible = false
 custom_minimum_size = Vector2(1000, 900)
 layout_mode = 1
 anchors_preset = 14
@@ -507,3 +507,7 @@ position = Vector2(195, 270)
 
 [node name="Marker2D3" type="Marker2D" parent="UI/Control/Entanglements/MarginContainer/VBoxContainer/HBoxContainer/ButtonsArea/ButtonsArea/ButtonsContainer"]
 position = Vector2(195, 541)
+
+[node name="Origin" type="Marker2D" parent="UI/Control/Entanglements/MarginContainer/VBoxContainer/HBoxContainer/ButtonsArea/ButtonsArea"]
+unique_name_in_owner = true
+position = Vector2(-51, 407)

@@ -58,7 +58,7 @@ func toggle_screen(button):
     else:
         if current_button != null:
             buttons_to_screens[current_button].hide()
-        buttons_to_screens[button].show()
+        buttons_to_screens[button].display()
         current_button = button
 
     update_button_states()

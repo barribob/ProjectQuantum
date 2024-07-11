@@ -6,9 +6,11 @@ signal switch_dimension
 @onready var dimensions_container = %DimensionsContainer
 
 const DIMENSION = preload("res://dimension.tscn")
+const BLANK_DIMENSION = preload("res://blank_dimension.tscn")
 
 var dimensions = []
 var get_by_def = {}
+var blanks = []
 
 func _ready():
     for dimension in Registries.dimensions:
@@ -18,6 +20,12 @@ func _ready():
         dimensions_container.add_child(new_dimension)
         dimensions.append(new_dimension)
         get_by_def[new_dimension.def] = new_dimension
+
+    var i = dimensions_container.get_child_count()
+    for _j in range(i, 10):
+        var new_dimension = BLANK_DIMENSION.instantiate()
+        dimensions_container.add_child(new_dimension)
+        blanks.append(new_dimension)
 
     dimensions[0].selected = true
     dimensions[0].unlocked = true
@@ -49,3 +57,15 @@ func load_data(data):
         var def = Registries.ids_to_dimensions[id]
         if get_by_def.has(def):
             get_by_def[def].load_data(data["dimensions"][id])
+
+func display():
+    show()
+    var tween = create_tween()
+    var time = 0.07
+    for dimension in dimensions:
+        dimension.modulate.a = 0.0
+        tween.tween_property(dimension, "modulate:a", 1.0, time)
+
+    for blank in blanks:
+        blank.modulate.a = 0.0
+        tween.tween_property(blank, "modulate:a", 1.0, 0.01)

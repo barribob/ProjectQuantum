@@ -5,7 +5,7 @@
 [resource]
 script = ExtResource("1_cly8s")
 id = "energy_charge_1"
-name = "Energy Charge"
+name = "Charge"
 description = "Increases energy charge by $a
 {\"value\":\"increase\", \"replace\":\"$a\"}"
 cost = 10.0

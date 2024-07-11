@@ -7,6 +7,7 @@ signal entanglement_bought(def)
 @onready var entanglement_name = %EntanglementName
 @onready var entanglement_cost = %EntanglementCost
 @onready var entanglement_cost_label = %EntanglementCostLabel
+@onready var origin = %Origin
 
 const ENTANGLEMENT = preload("res://entanglement.tscn")
 const EMPTY_ENTANGLEMENT = preload("res://empty_entanglement.tscn")
@@ -53,3 +54,16 @@ func load_data(data):
         var def = Registries.ids_to_entanglements[id]
         if get_by_def.has(def):
             get_by_def[def].load_data(data["entanglements"][id])
+
+func display():
+    show()
+    var tween = create_tween()
+    tween.set_parallel()
+    var time = 0.1
+    for entanglement in entanglements:
+        entanglement.modulate.a = 0.0
+        var original_position = entanglement.position
+        var offset_direction = (origin.position - entanglement.position).normalized().rotated(PI/2)
+        entanglement.position = original_position + offset_direction * 50
+        tween.tween_property(entanglement, "position", original_position, time).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
+        tween.tween_property(entanglement, "modulate:a", 1.0, time)

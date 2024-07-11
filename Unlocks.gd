@@ -8,6 +8,7 @@ const EMPTY_UNLOCK = preload("res://empty_unlock.tscn")
 @onready var unlocks_container = $VBoxContainer/MarginContainer/UnlocksContainer
 
 var unlocks = []
+var blanks = []
 var get_by_def = {}
 
 func _ready():
@@ -24,6 +25,7 @@ func _ready():
     for _j in range(i, 8):
         var new_unlock = EMPTY_UNLOCK.instantiate()
         unlocks_container.add_child(new_unlock)
+        blanks.append(new_unlock)
 
 func is_unlocked(unlock):
     return get_by_def.has(unlock) and get_by_def[unlock].bought
@@ -40,3 +42,15 @@ func load_data(data):
         var def = Registries.ids_to_unlocks[id]
         if get_by_def.has(def):
             get_by_def[def].load_data(data["unlocks"][id])
+
+func display():
+    show()
+    var tween = create_tween()
+    var time = 0.07
+    for unlock in unlocks:
+        unlock.modulate.a = 0.0
+        tween.tween_property(unlock, "modulate:a", 1.0, time)
+
+    for blank in blanks:
+        blank.modulate.a = 0.0
+        tween.tween_property(blank, "modulate:a", 1.0, 0.01)

@@ -5,7 +5,7 @@
 [resource]
 script = ExtResource("1_dcnqg")
 id = "energize_amount_1"
-name = "Energize Power"
+name = "Energize"
 description = "Increases energy restored per second from energize by $a
 {\"value\":\"increase\", \"replace\":\"$a\"}"
 cost = 20.0
