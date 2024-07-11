@@ -10,10 +10,12 @@ const unlocks = [
 
 const DIMENSION_1 = preload("res://data/dimensions/dimension_1.tres")
 const DIMENSION_2 = preload("res://data/dimensions/dimension_2.tres")
+const DIMENSION_3 = preload("res://data/dimensions/dimension_3.tres")
 
 const dimensions = [
     DIMENSION_1,
-    DIMENSION_2
+    DIMENSION_2,
+    DIMENSION_3
 ]
 
 const ENTANGLE_MAX_ENERGY_1 = preload("res://data/entanglements/entangle_max_energy_1.tres")

@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="DimensionDef" load_steps=2 format=3 uid="uid://cdyav0uuurylg"]
+
+[ext_resource type="Script" path="res://DimensionDef.gd" id="1_bdi0o"]
+
+[resource]
+script = ExtResource("1_bdi0o")
+id = "3"
+name = "3nd Dimension"
+description = "Seems to have a particles with slightly different trajectories
+"
+cost = 100.0

@@ -8,6 +8,7 @@ signal successful_dodge()
 const AFTERIMAGE = preload("res://afterimage.tscn")
 const PARTICLE_LINE = preload("res://particle_line.tscn")
 @onready var particle = $Particle
+@onready var world_no_bloom = %WorldNoBloom
 
 var collision_cooldown = 2.0
 var collision_time = collision_cooldown
@@ -27,6 +28,10 @@ func switch_dimension():
         collision_cooldown = 0.5
         num_collisions = 1
         collision_time = collision_cooldown
+    elif dimensions.get_current_dimension() == Registries.DIMENSION_3:
+        collision_cooldown = 0.5
+        num_collisions = 1
+        collision_time = collision_cooldown
 
 func _process(delta):
     if not collisions_enabled:
@@ -41,21 +46,37 @@ func _process(delta):
         for i in range(num_collisions):
             if Utils.geq(energy.energy, 1):
                 energy.consume(1)
-                create_collision(true)
+                create_collision(true, 0.1)
             else:
                 collisions_enabled = false
                 animation_player.play("dissolve")
                 create_collision(false)
                 break
 
-func create_collision(is_successful: bool):
+func create_collision(is_successful: bool, curvature: float = 0.0):
     var direction = Vector2(randf_range(-1.0, 1.0), randf_range(-1.0, 1.0)).normalized()
     var particle_line = PARTICLE_LINE.instantiate()
+    var points = []
     var offset = particle.global_position
-    particle_line.add_point(direction * 1500 + offset)
-    particle_line.add_point(direction * -1500 + offset)
+
+    # Calculate points for the curved line
+    var num_points = 50 # Increase for smoother curves
+    for i in range(num_points + 1):
+        var t = float(i) / num_points
+        var distance = lerp(-1500.0, 1500.0, t)
+        var perpendicular = direction.rotated(PI/2)
+        var curve_offset = perpendicular * curvature * cos(PI * t) * distance
+        var point = direction * distance + curve_offset + offset
+        points.append(point)
+
+    particle_line.points = points
     add_child(particle_line)
+
     if is_successful:
+        var afterimage = AFTERIMAGE.instantiate()
+        afterimage.position = particle.global_position
+        world_no_bloom.add_child(afterimage)
+
         particle.position = Vector2.RIGHT.rotated(randf_range(0, TAU)) * randf_range(32, 100)
         successful_dodge.emit()
 

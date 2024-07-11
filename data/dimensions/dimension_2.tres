@@ -6,5 +6,5 @@
 script = ExtResource("1_onnwu")
 id = "2"
 name = "2nd Dimension"
-description = "Low energy particles, particles can come in bursts"
+description = "Low energy particles, a bit more of them though"
 cost = 20.0

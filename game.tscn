@@ -179,6 +179,12 @@ scale = Vector2(1918, 1080)
 texture = SubResource("PlaceholderTexture2D_3ogwu")
 centered = false
 
+[node name="WorldNoBloom" type="CanvasLayer" parent="."]
+follow_viewport_enabled = true
+
+[node name="WorldNoBloom" type="Node2D" parent="WorldNoBloom"]
+unique_name_in_owner = true
+
 [node name="Background" type="CanvasLayer" parent="."]
 layer = -1
 

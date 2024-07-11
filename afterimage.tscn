@@ -1,9 +1,9 @@
 [gd_scene load_steps=3 format=3 uid="uid://wx2w2qwsx4"]
 
-[ext_resource type="Texture2D" uid="uid://iq0e85x5kjha" path="res://art/particle.png" id="1_2o8dh"]
+[ext_resource type="Texture2D" uid="uid://ctcg62oj0erud" path="res://art/particle_afterimage.png" id="1_cwpn7"]
 [ext_resource type="Script" path="res://1/Afterimage.gd" id="2_vcm1p"]
 
 [node name="Afterimage" type="Sprite2D"]
 modulate = Color(1.5, 1.5, 1.5, 1)
-texture = ExtResource("1_2o8dh")
+texture = ExtResource("1_cwpn7")
 script = ExtResource("2_vcm1p")
