@@ -6,6 +6,5 @@
 script = ExtResource("1_bdi0o")
 id = "3"
 name = "3nd Dimension"
-description = "Seems to have a particles with slightly different trajectories
-"
+description = "Low energy particles, at a higher density"
 cost = 100.0

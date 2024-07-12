@@ -14,6 +14,7 @@ var collision_cooldown = 2.0
 var collision_time = collision_cooldown
 var num_collisions = 1
 var collisions_enabled = true
+var curve = 0.0
 
 func _ready():
     dimensions.switch_dimension.connect(switch_dimension)
@@ -29,7 +30,7 @@ func switch_dimension():
         num_collisions = 1
         collision_time = collision_cooldown
     elif dimensions.get_current_dimension() == Registries.DIMENSION_3:
-        collision_cooldown = 0.5
+        collision_cooldown = 0.2
         num_collisions = 1
         collision_time = collision_cooldown
 
@@ -46,11 +47,11 @@ func _process(delta):
         for i in range(num_collisions):
             if Utils.geq(energy.energy, 1):
                 energy.consume(1)
-                create_collision(true, 0.1)
+                create_collision(true, curve)
             else:
                 collisions_enabled = false
                 animation_player.play("dissolve")
-                create_collision(false)
+                create_collision(false, curve)
                 break
 
 func create_collision(is_successful: bool, curvature: float = 0.0):
