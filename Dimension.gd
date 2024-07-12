@@ -26,6 +26,7 @@ func _on_unlock_button_pressed():
     CurrentRun.waveforms.consume(def.cost)
     unlocked = true
     switch_dimension.emit()
+    update_ui()
 
 func _on_switch_button_pressed():
     switch_dimension.emit()

@@ -49,4 +49,5 @@ text = "14.5K"
 [node name="UnlockButton" type="Button" parent="MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
+focus_mode = 0
 text = "Unlock"

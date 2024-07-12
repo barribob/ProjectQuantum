@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://qfls8dcby5h"]
+[gd_scene load_steps=4 format=3 uid="uid://qfls8dcby5h"]
 
 [ext_resource type="Script" path="res://Dimension.gd" id="1_c0srs"]
 [ext_resource type="Texture2D" uid="uid://d0hi7hpolh4qv" path="res://art/waveform.png" id="2_p40ja"]
+[ext_resource type="StyleBox" uid="uid://c0x2n7cl2amwy" path="res://dimension_bought.tres" id="3_uqfcs"]
 
 [node name="Dimension" type="PanelContainer"]
 script = ExtResource("1_c0srs")
@@ -48,11 +49,14 @@ layout_mode = 2
 unique_name_in_owner = true
 custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
+focus_mode = 0
 text = "Unlock"
 
 [node name="SwitchButton" type="Button" parent="MarginContainer/HBoxContainer"]
 custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
+focus_mode = 0
+theme_override_styles/disabled = ExtResource("3_uqfcs")
 text = "Switch"
 
 [node name="Marker2D" type="Marker2D" parent="MarginContainer/HBoxContainer/SwitchButton"]
