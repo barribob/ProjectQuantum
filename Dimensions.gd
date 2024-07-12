@@ -13,6 +13,7 @@ var get_by_def = {}
 var blanks = []
 
 func _ready():
+    Console.add_command("dimension", func(d): _switch_dimension(get_by_def[Registries.ids_to_dimensions[d]]), 1)
     for dimension in Registries.dimensions:
         var new_dimension = DIMENSION.instantiate()
         new_dimension.def = dimension
@@ -57,6 +58,7 @@ func load_data(data):
         var def = Registries.ids_to_dimensions[id]
         if get_by_def.has(def):
             get_by_def[def].load_data(data["dimensions"][id])
+    switch_dimension.emit()
 
 func display():
     show()

@@ -13,8 +13,8 @@ func _ready():
     world.successful_dodge.connect(dodge)
     waveforms_label.text = Utils.format_number(waveforms)
 
-func dodge():
-    add_waveforms(1)
+func dodge(value):
+    add_waveforms(value)
 
 func add_waveforms(amt):
     waveforms += amt

@@ -3,8 +3,7 @@ extends Node2D
 @onready var energy = %Energy
 @onready var dimensions = %Dimensions
 @onready var animation_player = $Particle/AnimationPlayer
-signal successful_dodge()
-
+signal successful_dodge(dodge_value: float)
 const AFTERIMAGE = preload("res://afterimage.tscn")
 const PARTICLE_LINE = preload("res://particle_line.tscn")
 @onready var particle = $Particle
@@ -15,24 +14,42 @@ var collision_time = collision_cooldown
 var num_collisions = 1
 var collisions_enabled = true
 var curve = 0.0
+var line_color = Color.WHITE
+var dodge_value = 1.0
 
 func _ready():
     dimensions.switch_dimension.connect(switch_dimension)
     animation_player.play("undissolve")
 
 func switch_dimension():
-    if dimensions.get_current_dimension() == Registries.DIMENSION_1:
+    var current_dimension = dimensions.get_current_dimension()
+
+    if current_dimension == Registries.DIMENSION_1:
         collision_cooldown = 2.0
         num_collisions = 1
-        collision_time = collision_cooldown
-    elif dimensions.get_current_dimension() == Registries.DIMENSION_2:
+        curve = 0.0
+        line_color = Colors.line
+        dodge_value = 1.0
+    elif current_dimension == Registries.DIMENSION_2:
         collision_cooldown = 0.5
         num_collisions = 1
-        collision_time = collision_cooldown
-    elif dimensions.get_current_dimension() == Registries.DIMENSION_3:
+        curve = 0.0
+        line_color = Colors.line
+        dodge_value = 1.0
+    elif current_dimension == Registries.DIMENSION_3:
         collision_cooldown = 0.2
         num_collisions = 1
-        collision_time = collision_cooldown
+        curve = 0.0
+        line_color = Colors.line
+        dodge_value = 1.0
+    elif current_dimension == Registries.DIMENSION_4:
+        collision_cooldown = 0.2
+        num_collisions = 1
+        curve = 0.5
+        line_color = Colors.line_1
+        dodge_value = 2.0
+
+    collision_time = collision_cooldown
 
 func _process(delta):
     if not collisions_enabled:
@@ -71,26 +88,32 @@ func create_collision(is_successful: bool, curvature: float = 0.0):
         points.append(point)
 
     particle_line.points = points
+    particle_line.default_color = line_color  # Set the line color
     add_child(particle_line)
 
     if is_successful:
         var afterimage = AFTERIMAGE.instantiate()
         afterimage.position = particle.global_position
         world_no_bloom.add_child(afterimage)
-
         particle.position = Vector2.RIGHT.rotated(randf_range(0, TAU)) * randf_range(32, 100)
-        successful_dodge.emit()
+        successful_dodge.emit(dodge_value)
 
 func save_data(data):
     data["num_collisions"] = num_collisions
     data["collisions_enabled"] = collisions_enabled
     data["collision_cooldown"] = collision_cooldown
     data["collision_time"] = collision_time
+    data["curve"] = curve
+    data["line_color"] = line_color
+    data["dodge_value"] = dodge_value
 
 func load_data(data):
     num_collisions = data["num_collisions"]
     collisions_enabled = data["collisions_enabled"]
     collision_cooldown = data["collision_cooldown"]
     collision_time = data["collision_time"]
+    curve = data.get("curve", 0.0)
+    line_color = data.get("line_color", Colors.line)
+    dodge_value = data.get("dodge_value", 1.0)
     if not collisions_enabled:
         animation_player.play("hide_instantly")

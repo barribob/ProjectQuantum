@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="DimensionDef" load_steps=2 format=3 uid="uid://c03axvlox6k1e"]
+
+[ext_resource type="Script" path="res://DimensionDef.gd" id="1_ugstx"]
+
+[resource]
+script = ExtResource("1_ugstx")
+id = "4"
+name = "4th Dimension"
+description = "Low energy particles, but some have higher energy"
+cost = 1000.0
