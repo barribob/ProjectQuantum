@@ -9,47 +9,17 @@ const PARTICLE_LINE = preload("res://particle_line.tscn")
 @onready var particle = $Particle
 @onready var world_no_bloom = %WorldNoBloom
 
-var collision_cooldown = 2.0
-var collision_time = collision_cooldown
-var num_collisions = 1
+var collision_time = Registries.DIMENSION_1.collision_cooldown
 var collisions_enabled = true
-var curve = 0.0
-var line_color = Color.WHITE
-var dodge_value = 1.0
+var current_dimension: DimensionDef
 
 func _ready():
     dimensions.switch_dimension.connect(switch_dimension)
     animation_player.play("undissolve")
 
 func switch_dimension():
-    var current_dimension = dimensions.get_current_dimension()
-
-    if current_dimension == Registries.DIMENSION_1:
-        collision_cooldown = 2.0
-        num_collisions = 1
-        curve = 0.0
-        line_color = Colors.line
-        dodge_value = 1.0
-    elif current_dimension == Registries.DIMENSION_2:
-        collision_cooldown = 0.5
-        num_collisions = 1
-        curve = 0.0
-        line_color = Colors.line
-        dodge_value = 1.0
-    elif current_dimension == Registries.DIMENSION_3:
-        collision_cooldown = 0.2
-        num_collisions = 1
-        curve = 0.0
-        line_color = Colors.line
-        dodge_value = 1.0
-    elif current_dimension == Registries.DIMENSION_4:
-        collision_cooldown = 0.2
-        num_collisions = 1
-        curve = 0.5
-        line_color = Colors.line_1
-        dodge_value = 2.0
-
-    collision_time = collision_cooldown
+    current_dimension = dimensions.get_current_dimension()
+    collision_time = current_dimension.collision_cooldown
 
 func _process(delta):
     if not collisions_enabled:
@@ -60,35 +30,35 @@ func _process(delta):
 
     collision_time -= delta
     if collision_time <= 0.0:
-        collision_time = collision_cooldown
-        for i in range(num_collisions):
-            if Utils.geq(energy.energy, 1):
-                energy.consume(1)
-                create_collision(true, curve)
+        collision_time = current_dimension.collision_cooldown
+        for i in range(current_dimension.num_collisions):
+            var line = current_dimension.lines.pick_random()
+            if Utils.geq(energy.energy, line.dodge_value):
+                energy.consume(line.dodge_value)
+                create_collision(true, line)
             else:
                 collisions_enabled = false
                 animation_player.play("dissolve")
-                create_collision(false, curve)
+                create_collision(false, line)
                 break
 
-func create_collision(is_successful: bool, curvature: float = 0.0):
+func create_collision(is_successful: bool, line_properties):
     var direction = Vector2(randf_range(-1.0, 1.0), randf_range(-1.0, 1.0)).normalized()
     var particle_line = PARTICLE_LINE.instantiate()
     var points = []
     var offset = particle.global_position
 
-    # Calculate points for the curved line
-    var num_points = 50 # Increase for smoother curves
+    var num_points = 50
     for i in range(num_points + 1):
         var t = float(i) / num_points
         var distance = lerp(-1500.0, 1500.0, t)
         var perpendicular = direction.rotated(PI/2)
-        var curve_offset = perpendicular * curvature * cos(PI * t) * distance
+        var curve_offset = perpendicular * line_properties.curve * cos(PI * t) * distance
         var point = direction * distance + curve_offset + offset
         points.append(point)
 
     particle_line.points = points
-    particle_line.default_color = line_color  # Set the line color
+    particle_line.default_color = line_properties.color
     add_child(particle_line)
 
     if is_successful:
@@ -96,24 +66,17 @@ func create_collision(is_successful: bool, curvature: float = 0.0):
         afterimage.position = particle.global_position
         world_no_bloom.add_child(afterimage)
         particle.position = Vector2.RIGHT.rotated(randf_range(0, TAU)) * randf_range(32, 100)
-        successful_dodge.emit(dodge_value)
+        successful_dodge.emit(line_properties.dodge_value)
 
 func save_data(data):
-    data["num_collisions"] = num_collisions
     data["collisions_enabled"] = collisions_enabled
-    data["collision_cooldown"] = collision_cooldown
     data["collision_time"] = collision_time
-    data["curve"] = curve
-    data["line_color"] = line_color
-    data["dodge_value"] = dodge_value
+    data["current_dimension"] = current_dimension.id
 
 func load_data(data):
-    num_collisions = data["num_collisions"]
     collisions_enabled = data["collisions_enabled"]
-    collision_cooldown = data["collision_cooldown"]
     collision_time = data["collision_time"]
-    curve = data.get("curve", 0.0)
-    line_color = data.get("line_color", Colors.line)
-    dodge_value = data.get("dodge_value", 1.0)
+    if data.has("current_dimension"):
+        current_dimension = Registries.ids_to_dimensions[data["current_dimension"]]
     if not collisions_enabled:
         animation_player.play("hide_instantly")

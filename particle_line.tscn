@@ -4,6 +4,6 @@
 
 [node name="Line2D" type="Line2D"]
 width = 8.0
-default_color = Color(0.205117, 0.205117, 0.205117, 1)
+default_color = Color(0.282155, 0.0887697, 0.0921079, 1)
 joint_mode = 2
 script = ExtResource("1_10wlu")

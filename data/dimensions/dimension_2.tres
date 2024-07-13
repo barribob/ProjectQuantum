@@ -1,5 +1,6 @@
-[gd_resource type="Resource" script_class="DimensionDef" load_steps=2 format=3 uid="uid://bcg4d4eagx2yp"]
+[gd_resource type="Resource" script_class="DimensionDef" load_steps=3 format=3 uid="uid://bcg4d4eagx2yp"]
 
+[ext_resource type="Resource" uid="uid://d1xw0j1w5qtug" path="res://line_0.tres" id="1_k6wkr"]
 [ext_resource type="Script" path="res://DimensionDef.gd" id="1_onnwu"]
 
 [resource]
@@ -8,3 +9,6 @@ id = "2"
 name = "2nd Dimension"
 description = "Low energy particles, a bit more of them though"
 cost = 20.0
+collision_cooldown = 0.5
+num_collisions = 1
+lines = Array[Resource("res://Line.gd")]([ExtResource("1_k6wkr")])
