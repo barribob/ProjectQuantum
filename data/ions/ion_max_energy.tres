@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="IonDef" load_steps=2 format=3 uid="uid://bkcqt68xtgmce"]
+
+[ext_resource type="Script" path="res://IonDef.gd" id="1_fqgxk"]
+
+[resource]
+script = ExtResource("1_fqgxk")
+id = "max_energy"
+name = "Max Energy"
+description = "Increases max energy by <value>"
+unlock_cost = 500
+value_per_level = 1.0

@@ -1,6 +1,6 @@
 class_name Ions extends PanelContainer
 
-signal ion_leveled(ion_ui)
+signal ions_updated
 
 @onready var buy_ion_button = %BuyIonButton
 @onready var buy_ion_cost = %BuyIonCost
@@ -25,7 +25,7 @@ func _ready():
         var ion_instance = ION.instantiate()
         ion_instance.def = ion
         ion_instance.ions = self
-        ion_instance.ion_leveled.connect(func(): ion_leveled.emit(ion_instance))
+        ion_instance.ions_updated.connect(func(): ions_updated.emit())
         ions_container.add_child(ion_instance)
         ion_uis.append(ion_instance)
         get_by_def[ion] = ion_instance

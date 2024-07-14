@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="DimensionDef" load_steps=3 format=3 uid="uid://dtbvn3h13vcwu"]
+
+[ext_resource type="Resource" uid="uid://ir26fi7x81al" path="res://line_1.tres" id="1_qvq1v"]
+[ext_resource type="Script" path="res://DimensionDef.gd" id="3_2aiq1"]
+
+[resource]
+script = ExtResource("3_2aiq1")
+id = "5"
+name = "5th Dimension"
+description = "All particles are no longer low energy"
+cost = 1500.0
+collision_cooldown = 0.05
+num_collisions = 1
+lines = Array[Resource("res://Line.gd")]([ExtResource("1_qvq1v")])

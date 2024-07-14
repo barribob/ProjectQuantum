@@ -1,6 +1,6 @@
 extends PanelContainer
 
-signal ion_leveled()
+signal ions_updated()
 
 var def: IonDef
 var ions: Ions
@@ -23,6 +23,7 @@ var level = 0
 func _ready():
     update_ui()
     CurrentRun.waveforms.waveforms_updated.connect(update_ui)
+    ions.ions_updated.connect(update_ui)
     unlock_button.pressed.connect(_on_unlock_button_pressed)
     assign_button.pressed.connect(_on_assign_button_pressed)
     unassign_button.pressed.connect(_on_unassign_button_pressed)
@@ -32,12 +33,12 @@ func _on_assign_button_pressed():
     var ion = ions.claim_ion()
     ion_visuals.append(ion)
     ions_assigned += 1
-    update_ui()
+    ions_updated.emit()
 
 func _on_unassign_button_pressed():
     ions.return_ion(ion_visuals.pop_back())
     ions_assigned -= 1
-    update_ui()
+    ions_updated.emit()
 
 func _on_unlock_button_pressed():
     CurrentRun.waveforms.consume(def.unlock_cost)
@@ -69,7 +70,6 @@ func _process(delta):
     progress_bar.value += delta * ions_assigned
     if progress_bar.value >= progress_bar.max_value:
         level += 1
-        ion_leveled.emit()
         progress_bar.value = 0
         description_label.text = get_description()
 
@@ -82,8 +82,10 @@ func get_boost_value():
 func save_data(data):
     data["unlocked"] = unlocked
     data["ions_assigned"] = ions_assigned
+    data["level"] = level
 
 func load_data(data):
     unlocked = data["unlocked"]
     ions_assigned = data["ions_assigned"]
+    level = data.get("level", 0)
     update_ui()

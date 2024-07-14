@@ -63,7 +63,7 @@ func load_data(data):
 func display():
     show()
     var tween = create_tween()
-    var time = 0.07
+    var time = 0.04
     for dimension in dimensions:
         dimension.modulate.a = 0.0
         tween.tween_property(dimension, "modulate:a", 1.0, time)

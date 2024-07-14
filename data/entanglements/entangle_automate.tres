@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="EntanglementDef" load_steps=2 format=3 uid="uid://cw35jwpvilu7n"]
+
+[ext_resource type="Script" path="res://EntanglementDef.gd" id="1_mod66"]
+
+[resource]
+script = ExtResource("1_mod66")
+id = "automate"
+name = "Automate"
+description = "Automates the energize button"
+cost = 800.0

@@ -7,7 +7,8 @@ signal successful_dodge(dodge_value: float)
 const AFTERIMAGE = preload("res://afterimage.tscn")
 const PARTICLE_LINE = preload("res://particle_line.tscn")
 @onready var particle = $Particle
-@onready var world_no_bloom = %WorldNoBloom
+@onready var lines = %Lines
+@onready var afterimages = %Afterimages
 
 var collision_time = Registries.DIMENSION_1.collision_cooldown
 var collisions_enabled = true
@@ -24,7 +25,7 @@ func switch_dimension():
 
 func _process(delta):
     if not collisions_enabled:
-        if energy.energy >= energy.max_energy:
+        if energy.energy >= energy.get_max_energy():
             collisions_enabled = true
             animation_player.play("undissolve")
         return
@@ -36,14 +37,14 @@ func _process(delta):
             var line = current_dimension.lines.pick_random()
             if Utils.geq(energy.energy, line.dodge_value):
                 energy.consume(line.dodge_value)
-                create_collision(true, line)
+                create_collision(true, line, i)
             else:
                 collisions_enabled = false
                 animation_player.play("dissolve")
-                create_collision(false, line)
+                create_collision(false, line, i)
                 break
 
-func create_collision(is_successful: bool, line_properties):
+func create_collision(is_successful: bool, line_properties, collision_number):
     var direction = Vector2(randf_range(-1.0, 1.0), randf_range(-1.0, 1.0)).normalized()
     var particle_line = PARTICLE_LINE.instantiate()
     var points = []
@@ -60,12 +61,13 @@ func create_collision(is_successful: bool, line_properties):
 
     particle_line.points = points
     particle_line.default_color = line_properties.color
-    add_child(particle_line)
+    lines.add_child(particle_line)
 
     if is_successful:
         var afterimage = AFTERIMAGE.instantiate()
         afterimage.position = particle.global_position
-        world_no_bloom.add_child(afterimage)
+        afterimage.modulate = lerp(Colors.afterimage, Colors.particle, float(collision_number) / 10.0)
+        afterimages.add_child(afterimage)
         particle.position = Vector2.RIGHT.rotated(randf_range(0, TAU)) * randf_range(32, 100)
         successful_dodge.emit(line_properties.dodge_value)
 

@@ -4,6 +4,6 @@
 [ext_resource type="Script" path="res://1/Afterimage.gd" id="2_vcm1p"]
 
 [node name="Afterimage" type="Sprite2D"]
-modulate = Color(1.5, 1.5, 1.5, 1)
+modulate = Color(0.11276, 0.0502783, 0.0278102, 1)
 texture = ExtResource("1_cwpn7")
 script = ExtResource("2_vcm1p")

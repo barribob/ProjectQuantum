@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="IonDef" load_steps=2 format=3 uid="uid://cn73toas7w744"]
+
+[ext_resource type="Script" path="res://IonDef.gd" id="1_y62nx"]
+
+[resource]
+script = ExtResource("1_y62nx")
+id = "energize"
+name = "Energize"
+description = "Increases energy gained from the energize button by <value>"
+unlock_cost = 1000
+value_per_level = 1.0
