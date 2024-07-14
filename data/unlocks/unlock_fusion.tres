@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="UnlockDef" load_steps=2 format=3 uid="uid://dch5rmuov1drp"]
+
+[ext_resource type="Script" path="res://UnlockDef.gd" id="1_yd7pc"]
+
+[resource]
+script = ExtResource("1_yd7pc")
+id = "fusion"
+name = "Unlock Fusion"
+description = "Unlocks fusion, which creates equippable particles for various buffs"
+cost = 2000.0

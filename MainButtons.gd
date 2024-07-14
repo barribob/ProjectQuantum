@@ -4,12 +4,14 @@ extends HBoxContainer
 @onready var unlocks_button = $UnlocksButton
 @onready var entanglements_button = $EntanglementsButton
 @onready var ions_button = $IonsButton
+@onready var fusion_button = $FusionButton
 
 @onready var dimensions = %Dimensions
 @onready var unlocks = %Unlocks
 @onready var entanglements = %Entanglements
 @onready var ions = %Ions
 @onready var energy = %Energy
+@onready var fusion = %Fusion
 
 var buttons_to_screens: Dictionary
 var ids_to_buttons: Dictionary
@@ -21,18 +23,21 @@ func _ready():
     unlocks_button.pressed.connect(func(): toggle_screen(unlocks_button))
     entanglements_button.pressed.connect(func(): toggle_screen(entanglements_button))
     ions_button.pressed.connect(func(): toggle_screen(ions_button))
+    fusion_button.pressed.connect(func(): toggle_screen(fusion_button))
 
     buttons_to_screens = {
         dimension_button: dimensions,
         unlocks_button: unlocks,
         entanglements_button: entanglements,
-        ions_button: ions
+        ions_button: ions,
+        fusion_button: fusion
     }
     ids_to_buttons = {
         "dimension_button": dimension_button,
         "unlocks_button": unlocks_button,
         "entanglements_button": entanglements_button,
-        "ions_button": ions_button
+        "ions_button": ions_button,
+        "fusion_button": fusion_button
     }
 
     for screen in buttons_to_screens.values():
@@ -57,6 +62,8 @@ func unlock_bought():
         entanglements_button.show()
     if unlocks.is_unlocked(Registries.UNLOCK_IONS):
         ions_button.show()
+    if unlocks.is_unlocked(Registries.UNLOCK_FUSION):
+        fusion_button.show()
 
 func toggle_screen(button):
     if current_button == button:

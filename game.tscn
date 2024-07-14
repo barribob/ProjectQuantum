@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://cv71vrnggoxyu"]
+[gd_scene load_steps=32 format=3 uid="uid://cv71vrnggoxyu"]
 
 [ext_resource type="Shader" path="res://bloom.gdshader" id="1_5asy8"]
 [ext_resource type="Script" path="res://Game.gd" id="1_mn4wp"]
@@ -20,6 +20,7 @@
 [ext_resource type="StyleBox" uid="uid://k8o11cfuveoi" path="res://header.tres" id="16_o22y3"]
 [ext_resource type="Texture2D" uid="uid://c2gt1m4giqwfd" path="res://art/Skill Tree.png" id="17_eun44"]
 [ext_resource type="Script" path="res://Ions.gd" id="20_avwqp"]
+[ext_resource type="Script" path="res://Fusion.gd" id="21_t80jb"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_yhtry"]
 shader = ExtResource("4_km36t")
@@ -322,6 +323,12 @@ layout_mode = 2
 icon = ExtResource("10_fy23g")
 icon_alignment = 1
 
+[node name="FusionButton" type="Button" parent="UI/Control/MainButtons"]
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+icon = ExtResource("10_fy23g")
+icon_alignment = 1
+
 [node name="Unlocks" type="PanelContainer" parent="UI/Control"]
 unique_name_in_owner = true
 visible = false
@@ -415,6 +422,7 @@ text = "Current"
 
 [node name="Entanglements" type="PanelContainer" parent="UI/Control"]
 unique_name_in_owner = true
+visible = false
 custom_minimum_size = Vector2(1000, 900)
 layout_mode = 1
 anchors_preset = 14
@@ -602,3 +610,128 @@ stretch_mode = 3
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
+
+[node name="Fusion" type="PanelContainer" parent="UI/Control"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(1000, 800)
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -472.0
+offset_bottom = 418.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = ExtResource("13_ml6hv")
+script = ExtResource("21_t80jb")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/Control/Fusion"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="UI/Control/Fusion/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = ExtResource("16_o22y3")
+text = "Fusion"
+horizontal_alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="UI/Control/Fusion/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 100
+theme_override_constants/margin_right = 100
+theme_override_constants/margin_bottom = 32
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UI/Control/Fusion/VBoxContainer/MarginContainer"]
+layout_mode = 2
+alignment = 2
+
+[node name="VBoxContainer4" type="VBoxContainer" parent="UI/Control/Fusion/VBoxContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="UI/Control/Fusion/VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer4"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="UI/Control/Fusion/VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer4"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="UI/Control/Fusion/VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer4/PanelContainer"]
+layout_mode = 2
+
+[node name="ProgressBar" type="ProgressBar" parent="UI/Control/Fusion/VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer4/PanelContainer/MarginContainer"]
+custom_minimum_size = Vector2(10, 0)
+layout_mode = 2
+size_flags_vertical = 3
+fill_mode = 3
+show_percentage = false
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="UI/Control/Fusion/VBoxContainer/MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="UI/Control/Fusion/VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer3"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = ExtResource("16_o22y3")
+text = "Nuclei"
+
+[node name="GridContainer" type="GridContainer" parent="UI/Control/Fusion/VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer3"]
+layout_mode = 2
+columns = 4
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="UI/Control/Fusion/VBoxContainer/MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="UI/Control/Fusion/VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = ExtResource("16_o22y3")
+text = "Placeholder Title"
+
+[node name="DescriptionLabel" type="RichTextLabel" parent="UI/Control/Fusion/VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "placeholder description"
+
+[node name="Button" type="Button" parent="UI/Control/Fusion/VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+text = "Equip"
+
+[node name="Button2" type="Button" parent="UI/Control/Fusion/VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+text = "Upgrade"
+
+[node name="Button3" type="Button" parent="UI/Control/Fusion/VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+text = "Recycle"
+
+[node name="MarginContainer" type="MarginContainer" parent="UI/Control/Fusion/VBoxContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/Control/Fusion/VBoxContainer/MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="UI/Control/Fusion/VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = ExtResource("16_o22y3")
+text = "Equiped Nuclei"
+
+[node name="Button" type="Button" parent="UI/Control/Fusion/VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Equip Slot"
+
+[node name="Button2" type="Button" parent="UI/Control/Fusion/VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Equip Slot"
+
+[node name="Button3" type="Button" parent="UI/Control/Fusion/VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Equip Slot"

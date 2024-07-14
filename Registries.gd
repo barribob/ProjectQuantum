@@ -3,11 +3,13 @@ extends Node
 const UNLOCK_DIMENSIONS = preload("res://data/unlocks/unlock_dimensions.tres")
 const UNLOCK_ENTANGLEMENTS = preload("res://data/unlocks/unlock_entanglements.tres")
 const UNLOCK_IONS = preload("res://data/unlocks/unlock_ions.tres")
+const UNLOCK_FUSION = preload("res://data/unlocks/unlock_fusion.tres")
 
 const unlocks = [
     UNLOCK_DIMENSIONS,
     UNLOCK_ENTANGLEMENTS,
-    UNLOCK_IONS
+    UNLOCK_IONS,
+    UNLOCK_FUSION
 ]
 
 const DIMENSION_1 = preload("res://data/dimensions/dimension_1.tres")
