@@ -36,7 +36,7 @@ func _on_buy_ion_button_pressed():
     update_ui()
 
 func get_buy_ion_cost():
-    return pow(5, get_ions_everywhere()) * 100
+    return pow(5, get_ions_everywhere()) * 50
 
 func get_ions_everywhere():
     return ions + ion_uis.reduce(func(a, v): return a + v.ions_assigned, 0.0)

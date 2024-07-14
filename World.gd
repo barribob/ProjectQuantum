@@ -15,6 +15,7 @@ var current_dimension: DimensionDef
 
 func _ready():
     dimensions.switch_dimension.connect(switch_dimension)
+    current_dimension = Registries.DIMENSION_1
     animation_player.play("undissolve")
 
 func switch_dimension():

@@ -25,11 +25,13 @@ const dimensions = [
 const ENTANGLE_MAX_ENERGY_1 = preload("res://data/entanglements/entangle_max_energy_1.tres")
 const ENTANGLE_ENERGY_CHARGE_1 = preload("res://data/entanglements/entangle_energy_charge_1.tres")
 const ENTANGLE_ENERGIZE_AMOUNT_1 = preload("res://data/entanglements/entangle_energize_amount_1.tres")
+const ENTANGLE_ENERGY_CHARGE_2 = preload("res://data/entanglements/entangle_energy_charge_2.tres")
 
 const entanglements = [
     ENTANGLE_MAX_ENERGY_1,
     ENTANGLE_ENERGY_CHARGE_1,
-    ENTANGLE_ENERGIZE_AMOUNT_1
+    ENTANGLE_ENERGIZE_AMOUNT_1,
+    ENTANGLE_ENERGY_CHARGE_2
 ]
 
 const ION_CHARGE = preload("res://data/ions/ion_charge.tres")

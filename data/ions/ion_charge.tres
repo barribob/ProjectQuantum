@@ -7,5 +7,5 @@ script = ExtResource("1_04tff")
 id = "charge"
 name = "Charge"
 description = "Increases passive energy charge by <value>"
-unlock_cost = 200
+unlock_cost = 50
 value_per_level = 1.0

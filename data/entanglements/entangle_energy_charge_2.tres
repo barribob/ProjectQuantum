@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="EntanglementDef" load_steps=2 format=3 uid="uid://cj7bbdqvyo0ku"]
+
+[ext_resource type="Script" path="res://EntanglementDef.gd" id="1_ee5ej"]
+
+[resource]
+script = ExtResource("1_ee5ej")
+id = "energy_charge_2"
+name = "Charge"
+description = "Increases energy charge by $a
+{\"value\":\"increase\", \"replace\":\"$a\"}"
+cost = 200.0
+metadata/increase = 2.0
