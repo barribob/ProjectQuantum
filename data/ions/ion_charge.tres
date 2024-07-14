@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="IonDef" load_steps=2 format=3 uid="uid://b5wpsudfx2wjm"]
+
+[ext_resource type="Script" path="res://IonDef.gd" id="1_04tff"]
+
+[resource]
+script = ExtResource("1_04tff")
+id = "charge"
+name = "Charge"
+description = "Increases passive energy charge by <value>"
+unlock_cost = 200
+value_per_level = 1.0

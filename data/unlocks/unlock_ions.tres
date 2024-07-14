@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="UnlockDef" load_steps=2 format=3 uid="uid://jp8k8mysh73i"]
+
+[ext_resource type="Script" path="res://UnlockDef.gd" id="1_fob87"]
+
+[resource]
+script = ExtResource("1_fob87")
+id = "unlock_ions"
+name = "Unlock Ions"
+description = "Unlocks ions, where you can assign ions to power up certain properties"
+cost = 900.0

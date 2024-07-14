@@ -2,10 +2,12 @@ extends Node
 
 const UNLOCK_DIMENSIONS = preload("res://data/unlocks/unlock_dimensions.tres")
 const UNLOCK_ENTANGLEMENTS = preload("res://data/unlocks/unlock_entanglements.tres")
+const UNLOCK_IONS = preload("res://data/unlocks/unlock_ions.tres")
 
 const unlocks = [
     UNLOCK_DIMENSIONS,
-    UNLOCK_ENTANGLEMENTS
+    UNLOCK_ENTANGLEMENTS,
+    UNLOCK_IONS
 ]
 
 const DIMENSION_1 = preload("res://data/dimensions/dimension_1.tres")
@@ -30,9 +32,16 @@ const entanglements = [
     ENTANGLE_ENERGIZE_AMOUNT_1
 ]
 
+const ION_CHARGE = preload("res://data/ions/ion_charge.tres")
+
+const ions = [
+    ION_CHARGE
+]
+
 var ids_to_unlocks: Dictionary
 var ids_to_dimensions: Dictionary
 var ids_to_entanglements: Dictionary
+var ids_to_ions: Dictionary
 
 func _ready():
     for unlock in unlocks:
@@ -43,3 +52,6 @@ func _ready():
 
     for entangle in entanglements:
         ids_to_entanglements[entangle.id] = entangle
+
+    for ion in ions:
+        ids_to_ions[ion.id] = ion

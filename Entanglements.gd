@@ -42,6 +42,9 @@ func clear_description():
     entanglement_name.text = ""
     entanglement_cost.visible = false
 
+func is_bought(entanglement):
+    return get_by_def[entanglement].bought
+
 func save_data(data):
     data["entanglements"] = {}
     for entanglement in entanglements:

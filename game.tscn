@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://cv71vrnggoxyu"]
+[gd_scene load_steps=31 format=3 uid="uid://cv71vrnggoxyu"]
 
 [ext_resource type="Shader" path="res://bloom.gdshader" id="1_5asy8"]
 [ext_resource type="Script" path="res://Game.gd" id="1_mn4wp"]
@@ -19,6 +19,7 @@
 [ext_resource type="Script" path="res://Entanglements.gd" id="16_3qqc1"]
 [ext_resource type="StyleBox" uid="uid://k8o11cfuveoi" path="res://header.tres" id="16_o22y3"]
 [ext_resource type="Texture2D" uid="uid://c2gt1m4giqwfd" path="res://art/Skill Tree.png" id="17_eun44"]
+[ext_resource type="Script" path="res://Ions.gd" id="20_avwqp"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_yhtry"]
 shader = ExtResource("4_km36t")
@@ -316,6 +317,12 @@ layout_mode = 2
 icon = ExtResource("10_fy23g")
 icon_alignment = 1
 
+[node name="IonsButton" type="Button" parent="UI/Control/MainButtons"]
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+icon = ExtResource("10_fy23g")
+icon_alignment = 1
+
 [node name="Unlocks" type="PanelContainer" parent="UI/Control"]
 unique_name_in_owner = true
 visible = false
@@ -409,6 +416,7 @@ text = "Current"
 
 [node name="Entanglements" type="PanelContainer" parent="UI/Control"]
 unique_name_in_owner = true
+visible = false
 custom_minimum_size = Vector2(1000, 900)
 layout_mode = 1
 anchors_preset = 14
@@ -517,3 +525,75 @@ position = Vector2(195, 541)
 [node name="Origin" type="Marker2D" parent="UI/Control/Entanglements/MarginContainer/VBoxContainer/HBoxContainer/ButtonsArea/ButtonsArea"]
 unique_name_in_owner = true
 position = Vector2(-51, 407)
+
+[node name="Ions" type="PanelContainer" parent="UI/Control"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(1000, 800)
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -400.0
+offset_bottom = 400.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = ExtResource("13_ml6hv")
+script = ExtResource("20_avwqp")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/Control/Ions"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="UI/Control/Ions/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = ExtResource("16_o22y3")
+text = "Ions"
+horizontal_alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="UI/Control/Ions/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 100
+theme_override_constants/margin_right = 100
+theme_override_constants/margin_bottom = 32
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UI/Control/Ions/VBoxContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="Spacing" type="MarginContainer" parent="UI/Control/Ions/VBoxContainer/MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 2
+
+[node name="IonsPosition" type="Marker2D" parent="UI/Control/Ions/VBoxContainer/MarginContainer/HBoxContainer/Spacing"]
+unique_name_in_owner = true
+position = Vector2(91, 334)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/Control/Ions/VBoxContainer/MarginContainer/HBoxContainer/Spacing"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UI/Control/Ions/VBoxContainer/MarginContainer/HBoxContainer/Spacing/VBoxContainer"]
+layout_mode = 2
+
+[node name="BuyIonButton" type="Button" parent="UI/Control/Ions/VBoxContainer/MarginContainer/HBoxContainer/Spacing/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+focus_mode = 0
+text = "Buy Ion"
+
+[node name="BuyIonCost" type="Label" parent="UI/Control/Ions/VBoxContainer/MarginContainer/HBoxContainer/Spacing/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "24.5K"
+
+[node name="TextureRect" type="TextureRect" parent="UI/Control/Ions/VBoxContainer/MarginContainer/HBoxContainer/Spacing/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("7_wiv8f")
+stretch_mode = 3
+
+[node name="IonsContainer" type="VBoxContainer" parent="UI/Control/Ions/VBoxContainer/MarginContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3

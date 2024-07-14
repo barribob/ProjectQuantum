@@ -1,0 +1,83 @@
+[gd_scene load_steps=4 format=3 uid="uid://582w7dmm7a5b"]
+
+[ext_resource type="Script" path="res://Ion.gd" id="1_8twnm"]
+[ext_resource type="StyleBox" uid="uid://k8o11cfuveoi" path="res://header.tres" id="2_1eiwi"]
+[ext_resource type="Texture2D" uid="uid://d0hi7hpolh4qv" path="res://art/waveform.png" id="2_10g3i"]
+
+[node name="Ion" type="PanelContainer"]
+script = ExtResource("1_8twnm")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+
+[node name="AssignButton" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+focus_mode = 0
+text = "Assign"
+
+[node name="UnassignButton" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+focus_mode = 0
+text = "Unassign"
+
+[node name="UnlockUI" type="VBoxContainer" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/HBoxContainer/VBoxContainer/UnlockUI"]
+layout_mode = 2
+alignment = 1
+
+[node name="CostLabel" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer/UnlockUI/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "14.5K"
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer/VBoxContainer/UnlockUI/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("2_10g3i")
+stretch_mode = 3
+
+[node name="UnlockButton" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer/UnlockUI"]
+unique_name_in_owner = true
+layout_mode = 2
+focus_mode = 0
+text = "Unlock"
+
+[node name="Spacing" type="MarginContainer" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="TitleLabel" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = ExtResource("2_1eiwi")
+text = "Energize"
+
+[node name="DescriptionLabel" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+text = "Increases energize energy recovery by 142%"
+
+[node name="ProgressBar" type="ProgressBar" parent="MarginContainer/HBoxContainer/VBoxContainer2"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+show_percentage = false
+
+[node name="IonOrigin" type="Marker2D" parent="."]
+position = Vector2(-67, 53)

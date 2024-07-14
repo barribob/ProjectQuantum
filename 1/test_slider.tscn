@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://ceclej45r7kfa"]
+
+[node name="HSlider" type="VSlider"]
+offset_right = 16.0
+offset_bottom = 169.0
+max_value = 5.0
+tick_count = 6
+ticks_on_borders = true
