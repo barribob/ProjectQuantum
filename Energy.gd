@@ -32,6 +32,8 @@ func get_energy_gain():
         energy_gain += Registries.ENTANGLE_ENERGY_CHARGE_1.get_meta("increase")
     if entanglements.is_bought(Registries.ENTANGLE_ENERGY_CHARGE_2):
         energy_gain += Registries.ENTANGLE_ENERGY_CHARGE_2.get_meta("increase")
+    if entanglements.is_bought(Registries.ENTANGLE_MAX_ENERGY_BONUS):
+        energy_gain += Registries.ENTANGLE_MAX_ENERGY_BONUS.get_meta("increase") * get_max_energy()
     energy_gain *= 1 + (ions.get_ion_boost(Registries.ION_CHARGE) / 100.0)
     return energy_gain
 

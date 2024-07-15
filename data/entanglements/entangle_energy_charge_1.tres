@@ -6,7 +6,7 @@
 script = ExtResource("1_cly8s")
 id = "energy_charge_1"
 name = "Charge"
-description = "Increases energy charge by $a
+description = "Energy will passively charge every second by $a
 {\"value\":\"increase\", \"replace\":\"$a\"}"
 cost = 10.0
 metadata/increase = 1.0

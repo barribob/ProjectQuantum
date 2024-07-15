@@ -457,7 +457,6 @@ text = "Current"
 
 [node name="Entanglements" type="PanelContainer" parent="UI/Control"]
 unique_name_in_owner = true
-visible = false
 custom_minimum_size = Vector2(1000, 900)
 layout_mode = 1
 anchors_preset = 14
@@ -558,16 +557,25 @@ grow_vertical = 2
 position = Vector2(228, 406)
 
 [node name="Marker2D2" type="Marker2D" parent="UI/Control/Entanglements/MarginContainer/VBoxContainer/HBoxContainer/ButtonsArea/ButtonsArea/ButtonsContainer"]
-position = Vector2(195, 270)
+position = Vector2(195, 261)
 
 [node name="Marker2D3" type="Marker2D" parent="UI/Control/Entanglements/MarginContainer/VBoxContainer/HBoxContainer/ButtonsArea/ButtonsArea/ButtonsContainer"]
-position = Vector2(195, 541)
+position = Vector2(195, 549)
 
 [node name="Marker2D4" type="Marker2D" parent="UI/Control/Entanglements/MarginContainer/VBoxContainer/HBoxContainer/ButtonsArea/ButtonsArea/ButtonsContainer"]
-position = Vector2(482, 404)
+position = Vector2(482, 406)
 
 [node name="Marker2D5" type="Marker2D" parent="UI/Control/Entanglements/MarginContainer/VBoxContainer/HBoxContainer/ButtonsArea/ButtonsArea/ButtonsContainer"]
-position = Vector2(461, 266)
+position = Vector2(460, 260)
+
+[node name="Marker2D6" type="Marker2D" parent="UI/Control/Entanglements/MarginContainer/VBoxContainer/HBoxContainer/ButtonsArea/ButtonsArea/ButtonsContainer"]
+position = Vector2(466, 549)
+
+[node name="Marker2D7" type="Marker2D" parent="UI/Control/Entanglements/MarginContainer/VBoxContainer/HBoxContainer/ButtonsArea/ButtonsArea/ButtonsContainer"]
+position = Vector2(401, 130)
+
+[node name="Marker2D8" type="Marker2D" parent="UI/Control/Entanglements/MarginContainer/VBoxContainer/HBoxContainer/ButtonsArea/ButtonsArea/ButtonsContainer"]
+position = Vector2(401, 703)
 
 [node name="Origin" type="Marker2D" parent="UI/Control/Entanglements/MarginContainer/VBoxContainer/HBoxContainer/ButtonsArea/ButtonsArea"]
 unique_name_in_owner = true
@@ -648,6 +656,7 @@ size_flags_horizontal = 3
 
 [node name="Fusion" type="PanelContainer" parent="UI/Control"]
 unique_name_in_owner = true
+visible = false
 custom_minimum_size = Vector2(1000, 800)
 layout_mode = 1
 anchors_preset = 14
