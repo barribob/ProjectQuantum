@@ -32,6 +32,7 @@ func _ready():
     unequip_button.pressed.connect(unequip_nucleus)
     split_button.pressed.connect(split_popup.display)
     upgrade_button.pressed.connect(upgrade_nucleus)
+    upgrade_popup.closed.connect(func(): update_description(current_selected_nucleus))
     update_equip_ui()
     clear_description()
 

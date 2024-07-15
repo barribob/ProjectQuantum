@@ -1,5 +1,7 @@
 extends Control
 
+signal closed
+
 @onready var upgrade_nucleus_title = %UpgradeNucleusTitle
 @onready var upgrade_nucleus_description = %UpgradeNucleusDescription
 @onready var upgrade_slider_description = %UpgradeSliderDescription
@@ -36,6 +38,7 @@ func upgrade_nucleus():
 func close():
     for child in upgrade_nucleus_visual_position.get_children():
         child.queue_free()
+    closed.emit()
     hide()
 
 func display(selected_nucleus):

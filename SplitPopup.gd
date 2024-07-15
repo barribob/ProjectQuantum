@@ -8,6 +8,7 @@ extends Control
 @onready var exit_split_button = %ExitSplitButton
 @onready var split_nuclei_container = %SplitNucleiContainer
 @onready var neutrons = %Neutrons
+@onready var split_all_button = %SplitAllButton
 
 const NUCLEUS = preload("res://nucleus.tscn")
 
@@ -22,17 +23,39 @@ func _ready():
     cancel_split_button.pressed.connect(close)
     confirm_split_button.disabled = true
     confirm_split_button.pressed.connect(split_nuclei)
+    split_all_button.pressed.connect(split_all_lvl1_nuclei)
+
+func split_all_lvl1_nuclei():
+    var to_split = []
+    for nucleus in nuclei:
+        if nucleus.get_level() == 1:
+            to_split.append(nucleus)
+    var value = to_split.reduce(func(x, y): return x + y.get_level(), 0.0)
+    neutrons.add_neutrons(value)
+    for nucleus in to_split:
+        split_nucleus(nucleus)
+    selected_nuclei.clear()
+    confirm_split_button.disabled = true
+    split_all_button.disabled = true
+    clear_description()
 
 func split_nuclei():
     neutrons.add_neutrons(get_value())
     for nucleus in selected_nuclei:
-        var fusion_nucleus = fusion_nuclei_to_split_nuclei[nucleus]
-        fusion.remove_nucleus(fusion_nucleus)
-        nuclei.erase(nucleus)
-        nucleus.queue_free()
+        split_nucleus(nucleus)
     selected_nuclei.clear()
     confirm_split_button.disabled = true
+    update_split_all_button()
     clear_description()
+
+func split_nucleus(nucleus):
+    var fusion_nucleus = fusion_nuclei_to_split_nuclei[nucleus]
+    fusion.remove_nucleus(fusion_nucleus)
+    nuclei.erase(nucleus)
+    nucleus.queue_free()
+
+func update_split_all_button():
+    split_all_button.disabled = nuclei.filter(func(x): return x.get_level() == 1).size() == 0
 
 func close():
     selected_nuclei.clear()
@@ -53,6 +76,7 @@ func display():
     show()
     split_label.text = "Split nuclei for"
     clear_description()
+    update_split_all_button()
 
 func generate_nucleus(def, i):
     var nucleus = NUCLEUS.instantiate()
