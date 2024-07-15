@@ -68,24 +68,10 @@ func _process(delta):
         ions_position.add_child(visual)
         ion_visuals.append(visual)
 
-    var circle_positions = generate_circle_positions(ions, 50)
+    var circle_positions = Utils.generate_circle_positions(ions, 50)
 
     for i in range(ions):
         ion_visuals[i].position = lerp(ion_visuals[i].position, circle_positions[i], delta)
-
-func generate_circle_positions(count: int, radius: float = 100.0, center: Vector2 = Vector2.ZERO) -> Array[Vector2]:
-    var positions: Array[Vector2] = []
-
-    if count <= 0:
-        return positions
-
-    for i in range(count):
-        var angle = (2 * PI / count) * i
-        var x = center.x + radius * cos(angle)
-        var y = center.y + radius * sin(angle)
-        positions.append(Vector2(x, y))
-
-    return positions
 
 func get_ion_boost(ion):
     return get_by_def[ion].get_boost_value()
@@ -93,10 +79,10 @@ func get_ion_boost(ion):
 func save_data(data):
     data["ions"] = ions
     data["ion_uis"] = {}
-    for entanglement in ion_uis:
-        var entanglement_data = {}
-        entanglement.save_data(entanglement_data)
-        data["ion_uis"][entanglement.def.id] = entanglement_data
+    for ion in ion_uis:
+        var ion_data = {}
+        ion.save_data(ion_data)
+        data["ion_uis"][ion.def.id] = ion_data
 
 func load_data(data):
     ions = data["ions"]

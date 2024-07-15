@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://ckf7u5jlmbq5u"]
+
+[ext_resource type="Texture2D" uid="uid://ulpfosfxbo7a" path="res://art/hollow_circle.png" id="1_pgrmi"]
+[ext_resource type="Script" path="res://Particle.gd" id="2_tsf6y"]
+
+[node name="HollowCircle" type="Sprite2D"]
+texture = ExtResource("1_pgrmi")
+script = ExtResource("2_tsf6y")

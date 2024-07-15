@@ -651,7 +651,7 @@ alignment = 2
 [node name="VBoxContainer4" type="VBoxContainer" parent="UI/Control/Fusion/VBoxContainer/MarginContainer/HBoxContainer"]
 layout_mode = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="UI/Control/Fusion/VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer4"]
+[node name="Spacing" type="MarginContainer" parent="UI/Control/Fusion/VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer4"]
 custom_minimum_size = Vector2(0, 30)
 layout_mode = 2
 
@@ -662,7 +662,8 @@ size_flags_vertical = 3
 [node name="MarginContainer" type="MarginContainer" parent="UI/Control/Fusion/VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer4/PanelContainer"]
 layout_mode = 2
 
-[node name="ProgressBar" type="ProgressBar" parent="UI/Control/Fusion/VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer4/PanelContainer/MarginContainer"]
+[node name="FusionProgressBar" type="ProgressBar" parent="UI/Control/Fusion/VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer4/PanelContainer/MarginContainer"]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(10, 0)
 layout_mode = 2
 size_flags_vertical = 3
@@ -679,34 +680,50 @@ theme_override_font_sizes/font_size = 24
 theme_override_styles/normal = ExtResource("16_o22y3")
 text = "Nuclei"
 
-[node name="GridContainer" type="GridContainer" parent="UI/Control/Fusion/VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer3"]
+[node name="MarginContainer" type="MarginContainer" parent="UI/Control/Fusion/VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer3"]
 layout_mode = 2
+size_flags_vertical = 3
+
+[node name="ScrollContainer" type="ScrollContainer" parent="UI/Control/Fusion/VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer3/MarginContainer"]
+layout_mode = 2
+horizontal_scroll_mode = 0
+
+[node name="NucleiContainer" type="GridContainer" parent="UI/Control/Fusion/VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer3/MarginContainer/ScrollContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 columns = 4
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="UI/Control/Fusion/VBoxContainer/MarginContainer/HBoxContainer"]
 custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
 
-[node name="Label" type="Label" parent="UI/Control/Fusion/VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer2"]
+[node name="NucleusTitle" type="Label" parent="UI/Control/Fusion/VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer2"]
+unique_name_in_owner = true
 layout_mode = 2
 theme_override_font_sizes/font_size = 24
 theme_override_styles/normal = ExtResource("16_o22y3")
 text = "Placeholder Title"
 
-[node name="DescriptionLabel" type="RichTextLabel" parent="UI/Control/Fusion/VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer2"]
+[node name="NucleusDescription" type="RichTextLabel" parent="UI/Control/Fusion/VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer2"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
 text = "placeholder description"
 
-[node name="Button" type="Button" parent="UI/Control/Fusion/VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer2"]
+[node name="EquipButton" type="Button" parent="UI/Control/Fusion/VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer2"]
+unique_name_in_owner = true
 layout_mode = 2
 text = "Equip"
 
-[node name="Button2" type="Button" parent="UI/Control/Fusion/VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer2"]
+[node name="UpgradeButton" type="Button" parent="UI/Control/Fusion/VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer2"]
+unique_name_in_owner = true
 layout_mode = 2
 text = "Upgrade"
 
-[node name="Button3" type="Button" parent="UI/Control/Fusion/VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer2"]
+[node name="RecycleButton" type="Button" parent="UI/Control/Fusion/VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer2"]
+unique_name_in_owner = true
 layout_mode = 2
 text = "Recycle"
 

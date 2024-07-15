@@ -52,10 +52,17 @@ const ions = [
     ION_ENERGIZE
 ]
 
+const NUCLEUS_H = preload("res://data/nuclei/nucleus_h.tres")
+
+const nuclei = [
+    NUCLEUS_H
+]
+
 var ids_to_unlocks: Dictionary
 var ids_to_dimensions: Dictionary
 var ids_to_entanglements: Dictionary
 var ids_to_ions: Dictionary
+var ids_to_nuclei: Dictionary
 
 func _ready():
     for unlock in unlocks:
@@ -69,3 +76,6 @@ func _ready():
 
     for ion in ions:
         ids_to_ions[ion.id] = ion
+
+    for nucleus in nuclei:
+        ids_to_nuclei[nucleus.id] = nucleus

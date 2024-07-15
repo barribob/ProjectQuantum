@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="NucleusDef" load_steps=2 format=3 uid="uid://3m47n8yqvjrj"]
+
+[ext_resource type="Script" path="res://NucleusDef.gd" id="1_oaw6s"]
+
+[resource]
+script = ExtResource("1_oaw6s")
+id = "nucleus"
+name = "Nucleus H"
+description = "Increase ion leveling speed by $a
+{\"value\":\"increase\", \"replace\":\"$a\", \"scale_with_level\": true}"
+visual_color = Color(0.75, 0.248125, 0.2025, 1)
+visual_circles = 2
+metadata/increase = 10.0

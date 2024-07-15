@@ -8,6 +8,7 @@ extends Node
 @onready var entanglements = %Entanglements
 @onready var world = %World
 @onready var ions = %Ions
+@onready var fusion = %Fusion
 
 func start_run():
     pass
@@ -25,6 +26,7 @@ func save_data(data):
     sd.call("entanglements", entanglements)
     sd.call("world", world)
     sd.call("ions", ions)
+    sd.call("fusion", fusion)
 
 func load_game(data):
     var ld = func(key, obj):
@@ -39,3 +41,4 @@ func load_game(data):
     ld.call("entanglements", entanglements)
     ld.call("world", world)
     ld.call("ions", ions)
+    ld.call("fusion", fusion)

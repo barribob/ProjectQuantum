@@ -62,7 +62,7 @@ func _process(delta):
         ions.ions_position.add_child(visual)
         ion_visuals.append(visual)
 
-    var circle_positions = ions.generate_circle_positions(ions_assigned, 35)
+    var circle_positions = Utils.generate_circle_positions(ions_assigned, 35)
 
     for i in range(ions_assigned):
         ion_visuals[i].global_position = lerp(ion_visuals[i].global_position, circle_positions[i] + ion_origin.global_position, delta)
