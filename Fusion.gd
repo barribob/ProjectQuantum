@@ -6,10 +6,11 @@ extends PanelContainer
 @onready var nucleus_description = %NucleusDescription
 @onready var equip_button = %EquipButton
 @onready var upgrade_button = %UpgradeButton
-@onready var recycle_button = %RecycleButton
 @onready var nuclei_equip = %NucleiEquip
 @onready var unequip_button = %UnequipButton
 @onready var nuclei_equip_label = %NucleiEquipLabel
+@onready var split_button = %SplitButton
+@onready var split_popup = $SplitPopup
 
 const NUCLEUS = preload("res://nucleus.tscn")
 
@@ -22,17 +23,14 @@ var nuclei = []
 var equipped_nuclei = []
 
 func _ready():
+    split_popup.fusion = self
     fusion_progress_bar.max_value = max_fusion_progress
     fusion_progress_bar.step = 0.001
-    nucleus_title.text = ""
-    nucleus_description.text = ""
-    equip_button.visible = false
-    upgrade_button.visible = false
-    recycle_button.visible = false
-    unequip_button.visible = false
     equip_button.pressed.connect(equip_nucleus)
     unequip_button.pressed.connect(unequip_nucleus)
+    split_button.pressed.connect(split_popup.display)
     update_equip_ui()
+    clear_description()
 
 func unequip_nucleus():
     if current_selected_nucleus:
@@ -52,11 +50,19 @@ func equip_nucleus():
         update_description(current_selected_nucleus)
         update_equip_ui()
 
+func remove_nucleus(nucleus):
+    if nucleus == current_selected_nucleus:
+        current_selected_nucleus = null
+        nucleus.set_deselected()
+        clear_description()
+    nuclei.erase(nucleus)
+    nucleus.queue_free()
+
 func _physics_process(delta):
     fusion_progress += delta * 0.05
     if fusion_progress >= max_fusion_progress:
         fusion_progress = 0
-        var nucleus = generate_nucleus(pick_random_nucleus())
+        generate_nucleus(pick_random_nucleus())
     fusion_progress_bar.value = fusion_progress
 
 func generate_nucleus(def):
@@ -76,6 +82,14 @@ func nucleus_selected(nucleus):
 func update_equip_ui():
     nuclei_equip_label.text = "Equip Nuclei %s/%s" % [equipped_nuclei.size(), max_equipped_nuclei]
 
+func clear_description():
+    nucleus_title.text = ""
+    nucleus_description.text = ""
+    equip_button.visible = false
+    upgrade_button.visible = false
+    unequip_button.visible = false
+    split_button.visible = false
+
 func update_description(nucleus):
     nucleus_title.text = nucleus.def.name
     nucleus_description.text = Utils.apply_tags_instance(nucleus.def.description, nucleus.def, nucleus)
@@ -83,8 +97,8 @@ func update_description(nucleus):
     equip_button.disabled = max_equipped_nuclei <= equipped_nuclei.size()
     unequip_button.visible = equipped_nuclei.has(nucleus)
     upgrade_button.visible = true
-    recycle_button.visible = true
     current_selected_nucleus.set_selected()
+    split_button.visible = equip_button.visible
 
 func pick_random_nucleus():
     return Registries.nuclei[randi() % Registries.nuclei.size()]
@@ -114,6 +128,6 @@ func load_data(data):
     for nucleus_data in data.get("equipped_nuclei", []):
         var def = Registries.ids_to_nuclei[nucleus_data["id"]]
         var nucleus = generate_nucleus(def)
-        current_selected_nucleus = nucleus
+        nucleus_selected(nucleus)
         equip_nucleus()
         nucleus.load_data(nucleus_data)

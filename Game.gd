@@ -9,6 +9,7 @@ extends Node
 @onready var world = %World
 @onready var ions = %Ions
 @onready var fusion = %Fusion
+@onready var neutrons = %Neutrons
 
 func start_run():
     pass
@@ -27,6 +28,7 @@ func save_data(data):
     sd.call("world", world)
     sd.call("ions", ions)
     sd.call("fusion", fusion)
+    sd.call("neutrons", neutrons)
 
 func load_game(data):
     var ld = func(key, obj):
@@ -42,3 +44,4 @@ func load_game(data):
     ld.call("world", world)
     ld.call("ions", ions)
     ld.call("fusion", fusion)
+    ld.call("neutrons", neutrons)

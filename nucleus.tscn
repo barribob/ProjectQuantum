@@ -31,7 +31,7 @@ focus_mode = 0
 
 [node name="VisualPosition" type="Marker2D" parent="Button"]
 unique_name_in_owner = true
-position = Vector2(49, 42)
+position = Vector2(49, 50)
 
 [node name="FadeInPanel" type="Panel" parent="Button"]
 unique_name_in_owner = true

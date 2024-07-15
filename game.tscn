@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://cv71vrnggoxyu"]
+[gd_scene load_steps=36 format=3 uid="uid://cv71vrnggoxyu"]
 
 [ext_resource type="Shader" path="res://bloom.gdshader" id="1_5asy8"]
 [ext_resource type="Script" path="res://Game.gd" id="1_mn4wp"]
@@ -9,6 +9,8 @@
 [ext_resource type="Theme" uid="uid://cod55u25keq0j" path="res://theme.tres" id="6_1ppx1"]
 [ext_resource type="Script" path="res://Waveforms.gd" id="7_i18gp"]
 [ext_resource type="Texture2D" uid="uid://d0hi7hpolh4qv" path="res://art/waveform.png" id="7_wiv8f"]
+[ext_resource type="Script" path="res://Neutrons.gd" id="8_jqoik"]
+[ext_resource type="Texture2D" uid="uid://d11uc1icr2wfx" path="res://art/neutron.png" id="8_r6xn1"]
 [ext_resource type="Script" path="res://Energy.gd" id="9_1hj87"]
 [ext_resource type="Texture2D" uid="uid://dwemwlpina6ny" path="res://art/upgrades_icon.png" id="10_fy23g"]
 [ext_resource type="Theme" uid="uid://b0jmoyuhh2cat" path="res://main_buttons.tres" id="10_okyxx"]
@@ -21,6 +23,8 @@
 [ext_resource type="Texture2D" uid="uid://c2gt1m4giqwfd" path="res://art/Skill Tree.png" id="17_eun44"]
 [ext_resource type="Script" path="res://Ions.gd" id="20_avwqp"]
 [ext_resource type="Script" path="res://Fusion.gd" id="21_t80jb"]
+[ext_resource type="Script" path="res://SplitPopup.gd" id="22_yiv8m"]
+[ext_resource type="StyleBox" uid="uid://crqiwpchpfwon" path="res://popup.tres" id="25_cjk07"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_yhtry"]
 shader = ExtResource("4_km36t")
@@ -218,6 +222,22 @@ offset_left = -41.5
 offset_right = 41.5
 offset_bottom = 40.0
 grow_horizontal = 2
+
+[node name="Neutrons" type="HBoxContainer" parent="UI/Control/Top"]
+unique_name_in_owner = true
+layout_mode = 2
+script = ExtResource("8_jqoik")
+
+[node name="TextureRect" type="TextureRect" parent="UI/Control/Top/Neutrons"]
+layout_mode = 2
+texture = ExtResource("8_r6xn1")
+stretch_mode = 3
+
+[node name="NeutronsLabel" type="Label" parent="UI/Control/Top/Neutrons"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+text = "14.5K"
 
 [node name="Waveforms" type="HBoxContainer" parent="UI/Control/Top"]
 unique_name_in_owner = true
@@ -724,17 +744,17 @@ layout_mode = 2
 focus_mode = 0
 text = "Unequip"
 
+[node name="SplitButton" type="Button" parent="UI/Control/Fusion/VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+focus_mode = 0
+text = "Split"
+
 [node name="UpgradeButton" type="Button" parent="UI/Control/Fusion/VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer2"]
 unique_name_in_owner = true
 layout_mode = 2
 focus_mode = 0
 text = "Upgrade"
-
-[node name="RecycleButton" type="Button" parent="UI/Control/Fusion/VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer2"]
-unique_name_in_owner = true
-layout_mode = 2
-focus_mode = 0
-text = "Recycle"
 
 [node name="MarginContainer" type="MarginContainer" parent="UI/Control/Fusion/VBoxContainer/MarginContainer/HBoxContainer"]
 layout_mode = 2
@@ -755,3 +775,115 @@ text = "Equiped Nuclei"
 unique_name_in_owner = true
 layout_mode = 2
 columns = 2
+
+[node name="SplitPopup" type="Control" parent="UI/Control/Fusion"]
+layout_mode = 2
+script = ExtResource("22_yiv8m")
+
+[node name="ColorRect" type="ColorRect" parent="UI/Control/Fusion/SplitPopup"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 3.0
+offset_top = -73.0
+offset_bottom = 125.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.588235)
+
+[node name="PanelContainer" type="PanelContainer" parent="UI/Control/Fusion/SplitPopup"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -731.0
+offset_top = -424.0
+offset_right = 732.0
+offset_bottom = 358.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = ExtResource("25_cjk07")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/Control/Fusion/SplitPopup/PanelContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="UI/Control/Fusion/SplitPopup/PanelContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = ExtResource("16_o22y3")
+text = "Split Nuclei"
+horizontal_alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="UI/Control/Fusion/SplitPopup/PanelContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UI/Control/Fusion/SplitPopup/PanelContainer/VBoxContainer/MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="ScrollContainer" type="ScrollContainer" parent="UI/Control/Fusion/SplitPopup/PanelContainer/VBoxContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+horizontal_scroll_mode = 0
+
+[node name="SplitNucleiContainer" type="GridContainer" parent="UI/Control/Fusion/SplitPopup/PanelContainer/VBoxContainer/MarginContainer/HBoxContainer/ScrollContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+columns = 4
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="UI/Control/Fusion/SplitPopup/PanelContainer/VBoxContainer/MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+
+[node name="SplitNucleusTitle" type="Label" parent="UI/Control/Fusion/SplitPopup/PanelContainer/VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = ExtResource("16_o22y3")
+text = "Placeholder Title"
+
+[node name="SplitNucleusDescription" type="RichTextLabel" parent="UI/Control/Fusion/SplitPopup/PanelContainer/VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+text = "placeholder description"
+
+[node name="Spacing" type="MarginContainer" parent="UI/Control/Fusion/SplitPopup/PanelContainer/VBoxContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/Control/Fusion/SplitPopup/PanelContainer/VBoxContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="SplitLabel" type="Label" parent="UI/Control/Fusion/SplitPopup/PanelContainer/VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 24
+text = "You will gain 24.5K neutrons from splitting 5 Nuclei"
+autowrap_mode = 2
+
+[node name="ConfirmSplitButton" type="Button" parent="UI/Control/Fusion/SplitPopup/PanelContainer/VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Split"
+
+[node name="CancelSplitButton" type="Button" parent="UI/Control/Fusion/SplitPopup/PanelContainer/VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Exit"
+
+[node name="ExitSplitButton" type="Button" parent="UI/Control/Fusion/SplitPopup"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 1651.0
+offset_top = 23.0
+offset_right = 1682.0
+offset_bottom = 61.0
+text = " X "

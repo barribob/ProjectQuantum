@@ -12,12 +12,13 @@ const HOLLOW_CIRCLE = preload("res://hollow_circle.tscn")
 
 var def: NucleusDef
 var level: int
+var fade_time: float = 1.0
 
 func _ready():
     selected_panel.hide()
     fade_in_panel.show()
     var tween = create_tween()
-    tween.tween_property(fade_in_panel, "modulate:a", 0, 1)
+    tween.tween_property(fade_in_panel, "modulate:a", 0, fade_time)
     button.pressed.connect(func(): selected.emit())
     level = 1
     var circle_positions = Utils.generate_circle_positions(def.visual_circles, 10)
@@ -37,6 +38,9 @@ func set_selected():
 
 func set_deselected():
     selected_panel.hide()
+
+func is_selected():
+    return selected_panel.visible
 
 func get_level():
     return level
