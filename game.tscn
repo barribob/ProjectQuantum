@@ -715,16 +715,25 @@ text = "placeholder description"
 [node name="EquipButton" type="Button" parent="UI/Control/Fusion/VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer2"]
 unique_name_in_owner = true
 layout_mode = 2
+focus_mode = 0
 text = "Equip"
+
+[node name="UnequipButton" type="Button" parent="UI/Control/Fusion/VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+focus_mode = 0
+text = "Unequip"
 
 [node name="UpgradeButton" type="Button" parent="UI/Control/Fusion/VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer2"]
 unique_name_in_owner = true
 layout_mode = 2
+focus_mode = 0
 text = "Upgrade"
 
 [node name="RecycleButton" type="Button" parent="UI/Control/Fusion/VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer2"]
 unique_name_in_owner = true
 layout_mode = 2
+focus_mode = 0
 text = "Recycle"
 
 [node name="MarginContainer" type="MarginContainer" parent="UI/Control/Fusion/VBoxContainer/MarginContainer/HBoxContainer"]
@@ -735,20 +744,14 @@ size_flags_horizontal = 3
 custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
 
-[node name="Label" type="Label" parent="UI/Control/Fusion/VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer"]
+[node name="NucleiEquipLabel" type="Label" parent="UI/Control/Fusion/VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 theme_override_font_sizes/font_size = 24
 theme_override_styles/normal = ExtResource("16_o22y3")
 text = "Equiped Nuclei"
 
-[node name="Button" type="Button" parent="UI/Control/Fusion/VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer"]
+[node name="NucleiEquip" type="GridContainer" parent="UI/Control/Fusion/VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
-text = "Equip Slot"
-
-[node name="Button2" type="Button" parent="UI/Control/Fusion/VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer"]
-layout_mode = 2
-text = "Equip Slot"
-
-[node name="Button3" type="Button" parent="UI/Control/Fusion/VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer"]
-layout_mode = 2
-text = "Equip Slot"
+columns = 2
