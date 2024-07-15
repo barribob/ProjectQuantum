@@ -11,6 +11,7 @@ extends PanelContainer
 @onready var nuclei_equip_label = %NucleiEquipLabel
 @onready var split_button = %SplitButton
 @onready var split_popup = $SplitPopup
+@onready var upgrade_popup = %UpgradePopup
 
 const NUCLEUS = preload("res://nucleus.tscn")
 
@@ -23,14 +24,19 @@ var nuclei = []
 var equipped_nuclei = []
 
 func _ready():
+    CurrentRun.fusion = self
     split_popup.fusion = self
     fusion_progress_bar.max_value = max_fusion_progress
     fusion_progress_bar.step = 0.001
     equip_button.pressed.connect(equip_nucleus)
     unequip_button.pressed.connect(unequip_nucleus)
     split_button.pressed.connect(split_popup.display)
+    upgrade_button.pressed.connect(upgrade_nucleus)
     update_equip_ui()
     clear_description()
+
+func upgrade_nucleus():
+    upgrade_popup.display(current_selected_nucleus)
 
 func unequip_nucleus():
     if current_selected_nucleus:
@@ -106,6 +112,9 @@ func pick_random_nucleus():
 func display():
     show()
 
+func get_equipped_nuclei():
+    return equipped_nuclei
+
 func save_data(data):
     data["fusion_progress"] = fusion_progress
     data["nuclei"] = []
@@ -128,6 +137,6 @@ func load_data(data):
     for nucleus_data in data.get("equipped_nuclei", []):
         var def = Registries.ids_to_nuclei[nucleus_data["id"]]
         var nucleus = generate_nucleus(def)
+        nucleus.load_data(nucleus_data)
         nucleus_selected(nucleus)
         equip_nucleus()
-        nucleus.load_data(nucleus_data)

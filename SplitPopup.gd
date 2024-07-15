@@ -51,6 +51,7 @@ func display():
         i+=1
         fusion_nuclei_to_split_nuclei[new_nucleus] = nucleus
     show()
+    split_label.text = "Split nuclei for"
     clear_description()
 
 func generate_nucleus(def, i):
@@ -73,7 +74,7 @@ func nucleus_selected(nucleus):
 
     var num_selected = selected_nuclei.size()
     var recycle_value = get_value()
-    split_label.text = "You will gain %s neutrons from splitting %s Nuclei" % [recycle_value, num_selected]
+    split_label.text = "Splitting %s Nuclei for %s" % [num_selected, recycle_value]
     confirm_split_button.disabled = num_selected == 0
 
 func update_description(nucleus):

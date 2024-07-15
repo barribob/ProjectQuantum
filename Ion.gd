@@ -27,7 +27,7 @@ func _ready():
     unlock_button.pressed.connect(_on_unlock_button_pressed)
     assign_button.pressed.connect(_on_assign_button_pressed)
     unassign_button.pressed.connect(_on_unassign_button_pressed)
-    progress_bar.max_value = 1
+    progress_bar.max_value = 10
 
 func _on_assign_button_pressed():
     var ion = ions.claim_ion()
@@ -67,17 +67,27 @@ func _process(delta):
     for i in range(ions_assigned):
         ion_visuals[i].global_position = lerp(ion_visuals[i].global_position, circle_positions[i] + ion_origin.global_position, delta)
 
-    progress_bar.value += delta * ions_assigned
+    progress_bar.value += delta * ions_assigned * get_progress_speed_bonuses()
     if progress_bar.value >= progress_bar.max_value:
         level += 1
         progress_bar.value = 0
         description_label.text = get_description()
 
+func get_progress_speed_bonuses():
+    var bonus = 1.0
+    var nuclei = CurrentRun.fusion.get_equipped_nuclei()
+    var nucleus_h_bonus = 1.0
+    for nucleus in nuclei:
+        if nucleus.def == Registries.NUCLEUS_H:
+            nucleus_h_bonus += Registries.NUCLEUS_H.get_meta("increase") * nucleus.get_level()
+    bonus *= nucleus_h_bonus
+    return bonus
+
 func get_description():
     return "%s%%" % def.description.replace("<value>", Utils.format_number(get_boost_value()))
 
 func get_boost_value():
-    return level * def.value_per_level
+    return level * def.value_per_level * 10
 
 func save_data(data):
     data["unlocked"] = unlocked

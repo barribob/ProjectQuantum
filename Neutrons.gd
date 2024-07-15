@@ -12,7 +12,7 @@ func _ready():
 
 func add_neutrons(amount):
     neutrons += amount
-    neutrons_label.text = Utils.format_number(neutrons)
+    update_ui()
 
 func unlock_bought(unlock):
     if unlock.def == Registries.UNLOCK_FUSION:
@@ -25,3 +25,7 @@ func load_data(data):
     neutrons = data["neutrons"]
     if unlocks.is_unlocked(Registries.UNLOCK_FUSION):
         show()
+    update_ui()
+
+func update_ui():
+    neutrons_label.text = Utils.format_number(neutrons)

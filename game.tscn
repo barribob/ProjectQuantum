@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://cv71vrnggoxyu"]
+[gd_scene load_steps=39 format=3 uid="uid://cv71vrnggoxyu"]
 
 [ext_resource type="Shader" path="res://bloom.gdshader" id="1_5asy8"]
 [ext_resource type="Script" path="res://Game.gd" id="1_mn4wp"]
@@ -24,7 +24,9 @@
 [ext_resource type="Script" path="res://Ions.gd" id="20_avwqp"]
 [ext_resource type="Script" path="res://Fusion.gd" id="21_t80jb"]
 [ext_resource type="Script" path="res://SplitPopup.gd" id="22_yiv8m"]
+[ext_resource type="Script" path="res://UpgradePopup.gd" id="24_pc6kl"]
 [ext_resource type="StyleBox" uid="uid://crqiwpchpfwon" path="res://popup.tres" id="25_cjk07"]
+[ext_resource type="Script" path="res://AddNeutronsButton.gd" id="26_euacx"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_yhtry"]
 shader = ExtResource("4_km36t")
@@ -156,6 +158,18 @@ corner_radius_top_right = 20
 corner_radius_bottom_right = 20
 corner_radius_bottom_left = 20
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5qxty"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.219608, 0.219608, 0.219608, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
 [node name="Game" type="Node"]
 script = ExtResource("1_mn4wp")
 
@@ -225,6 +239,7 @@ grow_horizontal = 2
 
 [node name="Neutrons" type="HBoxContainer" parent="UI/Control/Top"]
 unique_name_in_owner = true
+z_index = 1
 layout_mode = 2
 script = ExtResource("8_jqoik")
 
@@ -776,6 +791,158 @@ unique_name_in_owner = true
 layout_mode = 2
 columns = 2
 
+[node name="UpgradePopup" type="Control" parent="UI/Control/Fusion"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+script = ExtResource("24_pc6kl")
+
+[node name="ColorRect" type="ColorRect" parent="UI/Control/Fusion/UpgradePopup"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 3.0
+offset_top = -73.0
+offset_bottom = 125.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.588235)
+
+[node name="PanelContainer" type="PanelContainer" parent="UI/Control/Fusion/UpgradePopup"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -555.0
+offset_top = -297.0
+offset_right = 555.0
+offset_bottom = 163.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = ExtResource("25_cjk07")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/Control/Fusion/UpgradePopup/PanelContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="UI/Control/Fusion/UpgradePopup/PanelContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = ExtResource("16_o22y3")
+text = "Upgrade Nucleus"
+horizontal_alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="UI/Control/Fusion/UpgradePopup/PanelContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UI/Control/Fusion/UpgradePopup/PanelContainer/VBoxContainer/MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UI/Control/Fusion/UpgradePopup/PanelContainer/VBoxContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/Control/Fusion/UpgradePopup/PanelContainer/VBoxContainer/MarginContainer/HBoxContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="Panel" type="Panel" parent="UI/Control/Fusion/UpgradePopup/PanelContainer/VBoxContainer/MarginContainer/HBoxContainer/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_5qxty")
+
+[node name="UpgradeNucleusVisualPosition" type="Marker2D" parent="UI/Control/Fusion/UpgradePopup/PanelContainer/VBoxContainer/MarginContainer/HBoxContainer/HBoxContainer/VBoxContainer/Panel"]
+unique_name_in_owner = true
+position = Vector2(49, 50)
+
+[node name="UpgradeNucleusLevelLabel" type="Label" parent="UI/Control/Fusion/UpgradePopup/PanelContainer/VBoxContainer/MarginContainer/HBoxContainer/HBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Lv. 0"
+horizontal_alignment = 1
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="UI/Control/Fusion/UpgradePopup/PanelContainer/VBoxContainer/MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="UpgradeNucleusTitle" type="Label" parent="UI/Control/Fusion/UpgradePopup/PanelContainer/VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = ExtResource("16_o22y3")
+text = "Placeholder Title"
+
+[node name="UpgradeNucleusDescription" type="RichTextLabel" parent="UI/Control/Fusion/UpgradePopup/PanelContainer/VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+text = "placeholder description"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/Control/Fusion/UpgradePopup/PanelContainer/VBoxContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="UI/Control/Fusion/UpgradePopup/PanelContainer/VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="AddNeutronsButton" type="Button" parent="UI/Control/Fusion/UpgradePopup/PanelContainer/VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer2"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(90, 0)
+layout_mode = 2
+text = "Add"
+icon = ExtResource("8_r6xn1")
+icon_alignment = 2
+script = ExtResource("26_euacx")
+
+[node name="Label" type="Label" parent="UI/Control/Fusion/UpgradePopup/PanelContainer/VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+text = "Hold to keep adding"
+
+[node name="Spacing" type="MarginContainer" parent="UI/Control/Fusion/UpgradePopup/PanelContainer/VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UI/Control/Fusion/UpgradePopup/PanelContainer/VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="UpgradeSliderDescription" type="Label" parent="UI/Control/Fusion/UpgradePopup/PanelContainer/VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Upgrade to level X will use 14.5K"
+
+[node name="TextureRect" type="TextureRect" parent="UI/Control/Fusion/UpgradePopup/PanelContainer/VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("8_r6xn1")
+stretch_mode = 3
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="UI/Control/Fusion/UpgradePopup/PanelContainer/VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="PopupUpgradeButton" type="Button" parent="UI/Control/Fusion/UpgradePopup/PanelContainer/VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer3"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Upgrade"
+
+[node name="PopupUpgradeCancelButton" type="Button" parent="UI/Control/Fusion/UpgradePopup/PanelContainer/VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer3"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Exit"
+
+[node name="ExitUpgradeButton" type="Button" parent="UI/Control/Fusion/UpgradePopup"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 1475.0
+offset_top = 150.0
+offset_right = 1506.0
+offset_bottom = 188.0
+text = " X "
+
 [node name="SplitPopup" type="Control" parent="UI/Control/Fusion"]
 layout_mode = 2
 script = ExtResource("22_yiv8m")
@@ -860,14 +1027,26 @@ size_flags_horizontal = 3
 [node name="VBoxContainer" type="VBoxContainer" parent="UI/Control/Fusion/SplitPopup/PanelContainer/VBoxContainer/MarginContainer/HBoxContainer"]
 layout_mode = 2
 
-[node name="SplitLabel" type="Label" parent="UI/Control/Fusion/SplitPopup/PanelContainer/VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer"]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(300, 0)
+[node name="Spacing" type="MarginContainer" parent="UI/Control/Fusion/SplitPopup/PanelContainer/VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
-theme_override_font_sizes/font_size = 24
-text = "You will gain 24.5K neutrons from splitting 5 Nuclei"
-autowrap_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UI/Control/Fusion/SplitPopup/PanelContainer/VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+alignment = 1
+
+[node name="SplitLabel" type="Label" parent="UI/Control/Fusion/SplitPopup/PanelContainer/VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 1
+text = "Splitting 5 Nuclei will provid"
+horizontal_alignment = 2
+
+[node name="TextureRect" type="TextureRect" parent="UI/Control/Fusion/SplitPopup/PanelContainer/VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("8_r6xn1")
+stretch_mode = 3
 
 [node name="ConfirmSplitButton" type="Button" parent="UI/Control/Fusion/SplitPopup/PanelContainer/VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer"]
 unique_name_in_owner = true

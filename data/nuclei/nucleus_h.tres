@@ -7,7 +7,7 @@ script = ExtResource("1_oaw6s")
 id = "nucleus"
 name = "Nucleus H"
 description = "Increase ion leveling speed by $a
-{\"value\":\"increase\", \"replace\":\"$a\", \"scale_with_level\": true}"
+{\"value\":\"increase\", \"replace\":\"$a\", \"fmt\": \"%\", \"scale_with_level\": true}"
 visual_color = Color(0.75, 0.248125, 0.2025, 1)
 visual_circles = 2
-metadata/increase = 10.0
+metadata/increase = 0.1

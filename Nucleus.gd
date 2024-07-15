@@ -1,4 +1,4 @@
-extends VBoxContainer
+class_name Nucleus extends VBoxContainer
 
 signal selected
 
@@ -45,8 +45,9 @@ func is_selected():
 func get_level():
     return level
 
-func load_data(data):
-    pass
-
 func save_data(data):
-    pass
+    data["level"] = level
+
+func load_data(data):
+    level = data["level"]
+    update_ui()

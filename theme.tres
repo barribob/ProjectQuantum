@@ -1,4 +1,7 @@
-[gd_resource type="Theme" load_steps=8 format=3 uid="uid://cod55u25keq0j"]
+[gd_resource type="Theme" load_steps=10 format=3 uid="uid://cod55u25keq0j"]
+
+[ext_resource type="StyleBox" uid="uid://8wr17mhudrto" path="res://grabber_area.tres" id="1_hog5j"]
+[ext_resource type="StyleBox" uid="uid://dfwfsc7fbjuy0" path="res://slider.tres" id="2_nmjlk"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cyjvs"]
 bg_color = Color(0.219608, 0.219608, 0.219608, 0.290196)
@@ -73,6 +76,9 @@ Button/styles/disabled = SubResource("StyleBoxFlat_cyjvs")
 Button/styles/hover = SubResource("StyleBoxFlat_gb3v1")
 Button/styles/normal = SubResource("StyleBoxFlat_pnoe6")
 Button/styles/pressed = SubResource("StyleBoxFlat_dosqq")
+HSlider/styles/grabber_area = ExtResource("1_hog5j")
+HSlider/styles/grabber_area_highlight = ExtResource("1_hog5j")
+HSlider/styles/slider = ExtResource("2_nmjlk")
 MarginContainer/constants/margin_bottom = 10
 MarginContainer/constants/margin_left = 10
 MarginContainer/constants/margin_right = 10

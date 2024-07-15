@@ -12,6 +12,28 @@ static func format_number(num: float) -> String:
         exponent += 1
     return ("%1.2f" % num) + "e" + str(exponent)
 
+static func apply_tags_level(tooltip: String, resource, level):
+    var regex = RegEx.new()
+    regex.compile("{[^{}]*}")
+    var results = regex.search_all(tooltip)
+    for result in results:
+        var string_result = result.get_string()
+        var json_object: Dictionary = JSON.parse_string(string_result)
+        var value_property = json_object["value"]
+        var value = Utils.parse_meta(value_property, resource)
+        var replace = json_object["replace"]
+        var format_percent = false
+        if json_object.has("fmt"):
+            if json_object["fmt"] == "%":
+                value *= 100
+                format_percent = true
+        if json_object.has("scale_with_level"):
+            value *= level
+
+        tooltip = tooltip.replace(string_result, "")
+        tooltip = tooltip.replace(replace, str(value) + ("%" if format_percent else ""))
+    return tooltip
+
 static func apply_tags_instance(tooltip: String, resource, instance):
     var regex = RegEx.new()
     regex.compile("{[^{}]*}")
