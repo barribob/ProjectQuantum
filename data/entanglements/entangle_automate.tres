@@ -7,4 +7,4 @@ script = ExtResource("1_mod66")
 id = "automate"
 name = "Automate"
 description = "Automates the energize button"
-cost = 800.0
+cost = 500.0

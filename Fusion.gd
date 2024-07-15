@@ -12,6 +12,7 @@ extends PanelContainer
 @onready var split_button = %SplitButton
 @onready var split_popup = $SplitPopup
 @onready var upgrade_popup = %UpgradePopup
+@onready var unlocks = %Unlocks
 
 const NUCLEUS = preload("res://nucleus.tscn")
 
@@ -66,6 +67,8 @@ func remove_nucleus(nucleus):
     nucleus.queue_free()
 
 func _physics_process(delta):
+    if not unlocks.is_unlocked(Registries.UNLOCK_FUSION):
+        return
     fusion_progress += delta * 0.05
     if fusion_progress >= max_fusion_progress:
         fusion_progress = 0

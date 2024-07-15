@@ -7,4 +7,4 @@ script = ExtResource("1_yd7pc")
 id = "fusion"
 name = "Unlock Fusion"
 description = "Unlocks fusion, which creates equippable particles for various buffs"
-cost = 2000.0
+cost = 1500.0

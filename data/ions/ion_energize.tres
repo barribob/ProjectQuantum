@@ -7,5 +7,5 @@ script = ExtResource("1_y62nx")
 id = "energize"
 name = "Energize"
 description = "Increases energy gained from the energize button by <value>"
-unlock_cost = 1000
+unlock_cost = 900
 value_per_level = 1.0

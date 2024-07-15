@@ -14,8 +14,8 @@ func add_neutrons(amount):
     neutrons += amount
     update_ui()
 
-func unlock_bought(unlock):
-    if unlock.def == Registries.UNLOCK_FUSION:
+func unlock_bought():
+    if unlocks.is_unlocked(Registries.UNLOCK_FUSION):
         show()
 
 func save_data(data):
