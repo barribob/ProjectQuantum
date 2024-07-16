@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=3 uid="uid://cv71vrnggoxyu"]
+[gd_scene load_steps=41 format=3 uid="uid://cv71vrnggoxyu"]
 
 [ext_resource type="Shader" path="res://bloom.gdshader" id="1_5asy8"]
 [ext_resource type="Script" path="res://Game.gd" id="1_mn4wp"]
@@ -27,6 +27,8 @@
 [ext_resource type="Script" path="res://UpgradePopup.gd" id="24_pc6kl"]
 [ext_resource type="StyleBox" uid="uid://crqiwpchpfwon" path="res://popup.tres" id="25_cjk07"]
 [ext_resource type="Script" path="res://AddNeutronsButton.gd" id="26_euacx"]
+[ext_resource type="Script" path="res://TutorialPanel.gd" id="28_c7e2k"]
+[ext_resource type="Script" path="res://Tutorial.gd" id="28_jmfdx"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_yhtry"]
 shader = ExtResource("4_km36t")
@@ -1080,3 +1082,107 @@ offset_top = 23.0
 offset_right = 1682.0
 offset_bottom = 61.0
 text = " X "
+
+[node name="TutorialPanel" type="HBoxContainer" parent="UI/Control"]
+unique_name_in_owner = true
+layout_mode = 2
+offset_left = 774.0
+offset_top = 328.0
+offset_right = 1176.0
+offset_bottom = 366.0
+script = ExtResource("28_c7e2k")
+
+[node name="Label" type="Label" parent="UI/Control/TutorialPanel"]
+layout_mode = 2
+text = "This particle evades high energy particles"
+
+[node name="Button" type="Button" parent="UI/Control/TutorialPanel"]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+text = "OK"
+
+[node name="TutorialPanel2" type="HBoxContainer" parent="UI/Control"]
+unique_name_in_owner = true
+layout_mode = 2
+offset_left = 534.0
+offset_top = 45.0
+offset_right = 1007.0
+offset_bottom = 83.0
+script = ExtResource("28_c7e2k")
+
+[node name="Label" type="Label" parent="UI/Control/TutorialPanel2"]
+layout_mode = 2
+text = "When it successfuly dodges, it will produce waveforms"
+
+[node name="TextureRect" type="TextureRect" parent="UI/Control/TutorialPanel2"]
+layout_mode = 2
+texture = ExtResource("7_wiv8f")
+stretch_mode = 3
+
+[node name="Button" type="Button" parent="UI/Control/TutorialPanel2"]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+text = "OK"
+
+[node name="TutorialPanel3" type="HBoxContainer" parent="UI/Control"]
+unique_name_in_owner = true
+layout_mode = 2
+offset_left = 804.0
+offset_top = 52.0
+offset_right = 1277.0
+offset_bottom = 90.0
+script = ExtResource("28_c7e2k")
+
+[node name="Label" type="Label" parent="UI/Control/TutorialPanel3"]
+layout_mode = 2
+text = "The particle uses energy to dodge"
+
+[node name="Button" type="Button" parent="UI/Control/TutorialPanel3"]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+text = "OK"
+
+[node name="TutorialPanel4" type="HBoxContainer" parent="UI/Control"]
+unique_name_in_owner = true
+layout_mode = 2
+offset_left = 1036.0
+offset_top = 54.0
+offset_right = 1509.0
+offset_bottom = 92.0
+script = ExtResource("28_c7e2k")
+
+[node name="Label" type="Label" parent="UI/Control/TutorialPanel4"]
+layout_mode = 2
+text = "Click \"Energize\" to restore energy."
+
+[node name="Button" type="Button" parent="UI/Control/TutorialPanel4"]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+text = "OK"
+
+[node name="TutorialPanel5" type="HBoxContainer" parent="UI/Control"]
+unique_name_in_owner = true
+layout_mode = 2
+offset_left = 653.0
+offset_top = 54.0
+offset_right = 1298.0
+offset_bottom = 92.0
+script = ExtResource("28_c7e2k")
+
+[node name="Label" type="Label" parent="UI/Control/TutorialPanel5"]
+layout_mode = 2
+text = "If the particle runs out of energy, fully restore energy to recreate the particle"
+
+[node name="Button" type="Button" parent="UI/Control/TutorialPanel5"]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+text = "OK"
+
+[node name="Tutorial" type="Node" parent="UI"]
+unique_name_in_owner = true
+script = ExtResource("28_jmfdx")
