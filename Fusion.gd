@@ -70,11 +70,19 @@ func remove_nucleus(nucleus):
 func _physics_process(delta):
     if not unlocks.is_unlocked(Registries.UNLOCK_FUSION):
         return
-    fusion_progress += delta * 0.05
+
+    fusion_progress += delta * 0.05 * get_fusion_speed_bonus()
     if fusion_progress >= max_fusion_progress:
         fusion_progress = 0
         generate_nucleus(pick_random_nucleus())
     fusion_progress_bar.value = fusion_progress
+
+func get_fusion_speed_bonus():
+    var bonus = 1.0
+    for nucleus in equipped_nuclei:
+        if nucleus.def == Registries.NUCLEUS_L:
+            bonus += Registries.NUCLEUS_L.get_meta("increase") * nucleus.get_level()
+    return bonus
 
 func generate_nucleus(def):
     var nucleus = NUCLEUS.instantiate()

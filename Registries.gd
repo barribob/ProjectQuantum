@@ -18,6 +18,7 @@ const DIMENSION_3 = preload("res://data/dimensions/dimension_3.tres")
 const DIMENSION_4 = preload("res://data/dimensions/dimension_4.tres")
 const DIMENSION_5 = preload("res://data/dimensions/dimension_5.tres")
 const DIMENSION_6 = preload("res://data/dimensions/dimension_6.tres")
+const DIMENSION_7 = preload("res://data/dimensions/dimension_7.tres")
 
 const dimensions = [
     DIMENSION_1,
@@ -25,7 +26,8 @@ const dimensions = [
     DIMENSION_3,
     DIMENSION_4,
     DIMENSION_5,
-    DIMENSION_6
+    DIMENSION_6,
+    DIMENSION_7
 ]
 
 const ENTANGLE_MAX_ENERGY_1 = preload("res://data/entanglements/entangle_max_energy_1.tres")
@@ -56,10 +58,12 @@ const ions = [
 
 const NUCLEUS_H = preload("res://data/nuclei/nucleus_h.tres")
 const NUCLEUS_E = preload("res://data/nuclei/nucleus_e.tres")
+const NUCLEUS_L = preload("res://data/nuclei/nucleus_l.tres")
 
 const nuclei = [
     NUCLEUS_H,
-    NUCLEUS_E
+    NUCLEUS_E,
+    NUCLEUS_L
 ]
 
 var ids_to_unlocks: Dictionary

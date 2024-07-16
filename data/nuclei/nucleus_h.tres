@@ -4,7 +4,7 @@
 
 [resource]
 script = ExtResource("1_oaw6s")
-id = "nucleus"
+id = "nucleus_h"
 name = "Nucleus H"
 description = "Increase ion leveling speed by $a
 {\"value\":\"increase\", \"replace\":\"$a\", \"fmt\": \"%\", \"scale_with_level\": true}"

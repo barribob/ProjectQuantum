@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="DimensionDef" load_steps=5 format=3 uid="uid://b6xyqhrmd7fa8"]
+
+[ext_resource type="Resource" uid="uid://ir26fi7x81al" path="res://line_1.tres" id="1_uadfi"]
+[ext_resource type="Resource" uid="uid://cuj4l4l1j7f48" path="res://line_2.tres" id="2_hkkpo"]
+[ext_resource type="Script" path="res://DimensionDef.gd" id="3_j204o"]
+[ext_resource type="Resource" uid="uid://b4u2se83kuj3v" path="res://line_3.tres" id="3_mt7jl"]
+
+[resource]
+script = ExtResource("3_j204o")
+id = "7"
+name = "7th Dimension"
+description = ""
+cost = 35000.0
+collision_cooldown = 0.05
+num_collisions = 3
+lines = Array[Resource("res://Line.gd")]([ExtResource("1_uadfi"), ExtResource("2_hkkpo"), ExtResource("3_mt7jl"), ExtResource("3_mt7jl"), ExtResource("3_mt7jl")])
