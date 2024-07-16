@@ -200,7 +200,8 @@ func on_text_entered(text : String, add_history = true) -> void:
         var command_string := split_text[0].to_lower()
         if (console_commands.has(command_string)):
             var command_entry : ConsoleCommand = console_commands[command_string]
-            match command_entry.param_count:
+            var param_count = split_text.size() - 1
+            match param_count:
                 0:
                     command_entry.function.call()
                 1:

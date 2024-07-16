@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="NucleusDef" load_steps=2 format=3 uid="uid://dxubp6fj7tdc6"]
+
+[ext_resource type="Script" path="res://NucleusDef.gd" id="1_aawwh"]
+
+[resource]
+script = ExtResource("1_aawwh")
+id = "nucleus_e"
+name = "Nucleus E"
+description = "Increases passive energy charge by $a
+Increases max energy by $b
+{\"value\":\"passive_charge_increase\", \"replace\":\"$a\", \"scale_with_level\": true}
+{\"value\":\"max_energy_increase\", \"replace\":\"$b\", \"scale_with_level\": true}"
+visual_color = Color(0.528507, 0.436246, 0.0969457, 1)
+visual_circles = 3
+metadata/passive_charge_increase = 0.5
+metadata/max_energy_increase = 10.0

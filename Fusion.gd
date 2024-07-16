@@ -25,6 +25,7 @@ var nuclei = []
 var equipped_nuclei = []
 
 func _ready():
+    Console.add_command("nucleus", func(n): generate_nucleus(Registries.ids_to_nuclei[n]))
     CurrentRun.fusion = self
     split_popup.fusion = self
     fusion_progress_bar.max_value = max_fusion_progress

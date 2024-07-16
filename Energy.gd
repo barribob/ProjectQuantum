@@ -8,6 +8,7 @@ signal energy_consumed
 @onready var gain_energy_button = %GainEnergyButton
 @onready var energy_button_bar = %EnergyButtonBar
 @onready var ions = %Ions
+@onready var fusion = %Fusion
 
 var energy: float
 var energy_depleted = false
@@ -34,6 +35,10 @@ func get_energy_gain():
         energy_gain += Registries.ENTANGLE_ENERGY_CHARGE_2.get_meta("increase")
     if entanglements.is_bought(Registries.ENTANGLE_MAX_ENERGY_BONUS):
         energy_gain += Registries.ENTANGLE_MAX_ENERGY_BONUS.get_meta("increase") * get_max_energy()
+    for nucleus in fusion.equipped_nuclei:
+        if nucleus.def == Registries.NUCLEUS_E:
+            var increase = Registries.NUCLEUS_E.get_meta("passive_charge_increase") * nucleus.get_level()
+            energy_gain += increase
     energy_gain *= 1 + (ions.get_ion_boost(Registries.ION_CHARGE) / 100.0)
     return energy_gain
 
@@ -41,6 +46,10 @@ func get_max_energy():
     var max_energy = base_max_energy
     if entanglements.is_bought(Registries.ENTANGLE_MAX_ENERGY_1):
         max_energy += Registries.ENTANGLE_MAX_ENERGY_1.get_meta("increase")
+    for nucleus in fusion.equipped_nuclei:
+        if nucleus.def == Registries.NUCLEUS_E:
+            var increase = Registries.NUCLEUS_E.get_meta("max_energy_increase") * nucleus.get_level()
+            max_energy += increase
     max_energy *= 1 + (ions.get_ion_boost(Registries.ION_MAX_ENERGY) / 100.0)
     return max_energy
 

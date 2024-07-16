@@ -55,9 +55,11 @@ const ions = [
 ]
 
 const NUCLEUS_H = preload("res://data/nuclei/nucleus_h.tres")
+const NUCLEUS_E = preload("res://data/nuclei/nucleus_e.tres")
 
 const nuclei = [
-    NUCLEUS_H
+    NUCLEUS_H,
+    NUCLEUS_E
 ]
 
 var ids_to_unlocks: Dictionary
