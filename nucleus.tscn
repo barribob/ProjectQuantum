@@ -1,13 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://comt71mvpw22i"]
 
 [ext_resource type="Script" path="res://Nucleus.gd" id="1_7t4xs"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ywppy"]
-bg_color = Color(1, 1, 1, 1)
-corner_radius_top_left = 20
-corner_radius_top_right = 20
-corner_radius_bottom_right = 20
-corner_radius_bottom_left = 20
+[ext_resource type="StyleBox" uid="uid://xtan48rmx078" path="res://fade_in_panel.tres" id="2_yiuax"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_w33io"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
@@ -35,7 +29,6 @@ position = Vector2(49, 50)
 
 [node name="FadeInPanel" type="Panel" parent="Button"]
 unique_name_in_owner = true
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -43,7 +36,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_ywppy")
+theme_override_styles/panel = ExtResource("2_yiuax")
 
 [node name="SelectedPanel" type="Panel" parent="Button"]
 unique_name_in_owner = true

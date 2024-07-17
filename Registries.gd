@@ -19,6 +19,7 @@ const DIMENSION_4 = preload("res://data/dimensions/dimension_4.tres")
 const DIMENSION_5 = preload("res://data/dimensions/dimension_5.tres")
 const DIMENSION_6 = preload("res://data/dimensions/dimension_6.tres")
 const DIMENSION_7 = preload("res://data/dimensions/dimension_7.tres")
+const DIMENSION_8 = preload("res://data/dimensions/dimension_8.tres")
 
 const dimensions = [
     DIMENSION_1,
@@ -27,7 +28,8 @@ const dimensions = [
     DIMENSION_4,
     DIMENSION_5,
     DIMENSION_6,
-    DIMENSION_7
+    DIMENSION_7,
+    DIMENSION_8
 ]
 
 const ENTANGLE_MAX_ENERGY_1 = preload("res://data/entanglements/entangle_max_energy_1.tres")
@@ -36,6 +38,7 @@ const ENTANGLE_ENERGIZE_AMOUNT_1 = preload("res://data/entanglements/entangle_en
 const ENTANGLE_ENERGY_CHARGE_2 = preload("res://data/entanglements/entangle_energy_charge_2.tres")
 const ENTANGLE_AUTOMATE = preload("res://data/entanglements/entangle_automate.tres")
 const ENTANGLE_MAX_ENERGY_BONUS = preload("res://data/entanglements/entangle_max_energy_bonus.tres")
+const ENTANGLE_EQUIPMENT = preload("res://data/entanglements/entangle_equipment.tres")
 
 const entanglements = [
     ENTANGLE_MAX_ENERGY_1,
@@ -43,7 +46,8 @@ const entanglements = [
     ENTANGLE_ENERGIZE_AMOUNT_1,
     ENTANGLE_ENERGY_CHARGE_2,
     ENTANGLE_AUTOMATE,
-    ENTANGLE_MAX_ENERGY_BONUS
+    ENTANGLE_MAX_ENERGY_BONUS,
+    ENTANGLE_EQUIPMENT
 ]
 
 const ION_CHARGE = preload("res://data/ions/ion_charge.tres")

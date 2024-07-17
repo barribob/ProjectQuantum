@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="EntanglementDef" load_steps=2 format=3 uid="uid://bj2wt8uvt031"]
+
+[ext_resource type="Script" path="res://EntanglementDef.gd" id="1_qp22a"]
+
+[resource]
+script = ExtResource("1_qp22a")
+id = "equipment"
+name = "Equipment"
+description = "Increase max equippable nuclei by 1"
+cost = 9000.0

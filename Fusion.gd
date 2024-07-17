@@ -13,13 +13,14 @@ extends PanelContainer
 @onready var split_popup = $SplitPopup
 @onready var upgrade_popup = %UpgradePopup
 @onready var unlocks = %Unlocks
+@onready var entanglements = %Entanglements
 
 const NUCLEUS = preload("res://nucleus.tscn")
 
 var current_selected_nucleus = null
 
 var fusion_progress = 0.0
-const max_equipped_nuclei = 3
+const base_max_equipped_nuclei = 2
 const max_fusion_progress = 1.0
 var nuclei = []
 var equipped_nuclei = []
@@ -35,8 +36,13 @@ func _ready():
     split_button.pressed.connect(split_popup.display)
     upgrade_button.pressed.connect(upgrade_nucleus)
     upgrade_popup.closed.connect(func(): update_description(current_selected_nucleus))
+    entanglements.entanglement_bought.connect(func(_e): update_equip_related_ui())
     update_equip_ui()
     clear_description()
+
+func update_equip_related_ui():
+    update_equip_ui()
+    equip_button.disabled = get_max_equipped_nuclei() <= equipped_nuclei.size()
 
 func upgrade_nucleus():
     upgrade_popup.display(current_selected_nucleus)
@@ -99,7 +105,7 @@ func nucleus_selected(nucleus):
     update_description(nucleus)
 
 func update_equip_ui():
-    nuclei_equip_label.text = "Equip Nuclei %s/%s" % [equipped_nuclei.size(), max_equipped_nuclei]
+    nuclei_equip_label.text = "Equip Nuclei %s/%s" % [equipped_nuclei.size(), get_max_equipped_nuclei()]
 
 func clear_description():
     nucleus_title.text = ""
@@ -113,11 +119,17 @@ func update_description(nucleus):
     nucleus_title.text = nucleus.def.name
     nucleus_description.text = Utils.apply_tags_instance(nucleus.def.description, nucleus.def, nucleus)
     equip_button.visible = not equipped_nuclei.has(nucleus)
-    equip_button.disabled = max_equipped_nuclei <= equipped_nuclei.size()
+    equip_button.disabled = get_max_equipped_nuclei() <= equipped_nuclei.size()
     unequip_button.visible = equipped_nuclei.has(nucleus)
     upgrade_button.visible = true
     current_selected_nucleus.set_selected()
     split_button.visible = equip_button.visible
+
+func get_max_equipped_nuclei():
+    var value = base_max_equipped_nuclei
+    if entanglements.is_bought(Registries.ENTANGLE_EQUIPMENT):
+        value += 1
+    return value
 
 func pick_random_nucleus():
     return Registries.nuclei[randi() % Registries.nuclei.size()]

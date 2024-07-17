@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="Line" load_steps=2 format=3 uid="uid://btydqjcqoc3op"]
+
+[ext_resource type="Script" path="res://Line.gd" id="1_w05ga"]
+
+[resource]
+script = ExtResource("1_w05ga")
+curve = 0.6
+color = Color(0.0270706, 0.213528, 0.240198, 1)
+dodge_value = 1000.0
