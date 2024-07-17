@@ -578,6 +578,12 @@ position = Vector2(460, 260)
 position = Vector2(466, 549)
 
 [node name="Marker2D7" type="Marker2D" parent="UI/Control/Entanglements/MarginContainer/VBoxContainer/HBoxContainer/ButtonsArea/ButtonsArea/ButtonsContainer"]
+position = Vector2(413, 683)
+
+[node name="Marker2D8" type="Marker2D" parent="UI/Control/Entanglements/MarginContainer/VBoxContainer/HBoxContainer/ButtonsArea/ButtonsArea/ButtonsContainer"]
+position = Vector2(402, 130)
+
+[node name="Marker2D9" type="Marker2D" parent="UI/Control/Entanglements/MarginContainer/VBoxContainer/HBoxContainer/ButtonsArea/ButtonsArea/ButtonsContainer"]
 position = Vector2(800, 406)
 
 [node name="Origin" type="Marker2D" parent="UI/Control/Entanglements/MarginContainer/VBoxContainer/HBoxContainer/ButtonsArea/ButtonsArea"]
@@ -905,6 +911,7 @@ size_flags_vertical = 0
 unique_name_in_owner = true
 custom_minimum_size = Vector2(90, 0)
 layout_mode = 2
+focus_mode = 0
 text = "Add"
 icon = ExtResource("8_r6xn1")
 icon_alignment = 2
@@ -938,12 +945,14 @@ layout_mode = 2
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
+focus_mode = 0
 text = "Upgrade"
 
 [node name="PopupUpgradeCancelButton" type="Button" parent="UI/Control/Fusion/UpgradePopup/PanelContainer/VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer3"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
+focus_mode = 0
 text = "Exit"
 
 [node name="ExitUpgradeButton" type="Button" parent="UI/Control/Fusion/UpgradePopup"]
@@ -1063,16 +1072,19 @@ stretch_mode = 3
 [node name="ConfirmSplitButton" type="Button" parent="UI/Control/Fusion/SplitPopup/PanelContainer/VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
+focus_mode = 0
 text = "Split"
 
 [node name="SplitAllButton" type="Button" parent="UI/Control/Fusion/SplitPopup/PanelContainer/VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
+focus_mode = 0
 text = "Split All Lv. 1"
 
 [node name="CancelSplitButton" type="Button" parent="UI/Control/Fusion/SplitPopup/PanelContainer/VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
+focus_mode = 0
 text = "Exit"
 
 [node name="ExitSplitButton" type="Button" parent="UI/Control/Fusion/SplitPopup"]

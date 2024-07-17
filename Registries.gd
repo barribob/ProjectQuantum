@@ -39,12 +39,16 @@ const ENTANGLE_ENERGY_CHARGE_2 = preload("res://data/entanglements/entangle_ener
 const ENTANGLE_AUTOMATE = preload("res://data/entanglements/entangle_automate.tres")
 const ENTANGLE_MAX_ENERGY_BONUS = preload("res://data/entanglements/entangle_max_energy_bonus.tres")
 const ENTANGLE_EQUIPMENT = preload("res://data/entanglements/entangle_equipment.tres")
+const ENTANGLE_MAX_ENERGY_2 = preload("res://data/entanglements/entangle_max_energy_2.tres")
+const ENTANGLE_ENERGIZE_AMOUNT_2 = preload("res://data/entanglements/entangle_energize_amount_2.tres")
 
 const entanglements = [
     ENTANGLE_MAX_ENERGY_1,
     ENTANGLE_ENERGY_CHARGE_1,
     ENTANGLE_ENERGIZE_AMOUNT_1,
+    ENTANGLE_MAX_ENERGY_2,
     ENTANGLE_ENERGY_CHARGE_2,
+    ENTANGLE_ENERGIZE_AMOUNT_2,
     ENTANGLE_AUTOMATE,
     ENTANGLE_MAX_ENERGY_BONUS,
     ENTANGLE_EQUIPMENT

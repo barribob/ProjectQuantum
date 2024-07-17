@@ -46,6 +46,8 @@ func get_max_energy():
     var max_energy = base_max_energy
     if entanglements.is_bought(Registries.ENTANGLE_MAX_ENERGY_1):
         max_energy += Registries.ENTANGLE_MAX_ENERGY_1.get_meta("increase")
+    if entanglements.is_bought(Registries.ENTANGLE_MAX_ENERGY_2):
+        max_energy += Registries.ENTANGLE_MAX_ENERGY_2.get_meta("increase")
     for nucleus in fusion.equipped_nuclei:
         if nucleus.def == Registries.NUCLEUS_E:
             var increase = Registries.NUCLEUS_E.get_meta("max_energy_increase") * nucleus.get_level()
@@ -57,6 +59,8 @@ func get_energy_button_gain():
     var gain = base_button_energy_gain_per_second
     if entanglements.is_bought(Registries.ENTANGLE_ENERGIZE_AMOUNT_1):
         gain += Registries.ENTANGLE_ENERGIZE_AMOUNT_1.get_meta("increase")
+    if entanglements.is_bought(Registries.ENTANGLE_ENERGIZE_AMOUNT_2):
+        gain += Registries.ENTANGLE_ENERGIZE_AMOUNT_2.get_meta("increase")
     gain *= 1 + (ions.get_ion_boost(Registries.ION_ENERGIZE) / 100.0)
     return gain
 
