@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=3 uid="uid://cv71vrnggoxyu"]
+[gd_scene load_steps=45 format=3 uid="uid://cv71vrnggoxyu"]
 
 [ext_resource type="Shader" path="res://bloom.gdshader" id="1_5asy8"]
 [ext_resource type="Script" path="res://Game.gd" id="1_mn4wp"]
@@ -12,15 +12,19 @@
 [ext_resource type="Script" path="res://Neutrons.gd" id="8_jqoik"]
 [ext_resource type="Texture2D" uid="uid://d11uc1icr2wfx" path="res://art/neutron.png" id="8_r6xn1"]
 [ext_resource type="Script" path="res://Energy.gd" id="9_1hj87"]
-[ext_resource type="Texture2D" uid="uid://dwemwlpina6ny" path="res://art/upgrades_icon.png" id="10_fy23g"]
 [ext_resource type="Theme" uid="uid://b0jmoyuhh2cat" path="res://main_buttons.tres" id="10_okyxx"]
 [ext_resource type="Script" path="res://MainButtons.gd" id="11_0j8xa"]
 [ext_resource type="StyleBox" uid="uid://v73grfgcak1" path="res://main_panel.tres" id="13_ml6hv"]
 [ext_resource type="Script" path="res://Unlocks.gd" id="14_13ath"]
+[ext_resource type="Texture2D" uid="uid://dlglpbnjke5iu" path="res://art/unlock_icon.png" id="15_r0un5"]
 [ext_resource type="Script" path="res://Dimensions.gd" id="15_uj4ev"]
 [ext_resource type="Script" path="res://Entanglements.gd" id="16_3qqc1"]
 [ext_resource type="StyleBox" uid="uid://k8o11cfuveoi" path="res://header.tres" id="16_o22y3"]
+[ext_resource type="Texture2D" uid="uid://bmi0j4ynh2e3u" path="res://art/dimensions_icon.png" id="16_oyk6q"]
 [ext_resource type="Texture2D" uid="uid://c2gt1m4giqwfd" path="res://art/Skill Tree.png" id="17_eun44"]
+[ext_resource type="Texture2D" uid="uid://b22svftpps4is" path="res://art/entanglement_icon.png" id="18_ma30i"]
+[ext_resource type="Texture2D" uid="uid://c6npoyuq7wa5m" path="res://art/ions_icon.png" id="18_yp5iw"]
+[ext_resource type="Texture2D" uid="uid://cqkje35tb5psi" path="res://art/fusion_icon.png" id="19_d4sw6"]
 [ext_resource type="Script" path="res://Ions.gd" id="20_avwqp"]
 [ext_resource type="Script" path="res://Fusion.gd" id="21_t80jb"]
 [ext_resource type="Script" path="res://SplitPopup.gd" id="22_yiv8m"]
@@ -339,31 +343,31 @@ script = ExtResource("11_0j8xa")
 [node name="UnlocksButton" type="Button" parent="UI/Control/MainButtons"]
 custom_minimum_size = Vector2(0, 72)
 layout_mode = 2
-icon = ExtResource("10_fy23g")
+icon = ExtResource("15_r0un5")
 icon_alignment = 1
 
 [node name="DimensionButton" type="Button" parent="UI/Control/MainButtons"]
 custom_minimum_size = Vector2(0, 80)
 layout_mode = 2
-icon = ExtResource("10_fy23g")
+icon = ExtResource("16_oyk6q")
 icon_alignment = 1
 
 [node name="EntanglementsButton" type="Button" parent="UI/Control/MainButtons"]
 custom_minimum_size = Vector2(0, 80)
 layout_mode = 2
-icon = ExtResource("10_fy23g")
+icon = ExtResource("18_ma30i")
 icon_alignment = 1
 
 [node name="IonsButton" type="Button" parent="UI/Control/MainButtons"]
 custom_minimum_size = Vector2(0, 80)
 layout_mode = 2
-icon = ExtResource("10_fy23g")
+icon = ExtResource("18_yp5iw")
 icon_alignment = 1
 
 [node name="FusionButton" type="Button" parent="UI/Control/MainButtons"]
 custom_minimum_size = Vector2(0, 80)
 layout_mode = 2
-icon = ExtResource("10_fy23g")
+icon = ExtResource("19_d4sw6")
 icon_alignment = 1
 
 [node name="Unlocks" type="PanelContainer" parent="UI/Control"]
