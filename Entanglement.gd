@@ -26,11 +26,13 @@ func pressed():
     update_ui()
 
 func update_ui():
-    button.disabled = def.cost > CurrentRun.waveforms.waveforms
     if bought:
-        button.add_theme_stylebox_override("disabled", ENTANGLEMENT_BOUGHT)
-        button.add_theme_color_override("font_disabled_color", Color.BLACK)
-        button.disabled = true
+        if not button.disabled:
+            button.add_theme_stylebox_override("disabled", ENTANGLEMENT_BOUGHT)
+            button.add_theme_color_override("font_disabled_color", Color.BLACK)
+            button.disabled = true
+    else:
+        button.disabled = def.cost > CurrentRun.waveforms.waveforms
 
 func save_data(data):
     data["bought"] = bought

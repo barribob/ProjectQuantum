@@ -29,7 +29,8 @@ func _on_unlock_button_pressed():
 func update_ui():
     var cant_afford = def.cost > CurrentRun.waveforms.waveforms
     unlock_button.disabled = cant_afford || bought
-    if bought:
+
+    if bought and unlock_button.text != "Unlocked":
         unlock_button.add_theme_stylebox_override("disabled", UNLOCK_BOUGHT)
         unlock_button.disabled = true
         unlock_button.text = "Unlocked"
