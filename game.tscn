@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=3 uid="uid://cv71vrnggoxyu"]
+[gd_scene load_steps=46 format=3 uid="uid://cv71vrnggoxyu"]
 
 [ext_resource type="Shader" path="res://bloom.gdshader" id="1_5asy8"]
 [ext_resource type="Script" path="res://Game.gd" id="1_mn4wp"]
@@ -33,6 +33,7 @@
 [ext_resource type="Script" path="res://AddNeutronsButton.gd" id="26_euacx"]
 [ext_resource type="Script" path="res://TutorialPanel.gd" id="28_c7e2k"]
 [ext_resource type="Script" path="res://Tutorial.gd" id="28_jmfdx"]
+[ext_resource type="Script" path="res://FPS.gd" id="33_1cw5s"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_yhtry"]
 shader = ExtResource("4_km36t")
@@ -148,10 +149,10 @@ _data = {
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_75424"]
 shader = ExtResource("1_5asy8")
-shader_parameter/bloomRadius = 4.0
+shader_parameter/bloomRadius = 2.0
 shader_parameter/bloomThreshold = 0.2
 shader_parameter/bloomIntensity = 4.0
-shader_parameter/bloomPasses = 4
+shader_parameter/bloomPasses = 2
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_3ogwu"]
 
@@ -1195,6 +1196,16 @@ custom_minimum_size = Vector2(50, 0)
 layout_mode = 2
 theme_override_font_sizes/font_size = 16
 text = "OK"
+
+[node name="FPSLabel" type="Label" parent="UI/Control"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -40.0
+offset_bottom = 23.0
+grow_horizontal = 0
+script = ExtResource("33_1cw5s")
 
 [node name="Tutorial" type="Node" parent="UI"]
 unique_name_in_owner = true
