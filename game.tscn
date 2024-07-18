@@ -248,10 +248,12 @@ grow_horizontal = 2
 unique_name_in_owner = true
 z_index = 1
 layout_mode = 2
+tooltip_text = "Neutrons"
 script = ExtResource("8_jqoik")
 
 [node name="TextureRect" type="TextureRect" parent="UI/Control/Top/Neutrons"]
 layout_mode = 2
+tooltip_text = "Neutrons"
 texture = ExtResource("8_r6xn1")
 stretch_mode = 3
 
@@ -259,21 +261,25 @@ stretch_mode = 3
 unique_name_in_owner = true
 custom_minimum_size = Vector2(50, 0)
 layout_mode = 2
+tooltip_text = "Neutrons"
 text = "14.5K"
 
 [node name="Waveforms" type="HBoxContainer" parent="UI/Control/Top"]
 unique_name_in_owner = true
 layout_mode = 2
+tooltip_text = "Waveforms"
 script = ExtResource("7_i18gp")
 
 [node name="TextureRect" type="TextureRect" parent="UI/Control/Top/Waveforms"]
 layout_mode = 2
+tooltip_text = "Waveforms"
 texture = ExtResource("7_wiv8f")
 stretch_mode = 3
 
 [node name="WaveformsLabel" type="Label" parent="UI/Control/Top/Waveforms"]
 custom_minimum_size = Vector2(50, 0)
 layout_mode = 2
+tooltip_text = "Waveforms"
 text = "14.5K"
 
 [node name="Spacer" type="MarginContainer" parent="UI/Control/Top"]
@@ -283,6 +289,7 @@ layout_mode = 2
 [node name="Energy" type="HBoxContainer" parent="UI/Control/Top"]
 unique_name_in_owner = true
 layout_mode = 2
+tooltip_text = "Energy"
 theme_override_constants/separation = 6
 script = ExtResource("9_1hj87")
 
@@ -291,12 +298,14 @@ custom_minimum_size = Vector2(200, 20)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
+tooltip_text = "Energy"
 value = 18.79
 show_percentage = false
 
 [node name="EnergyLabel" type="Label" parent="UI/Control/Top/Energy"]
 custom_minimum_size = Vector2(50, 0)
 layout_mode = 2
+tooltip_text = "Energy"
 text = "14.5K"
 
 [node name="MarginContainer" type="MarginContainer" parent="UI/Control/Top/Energy"]

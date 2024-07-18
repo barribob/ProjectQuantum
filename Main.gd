@@ -5,8 +5,9 @@ const temp_save_file = "user://temp.tres"
 var file_load_callback = JavaScriptBridge.create_callback(load_import_file)
 @export var game_scene: PackedScene
 @onready var file_dialog = %FileDialog
-@onready var options_panel = %Options
 var game
+@onready var export_save_button = %ExportSaveButton
+@onready var import_save_button = %ImportSaveButton
 
 func _ready():
     Console.add_command("save", func(path): save_data("user://" + path + ".res"), 1)
@@ -17,8 +18,8 @@ func _ready():
             DirAccess.remove_absolute("user://game.res")
         try_load())
     Console.add_command("time", func(time): Engine.time_scale = float(time), 1)
-    #EventBus.import_game.connect(import_save)
-    #EventBus.export_game.connect(export_file)
+    export_save_button.pressed.connect(export_file)
+    import_save_button.pressed.connect(import_save)
     #EventBus.reset_game.connect(new_game)
     if OS.get_name() == "Web":
         var window = JavaScriptBridge.get_interface("window")
@@ -59,8 +60,6 @@ func create_save_file():
     var data = game_data.data
     data["game"] = {}
     game.save_data(data["game"])
-    data["options"] = {}
-    options_panel.save_data(data["options"])
     game_data.version = ProjectSettings.get_setting("application/config/version")
     return game_data
 
@@ -74,8 +73,6 @@ func load_data(file_name) -> bool:
             game = game_scene.instantiate()
             add_child(game)
             var data = game_data.data
-            if data.has("options"):
-                options_panel.load_data(data["options"])
             load_game(data["game"])
             return true
     return false
