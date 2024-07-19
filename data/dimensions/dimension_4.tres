@@ -1,6 +1,7 @@
-[gd_resource type="Resource" script_class="DimensionDef" load_steps=4 format=3 uid="uid://c03axvlox6k1e"]
+[gd_resource type="Resource" script_class="DimensionDef" load_steps=5 format=3 uid="uid://c03axvlox6k1e"]
 
 [ext_resource type="Resource" uid="uid://d1xw0j1w5qtug" path="res://line_0.tres" id="1_2dgxo"]
+[ext_resource type="Script" path="res://Line.gd" id="1_idr6y"]
 [ext_resource type="Script" path="res://DimensionDef.gd" id="1_ugstx"]
 [ext_resource type="Resource" uid="uid://ir26fi7x81al" path="res://line_1.tres" id="2_qmpl2"]
 
@@ -12,4 +13,4 @@ description = "Low energy particles, but some have higher energy"
 cost = 300.0
 collision_cooldown = 0.2
 num_collisions = 1
-lines = Array[Resource("res://Line.gd")]([ExtResource("1_2dgxo"), ExtResource("2_qmpl2")])
+lines = Array[ExtResource("1_idr6y")]([ExtResource("1_2dgxo"), ExtResource("2_qmpl2")])

@@ -1,6 +1,7 @@
-[gd_resource type="Resource" script_class="DimensionDef" load_steps=4 format=3 uid="uid://bleyq4g6jvk6a"]
+[gd_resource type="Resource" script_class="DimensionDef" load_steps=5 format=3 uid="uid://bleyq4g6jvk6a"]
 
 [ext_resource type="Resource" uid="uid://ir26fi7x81al" path="res://line_1.tres" id="1_1i4wn"]
+[ext_resource type="Script" path="res://Line.gd" id="1_52nyj"]
 [ext_resource type="Script" path="res://DimensionDef.gd" id="2_16hbh"]
 [ext_resource type="Resource" uid="uid://cuj4l4l1j7f48" path="res://line_2.tres" id="2_bfoob"]
 
@@ -12,4 +13,4 @@ description = ""
 cost = 6000.0
 collision_cooldown = 0.05
 num_collisions = 2
-lines = Array[Resource("res://Line.gd")]([ExtResource("1_1i4wn"), ExtResource("2_bfoob")])
+lines = Array[ExtResource("1_52nyj")]([ExtResource("1_1i4wn"), ExtResource("2_bfoob")])

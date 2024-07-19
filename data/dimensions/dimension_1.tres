@@ -1,7 +1,8 @@
-[gd_resource type="Resource" script_class="DimensionDef" load_steps=3 format=3 uid="uid://2wwogsew1vxq"]
+[gd_resource type="Resource" script_class="DimensionDef" load_steps=4 format=3 uid="uid://2wwogsew1vxq"]
 
 [ext_resource type="Script" path="res://DimensionDef.gd" id="1_5bnq8"]
 [ext_resource type="Resource" uid="uid://d1xw0j1w5qtug" path="res://line_0.tres" id="1_mgyik"]
+[ext_resource type="Script" path="res://Line.gd" id="1_yk5ip"]
 
 [resource]
 script = ExtResource("1_5bnq8")
@@ -11,4 +12,4 @@ description = "Low energy particles, sparsely populated"
 cost = 0.0
 collision_cooldown = 2.0
 num_collisions = 1
-lines = Array[Resource("res://Line.gd")]([ExtResource("1_mgyik")])
+lines = Array[ExtResource("1_yk5ip")]([ExtResource("1_mgyik")])
