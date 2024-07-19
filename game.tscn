@@ -490,6 +490,7 @@ text = "Current"
 
 [node name="Entanglements" type="PanelContainer" parent="UI/Control"]
 unique_name_in_owner = true
+visible = false
 custom_minimum_size = Vector2(1000, 887)
 layout_mode = 1
 anchors_preset = 14
@@ -699,7 +700,6 @@ size_flags_horizontal = 3
 
 [node name="Fusion" type="PanelContainer" parent="UI/Control"]
 unique_name_in_owner = true
-visible = false
 custom_minimum_size = Vector2(1000, 800)
 layout_mode = 1
 anchors_preset = 14
@@ -1006,6 +1006,7 @@ text = "Exit"
 
 [node name="SplitPopup" type="Control" parent="UI/Control"]
 unique_name_in_owner = true
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -1212,9 +1213,9 @@ text = "OK"
 unique_name_in_owner = true
 layout_mode = 2
 offset_left = 1036.0
-offset_top = 40.0
+offset_top = 50.0
 offset_right = 1509.0
-offset_bottom = 78.0
+offset_bottom = 88.0
 script = ExtResource("28_c7e2k")
 
 [node name="Label" type="Label" parent="UI/Control/TutorialPanel4"]
@@ -1232,9 +1233,9 @@ text = "OK"
 unique_name_in_owner = true
 layout_mode = 2
 offset_left = 741.0
-offset_top = 36.0
+offset_top = 48.0
 offset_right = 1386.0
-offset_bottom = 74.0
+offset_bottom = 86.0
 script = ExtResource("28_c7e2k")
 
 [node name="Label" type="Label" parent="UI/Control/TutorialPanel5"]

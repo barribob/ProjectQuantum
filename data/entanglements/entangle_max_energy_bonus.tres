@@ -9,4 +9,4 @@ name = "Max Bonus"
 description = "Energy charge increases by $a of max energy
 {\"value\":\"increase\", \"replace\":\"$a\", \"fmt\": \"%\"}"
 cost = 800.0
-metadata/increase = 0.01
+metadata/increase = 0.02

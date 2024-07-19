@@ -34,7 +34,8 @@ func get_energy_gain():
     if entanglements.is_bought(Registries.ENTANGLE_ENERGY_CHARGE_2):
         energy_gain += Registries.ENTANGLE_ENERGY_CHARGE_2.get_meta("increase")
     if entanglements.is_bought(Registries.ENTANGLE_MAX_ENERGY_BONUS):
-        energy_gain += Registries.ENTANGLE_MAX_ENERGY_BONUS.get_meta("increase") * get_max_energy()
+        var max_bonus = Registries.ENTANGLE_MAX_ENERGY_BONUS.get_meta("increase") * get_max_energy()
+        energy_gain += max_bonus
     for nucleus in fusion.equipped_nuclei:
         if nucleus.def == Registries.NUCLEUS_E:
             var increase = Registries.NUCLEUS_E.get_meta("passive_charge_increase") * nucleus.get_level()

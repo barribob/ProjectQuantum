@@ -29,6 +29,8 @@ static func apply_tags_level(tooltip: String, resource, level):
                 format_percent = true
         if json_object.has("scale_with_level"):
             value *= level
+        if json_object.has("scale_with_level_plus_one"):
+            value = 1 + (value * level)
 
         tooltip = tooltip.replace(string_result, "")
         tooltip = tooltip.replace(replace, str(value) + ("%" if format_percent else ""))
@@ -51,6 +53,8 @@ static func apply_tags_instance(tooltip: String, resource, instance):
                 format_percent = true
         if json_object.has("scale_with_level"):
             value *= instance.get_level()
+        if json_object.has("scale_with_level_plus_one"):
+            value = 1 + (value * instance.get_level())
 
         tooltip = tooltip.replace(string_result, "")
         tooltip = tooltip.replace(replace, str(value) + ("%" if format_percent else ""))

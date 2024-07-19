@@ -6,8 +6,8 @@
 script = ExtResource("1_8tvsh")
 id = "nucleus_b"
 name = "Nucleus B"
-description = "Reduce energy used to dodge by $a
-{\"value\":\"reduction\", \"replace\":\"$a\", \"scale_with_level\": true}"
+description = "Reduce energy used to dodge by a factor of $a times
+{\"value\":\"reduction\", \"replace\":\"$a\", \"scale_with_level_plus_one\": true}"
 visual_color = Color(0, 0.854668, 0.646522, 1)
 visual_circles = 4
-metadata/reduction = 5.0
+metadata/reduction = 0.5

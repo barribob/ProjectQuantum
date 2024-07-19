@@ -108,7 +108,7 @@ func nucleus_selected(nucleus):
     update_description(nucleus)
 
 func update_equip_ui():
-    nuclei_equip_label.text = "Equip Nuclei %s/%s" % [equipped_nuclei.size(), get_max_equipped_nuclei()]
+    nuclei_equip_label.text = "Equipped Nuclei %s/%s" % [equipped_nuclei.size(), get_max_equipped_nuclei()]
 
 func clear_description():
     nucleus_title.text = ""

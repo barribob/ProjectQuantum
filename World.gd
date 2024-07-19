@@ -51,7 +51,8 @@ func get_dodge_energy_usage(line):
     var value = line.dodge_value
     for nucleus in fusion.equipped_nuclei:
         if nucleus.def == Registries.NUCLEUS_B:
-            value = max(0, value - Registries.NUCLEUS_B.get_meta("reduction") * nucleus.level)
+            var reduction_factor =  1 + Registries.NUCLEUS_B.get_meta("reduction") * nucleus.level
+            value /= reduction_factor
     return value
 
 func create_collision(is_successful: bool, line_properties, collision_number):
