@@ -1,4 +1,4 @@
-[gd_scene load_steps=49 format=3 uid="uid://cv71vrnggoxyu"]
+[gd_scene load_steps=47 format=3 uid="uid://cv71vrnggoxyu"]
 
 [ext_resource type="Shader" path="res://bloom.gdshader" id="1_5asy8"]
 [ext_resource type="Script" path="res://Game.gd" id="1_mn4wp"]
@@ -157,13 +157,6 @@ shader_parameter/bloomPasses = 2
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_3ogwu"]
 
-[sub_resource type="Gradient" id="Gradient_bw7ke"]
-offsets = PackedFloat32Array(0)
-colors = PackedColorArray(0.219608, 0.219608, 0.219608, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_is15b"]
-gradient = SubResource("Gradient_bw7ke")
-
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_pgkg8"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7gf5k"]
@@ -219,12 +212,6 @@ scale = Vector2(1918, 1080)
 texture = SubResource("PlaceholderTexture2D_3ogwu")
 centered = false
 
-[node name="DimensionTransition" type="Sprite2D" parent="Bloom"]
-position = Vector2(960, 539)
-scale = Vector2(30.2813, 17.125)
-texture = SubResource("GradientTexture2D_is15b")
-script = ExtResource("7_6oqu7")
-
 [node name="Background" type="CanvasLayer" parent="."]
 layer = -1
 
@@ -235,6 +222,17 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.12549, 0.12549, 0.12549, 1)
+
+[node name="DimensionTransition" type="ColorRect" parent="Background/ColorRect2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(30.2813, 17.125)
+color = Color(0.219608, 0.219608, 0.219608, 1)
+script = ExtResource("7_6oqu7")
 
 [node name="UI" type="CanvasLayer" parent="."]
 
