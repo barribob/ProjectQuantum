@@ -12,6 +12,8 @@ extends HBoxContainer
 @onready var ions = %Ions
 @onready var energy = %Energy
 @onready var fusion = %Fusion
+@onready var panel_container: PanelContainer = $".."
+@onready var tutorial: Node = %Tutorial
 
 var buttons_to_screens: Dictionary
 var ids_to_buttons: Dictionary
@@ -44,16 +46,16 @@ func _ready():
         screen.hide()
     for button in buttons_to_screens:
         button.hide()
+    panel_container.hide()
 
     update_button_states()
 
     unlocks.unlock_bought.connect(unlock_bought)
-    energy.energy_consumed.connect(energy_consumed)
+    tutorial.finished.connect(tutorial_finished)
 
-func energy_consumed():
-    if energy._energy_consumed >= 10:
-        unlocks_button.show()
-        energy.energy_consumed.disconnect(energy_consumed)
+func tutorial_finished():
+    unlocks_button.show()
+    panel_container.show()
 
 func unlock_bought():
     if unlocks.is_unlocked(Registries.UNLOCK_DIMENSIONS):
@@ -84,9 +86,9 @@ func update_button_states():
 func update_button_alignment(button: Button):
     var is_selected = current_button == button
     if is_selected:
-        button.vertical_icon_alignment = VERTICAL_ALIGNMENT_TOP
-    else:
         button.vertical_icon_alignment = VERTICAL_ALIGNMENT_BOTTOM
+    else:
+        button.vertical_icon_alignment = VERTICAL_ALIGNMENT_TOP
 
 func save_data(data):
     for id in ids_to_buttons:
@@ -98,3 +100,5 @@ func load_data(data):
         if id in data:
             var button = ids_to_buttons[id]
             button.visible = data[id]
+    if unlocks_button.visible:
+        panel_container.show()

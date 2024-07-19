@@ -1,5 +1,7 @@
 extends Node
 
+signal finished
+
 @onready var energy = %Energy
 @onready var tutorial_panel = %TutorialPanel
 @onready var tutorial_panel_2 = %TutorialPanel2
@@ -35,9 +37,12 @@ func _on_gain_energy_button_pressed():
 
 func _on_tutorial_ok_clicked_5():
     tutorial_finished = true
+    finished.emit()
 
 func save_data(data):
     data["tutorial_finished"] = tutorial_finished
 
 func load_data(data):
     tutorial_finished = data["tutorial_finished"]
+    if tutorial_finished:
+        finished.emit()

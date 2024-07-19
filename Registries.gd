@@ -45,8 +45,8 @@ const ENTANGLE_NUCLEUS = preload("res://data/entanglements/entangle_nucleus.tres
 const ENTANGLE_FUSION = preload("res://data/entanglements/entangle_fusion.tres")
 
 const entanglements = [
-    ENTANGLE_MAX_ENERGY_1,
     ENTANGLE_ENERGY_CHARGE_1,
+    ENTANGLE_MAX_ENERGY_1,
     ENTANGLE_ENERGIZE_AMOUNT_1,
     ENTANGLE_MAX_ENERGY_2,
     ENTANGLE_ENERGY_CHARGE_2,

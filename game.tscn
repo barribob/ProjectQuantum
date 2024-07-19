@@ -1,4 +1,4 @@
-[gd_scene load_steps=47 format=3 uid="uid://cv71vrnggoxyu"]
+[gd_scene load_steps=48 format=3 uid="uid://cv71vrnggoxyu"]
 
 [ext_resource type="Shader" path="res://bloom.gdshader" id="1_5asy8"]
 [ext_resource type="Script" path="res://Game.gd" id="1_mn4wp"]
@@ -166,6 +166,12 @@ corner_radius_top_right = 20
 corner_radius_bottom_right = 20
 corner_radius_bottom_left = 20
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jq0tq"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_top = 2
+border_color = Color(0.509804, 0.509804, 0.509804, 1)
+expand_margin_top = 10.0
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5qxty"]
 bg_color = Color(0, 0, 0, 1)
 border_width_left = 2
@@ -260,12 +266,10 @@ grow_horizontal = 2
 unique_name_in_owner = true
 z_index = 1
 layout_mode = 2
-tooltip_text = "Neutrons"
 script = ExtResource("8_jqoik")
 
 [node name="TextureRect" type="TextureRect" parent="UI/Control/Top/Neutrons"]
 layout_mode = 2
-tooltip_text = "Neutrons"
 texture = ExtResource("8_r6xn1")
 stretch_mode = 3
 
@@ -273,7 +277,6 @@ stretch_mode = 3
 unique_name_in_owner = true
 custom_minimum_size = Vector2(50, 0)
 layout_mode = 2
-tooltip_text = "Neutrons"
 text = "14.5K"
 
 [node name="Waveforms" type="HBoxContainer" parent="UI/Control/Top"]
@@ -343,50 +346,51 @@ theme_override_styles/background = SubResource("StyleBoxEmpty_pgkg8")
 theme_override_styles/fill = SubResource("StyleBoxFlat_7gf5k")
 show_percentage = false
 
-[node name="MainButtons" type="HBoxContainer" parent="UI/Control"]
-unique_name_in_owner = true
+[node name="PanelContainer" type="PanelContainer" parent="UI/Control"]
 layout_mode = 1
-anchors_preset = 7
+anchors_preset = 5
 anchor_left = 0.5
-anchor_top = 1.0
 anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -100.0
-offset_top = -64.0
-offset_right = 100.0
-offset_bottom = -16.0
+offset_left = -363.0
+offset_top = 68.0
+offset_right = 364.0
+offset_bottom = 150.0
 grow_horizontal = 2
-grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_jq0tq")
+
+[node name="MainButtons" type="HBoxContainer" parent="UI/Control/PanelContainer"]
+unique_name_in_owner = true
+layout_mode = 2
 theme = ExtResource("10_okyxx")
 theme_override_constants/separation = 10
 alignment = 1
 script = ExtResource("11_0j8xa")
 
-[node name="UnlocksButton" type="Button" parent="UI/Control/MainButtons"]
+[node name="UnlocksButton" type="Button" parent="UI/Control/PanelContainer/MainButtons"]
 custom_minimum_size = Vector2(0, 72)
 layout_mode = 2
 icon = ExtResource("15_r0un5")
 icon_alignment = 1
 
-[node name="DimensionButton" type="Button" parent="UI/Control/MainButtons"]
+[node name="DimensionButton" type="Button" parent="UI/Control/PanelContainer/MainButtons"]
 custom_minimum_size = Vector2(0, 80)
 layout_mode = 2
 icon = ExtResource("16_oyk6q")
 icon_alignment = 1
 
-[node name="EntanglementsButton" type="Button" parent="UI/Control/MainButtons"]
+[node name="EntanglementsButton" type="Button" parent="UI/Control/PanelContainer/MainButtons"]
 custom_minimum_size = Vector2(0, 80)
 layout_mode = 2
 icon = ExtResource("18_ma30i")
 icon_alignment = 1
 
-[node name="IonsButton" type="Button" parent="UI/Control/MainButtons"]
+[node name="IonsButton" type="Button" parent="UI/Control/PanelContainer/MainButtons"]
 custom_minimum_size = Vector2(0, 80)
 layout_mode = 2
 icon = ExtResource("18_yp5iw")
 icon_alignment = 1
 
-[node name="FusionButton" type="Button" parent="UI/Control/MainButtons"]
+[node name="FusionButton" type="Button" parent="UI/Control/PanelContainer/MainButtons"]
 custom_minimum_size = Vector2(0, 80)
 layout_mode = 2
 icon = ExtResource("19_d4sw6")
@@ -394,15 +398,16 @@ icon_alignment = 1
 
 [node name="Unlocks" type="PanelContainer" parent="UI/Control"]
 unique_name_in_owner = true
-visible = false
 custom_minimum_size = Vector2(1000, 800)
 layout_mode = 1
 anchors_preset = 14
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-offset_top = -11.5
-offset_bottom = 11.5
+offset_left = 2.0
+offset_top = -380.0
+offset_right = 2.0
+offset_bottom = 420.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = ExtResource("13_ml6hv")
@@ -433,15 +438,14 @@ columns = 4
 
 [node name="Dimensions" type="PanelContainer" parent="UI/Control"]
 unique_name_in_owner = true
-visible = false
 custom_minimum_size = Vector2(1000, 800)
 layout_mode = 1
 anchors_preset = 14
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-offset_top = -11.5
-offset_bottom = 11.5
+offset_top = -380.0
+offset_bottom = 420.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = ExtResource("13_ml6hv")
@@ -491,8 +495,8 @@ anchors_preset = 14
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-offset_top = -474.0
-offset_bottom = 426.0
+offset_top = -380.0
+offset_bottom = 520.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = ExtResource("13_ml6hv")
@@ -620,15 +624,14 @@ position = Vector2(-51, 407)
 
 [node name="Ions" type="PanelContainer" parent="UI/Control"]
 unique_name_in_owner = true
-visible = false
 custom_minimum_size = Vector2(1000, 800)
 layout_mode = 1
 anchors_preset = 14
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-offset_top = -400.0
-offset_bottom = 400.0
+offset_top = -380.0
+offset_bottom = 420.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = ExtResource("13_ml6hv")
@@ -693,15 +696,14 @@ size_flags_horizontal = 3
 
 [node name="Fusion" type="PanelContainer" parent="UI/Control"]
 unique_name_in_owner = true
-visible = false
 custom_minimum_size = Vector2(1000, 800)
 layout_mode = 1
 anchors_preset = 14
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-offset_top = -472.0
-offset_bottom = 418.0
+offset_top = -380.0
+offset_bottom = 510.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = ExtResource("13_ml6hv")
@@ -849,8 +851,8 @@ anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 3.0
-offset_top = -73.0
-offset_bottom = 125.0
+offset_top = -167.0
+offset_bottom = 31.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 0.588235)
@@ -993,6 +995,7 @@ offset_bottom = 188.0
 text = " X "
 
 [node name="SplitPopup" type="Control" parent="UI/Control/Fusion"]
+visible = false
 layout_mode = 2
 script = ExtResource("22_yiv8m")
 
@@ -1002,8 +1005,8 @@ anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 3.0
-offset_top = -73.0
-offset_bottom = 125.0
+offset_top = -167.0
+offset_bottom = 31.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 0.588235)
@@ -1147,9 +1150,9 @@ text = "OK"
 unique_name_in_owner = true
 layout_mode = 2
 offset_left = 534.0
-offset_top = 45.0
-offset_right = 1007.0
-offset_bottom = 83.0
+offset_top = 43.0
+offset_right = 1035.0
+offset_bottom = 81.0
 script = ExtResource("28_c7e2k")
 
 [node name="Label" type="Label" parent="UI/Control/TutorialPanel2"]
@@ -1170,10 +1173,10 @@ text = "OK"
 [node name="TutorialPanel3" type="HBoxContainer" parent="UI/Control"]
 unique_name_in_owner = true
 layout_mode = 2
-offset_left = 804.0
-offset_top = 52.0
-offset_right = 1277.0
-offset_bottom = 90.0
+offset_left = 779.0
+offset_top = 40.0
+offset_right = 1252.0
+offset_bottom = 78.0
 script = ExtResource("28_c7e2k")
 
 [node name="Label" type="Label" parent="UI/Control/TutorialPanel3"]
@@ -1190,9 +1193,9 @@ text = "OK"
 unique_name_in_owner = true
 layout_mode = 2
 offset_left = 1036.0
-offset_top = 54.0
+offset_top = 40.0
 offset_right = 1509.0
-offset_bottom = 92.0
+offset_bottom = 78.0
 script = ExtResource("28_c7e2k")
 
 [node name="Label" type="Label" parent="UI/Control/TutorialPanel4"]
@@ -1208,10 +1211,10 @@ text = "OK"
 [node name="TutorialPanel5" type="HBoxContainer" parent="UI/Control"]
 unique_name_in_owner = true
 layout_mode = 2
-offset_left = 653.0
-offset_top = 54.0
-offset_right = 1298.0
-offset_bottom = 92.0
+offset_left = 741.0
+offset_top = 36.0
+offset_right = 1386.0
+offset_bottom = 74.0
 script = ExtResource("28_c7e2k")
 
 [node name="Label" type="Label" parent="UI/Control/TutorialPanel5"]
