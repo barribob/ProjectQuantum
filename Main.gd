@@ -8,6 +8,7 @@ var file_load_callback = JavaScriptBridge.create_callback(load_import_file)
 var game
 @onready var export_save_button = %ExportSaveButton
 @onready var import_save_button = %ImportSaveButton
+@onready var reset_save_button: Button = %ResetSaveButton
 
 func _ready():
     Console.add_command("save", func(path): save_data("user://" + path + ".res"), 1)
@@ -19,8 +20,8 @@ func _ready():
         try_load())
     Console.add_command("time", func(time): Engine.time_scale = float(time), 1)
     export_save_button.pressed.connect(export_file)
+
     import_save_button.pressed.connect(import_save)
-    #EventBus.reset_game.connect(new_game)
     if OS.get_name() == "Web":
         var window = JavaScriptBridge.get_interface("window")
         window.getFile(file_load_callback)
