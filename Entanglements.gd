@@ -33,6 +33,8 @@ func _ready():
 
 func mouse_entered(entanglement):
     entanglement_description_label.text = Utils.apply_tags(entanglement.def.description, entanglement.def)
+    if is_bought(entanglement.def):
+        entanglement_description_label.text += "\n\n[Already Bought]"
     entanglement_name.text = entanglement.def.name
     entanglement_cost_label.text = Utils.format_number(entanglement.def.cost)
     entanglement_cost.visible = true

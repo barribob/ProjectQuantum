@@ -1,5 +1,6 @@
-[gd_scene load_steps=2 format=3 uid="uid://ds1owr18l1fy1"]
+[gd_scene load_steps=3 format=3 uid="uid://ds1owr18l1fy1"]
 
+[ext_resource type="Theme" uid="uid://cod55u25keq0j" path="res://theme.tres" id="1_3r2gu"]
 [ext_resource type="Script" path="res://Entanglement.gd" id="1_uakri"]
 
 [node name="Control" type="Control"]
@@ -8,10 +9,11 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 mouse_filter = 2
+theme = ExtResource("1_3r2gu")
 script = ExtResource("1_uakri")
 
 [node name="Button" type="Button" parent="."]
-custom_minimum_size = Vector2(200, 0)
+custom_minimum_size = Vector2(200, 70)
 layout_mode = 1
 offset_left = -96.0
 offset_top = -17.0
