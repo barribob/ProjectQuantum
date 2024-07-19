@@ -843,25 +843,27 @@ unique_name_in_owner = true
 layout_mode = 2
 columns = 2
 
-[node name="UpgradePopup" type="Control" parent="UI/Control/Fusion"]
+[node name="UpgradePopup" type="Control" parent="UI/Control"]
 unique_name_in_owner = true
 visible = false
-layout_mode = 2
-script = ExtResource("24_pc6kl")
-
-[node name="ColorRect" type="ColorRect" parent="UI/Control/Fusion/UpgradePopup"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 3.0
-offset_top = -167.0
-offset_bottom = 31.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("24_pc6kl")
+
+[node name="ColorRect" type="ColorRect" parent="UI/Control/UpgradePopup"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 0.588235)
 
-[node name="PanelContainer" type="PanelContainer" parent="UI/Control/Fusion/UpgradePopup"]
+[node name="PanelContainer" type="PanelContainer" parent="UI/Control/UpgradePopup"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -876,72 +878,85 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = ExtResource("25_cjk07")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="UI/Control/Fusion/UpgradePopup/PanelContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/Control/UpgradePopup/PanelContainer"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="UI/Control/Fusion/UpgradePopup/PanelContainer/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="UI/Control/UpgradePopup/PanelContainer/VBoxContainer"]
 layout_mode = 2
+
+[node name="Label" type="Label" parent="UI/Control/UpgradePopup/PanelContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 32
 theme_override_styles/normal = ExtResource("16_o22y3")
 text = "Upgrade Nucleus"
 horizontal_alignment = 1
 
-[node name="MarginContainer" type="MarginContainer" parent="UI/Control/Fusion/UpgradePopup/PanelContainer/VBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="UI/Control/UpgradePopup/PanelContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="ExitUpgradeButton" type="Button" parent="UI/Control/UpgradePopup/PanelContainer/VBoxContainer/HBoxContainer/MarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+focus_mode = 0
+text = " X "
+
+[node name="MarginContainer" type="MarginContainer" parent="UI/Control/UpgradePopup/PanelContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="HBoxContainer" type="HBoxContainer" parent="UI/Control/Fusion/UpgradePopup/PanelContainer/VBoxContainer/MarginContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="UI/Control/UpgradePopup/PanelContainer/VBoxContainer/MarginContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="HBoxContainer" type="HBoxContainer" parent="UI/Control/Fusion/UpgradePopup/PanelContainer/VBoxContainer/MarginContainer/HBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="UI/Control/UpgradePopup/PanelContainer/VBoxContainer/MarginContainer/HBoxContainer"]
 layout_mode = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="UI/Control/Fusion/UpgradePopup/PanelContainer/VBoxContainer/MarginContainer/HBoxContainer/HBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/Control/UpgradePopup/PanelContainer/VBoxContainer/MarginContainer/HBoxContainer/HBoxContainer"]
 layout_mode = 2
 
-[node name="Panel" type="Panel" parent="UI/Control/Fusion/UpgradePopup/PanelContainer/VBoxContainer/MarginContainer/HBoxContainer/HBoxContainer/VBoxContainer"]
+[node name="Panel" type="Panel" parent="UI/Control/UpgradePopup/PanelContainer/VBoxContainer/MarginContainer/HBoxContainer/HBoxContainer/VBoxContainer"]
 custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_5qxty")
 
-[node name="UpgradeNucleusVisualPosition" type="Marker2D" parent="UI/Control/Fusion/UpgradePopup/PanelContainer/VBoxContainer/MarginContainer/HBoxContainer/HBoxContainer/VBoxContainer/Panel"]
+[node name="UpgradeNucleusVisualPosition" type="Marker2D" parent="UI/Control/UpgradePopup/PanelContainer/VBoxContainer/MarginContainer/HBoxContainer/HBoxContainer/VBoxContainer/Panel"]
 unique_name_in_owner = true
 position = Vector2(49, 50)
 
-[node name="UpgradeNucleusLevelLabel" type="Label" parent="UI/Control/Fusion/UpgradePopup/PanelContainer/VBoxContainer/MarginContainer/HBoxContainer/HBoxContainer/VBoxContainer"]
+[node name="UpgradeNucleusLevelLabel" type="Label" parent="UI/Control/UpgradePopup/PanelContainer/VBoxContainer/MarginContainer/HBoxContainer/HBoxContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 text = "Lv. 0"
 horizontal_alignment = 1
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="UI/Control/Fusion/UpgradePopup/PanelContainer/VBoxContainer/MarginContainer/HBoxContainer"]
+[node name="VBoxContainer2" type="VBoxContainer" parent="UI/Control/UpgradePopup/PanelContainer/VBoxContainer/MarginContainer/HBoxContainer"]
 custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="UpgradeNucleusTitle" type="Label" parent="UI/Control/Fusion/UpgradePopup/PanelContainer/VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer2"]
+[node name="UpgradeNucleusTitle" type="Label" parent="UI/Control/UpgradePopup/PanelContainer/VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer2"]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_font_sizes/font_size = 24
 theme_override_styles/normal = ExtResource("16_o22y3")
 text = "Placeholder Title"
 
-[node name="UpgradeNucleusDescription" type="RichTextLabel" parent="UI/Control/Fusion/UpgradePopup/PanelContainer/VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer2"]
+[node name="UpgradeNucleusDescription" type="RichTextLabel" parent="UI/Control/UpgradePopup/PanelContainer/VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer2"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
 text = "placeholder description"
 
-[node name="VBoxContainer" type="VBoxContainer" parent="UI/Control/Fusion/UpgradePopup/PanelContainer/VBoxContainer/MarginContainer/HBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/Control/UpgradePopup/PanelContainer/VBoxContainer/MarginContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="UI/Control/Fusion/UpgradePopup/PanelContainer/VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer"]
+[node name="HBoxContainer2" type="HBoxContainer" parent="UI/Control/UpgradePopup/PanelContainer/VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 0
 
-[node name="AddNeutronsButton" type="Button" parent="UI/Control/Fusion/UpgradePopup/PanelContainer/VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer2"]
+[node name="AddNeutronsButton" type="Button" parent="UI/Control/UpgradePopup/PanelContainer/VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer2"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(90, 0)
 layout_mode = 2
@@ -951,59 +966,55 @@ icon = ExtResource("8_r6xn1")
 icon_alignment = 2
 script = ExtResource("26_euacx")
 
-[node name="Label" type="Label" parent="UI/Control/Fusion/UpgradePopup/PanelContainer/VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer2"]
+[node name="Label" type="Label" parent="UI/Control/UpgradePopup/PanelContainer/VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer2"]
 layout_mode = 2
 text = "Hold to keep adding"
 
-[node name="Spacing" type="MarginContainer" parent="UI/Control/Fusion/UpgradePopup/PanelContainer/VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer"]
+[node name="Spacing" type="MarginContainer" parent="UI/Control/UpgradePopup/PanelContainer/VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="HBoxContainer" type="HBoxContainer" parent="UI/Control/Fusion/UpgradePopup/PanelContainer/VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="UI/Control/UpgradePopup/PanelContainer/VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="UpgradeSliderDescription" type="Label" parent="UI/Control/Fusion/UpgradePopup/PanelContainer/VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer"]
+[node name="UpgradeSliderDescription" type="Label" parent="UI/Control/UpgradePopup/PanelContainer/VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 text = "Upgrade to level X will use 14.5K"
 
-[node name="TextureRect" type="TextureRect" parent="UI/Control/Fusion/UpgradePopup/PanelContainer/VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer"]
+[node name="TextureRect" type="TextureRect" parent="UI/Control/UpgradePopup/PanelContainer/VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 texture = ExtResource("8_r6xn1")
 stretch_mode = 3
 
-[node name="HBoxContainer3" type="HBoxContainer" parent="UI/Control/Fusion/UpgradePopup/PanelContainer/VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer"]
+[node name="HBoxContainer3" type="HBoxContainer" parent="UI/Control/UpgradePopup/PanelContainer/VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="PopupUpgradeButton" type="Button" parent="UI/Control/Fusion/UpgradePopup/PanelContainer/VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer3"]
+[node name="PopupUpgradeButton" type="Button" parent="UI/Control/UpgradePopup/PanelContainer/VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer3"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 focus_mode = 0
 text = "Upgrade"
 
-[node name="PopupUpgradeCancelButton" type="Button" parent="UI/Control/Fusion/UpgradePopup/PanelContainer/VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer3"]
+[node name="PopupUpgradeCancelButton" type="Button" parent="UI/Control/UpgradePopup/PanelContainer/VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer3"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 focus_mode = 0
 text = "Exit"
 
-[node name="ExitUpgradeButton" type="Button" parent="UI/Control/Fusion/UpgradePopup"]
+[node name="SplitPopup" type="Control" parent="UI/Control"]
 unique_name_in_owner = true
-layout_mode = 0
-offset_left = 1475.0
-offset_top = 150.0
-offset_right = 1506.0
-offset_bottom = 188.0
-text = " X "
-
-[node name="SplitPopup" type="Control" parent="UI/Control/Fusion"]
-visible = false
-layout_mode = 2
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("22_yiv8m")
 
-[node name="ColorRect" type="ColorRect" parent="UI/Control/Fusion/SplitPopup"]
+[node name="ColorRect" type="ColorRect" parent="UI/Control/SplitPopup"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -1015,7 +1026,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 0.588235)
 
-[node name="PanelContainer" type="PanelContainer" parent="UI/Control/Fusion/SplitPopup"]
+[node name="PanelContainer" type="PanelContainer" parent="UI/Control/SplitPopup"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -1030,106 +1041,110 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = ExtResource("25_cjk07")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="UI/Control/Fusion/SplitPopup/PanelContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/Control/SplitPopup/PanelContainer"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="UI/Control/Fusion/SplitPopup/PanelContainer/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="UI/Control/SplitPopup/PanelContainer/VBoxContainer"]
 layout_mode = 2
+
+[node name="Label" type="Label" parent="UI/Control/SplitPopup/PanelContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 32
 theme_override_styles/normal = ExtResource("16_o22y3")
 text = "Split Nuclei"
 horizontal_alignment = 1
 
-[node name="MarginContainer" type="MarginContainer" parent="UI/Control/Fusion/SplitPopup/PanelContainer/VBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="UI/Control/SplitPopup/PanelContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="ExitSplitButton" type="Button" parent="UI/Control/SplitPopup/PanelContainer/VBoxContainer/HBoxContainer/MarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+focus_mode = 0
+text = " X "
+
+[node name="MarginContainer" type="MarginContainer" parent="UI/Control/SplitPopup/PanelContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="HBoxContainer" type="HBoxContainer" parent="UI/Control/Fusion/SplitPopup/PanelContainer/VBoxContainer/MarginContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="UI/Control/SplitPopup/PanelContainer/VBoxContainer/MarginContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="ScrollContainer" type="ScrollContainer" parent="UI/Control/Fusion/SplitPopup/PanelContainer/VBoxContainer/MarginContainer/HBoxContainer"]
+[node name="ScrollContainer" type="ScrollContainer" parent="UI/Control/SplitPopup/PanelContainer/VBoxContainer/MarginContainer/HBoxContainer"]
 layout_mode = 2
 horizontal_scroll_mode = 0
 
-[node name="SplitNucleiContainer" type="GridContainer" parent="UI/Control/Fusion/SplitPopup/PanelContainer/VBoxContainer/MarginContainer/HBoxContainer/ScrollContainer"]
+[node name="SplitNucleiContainer" type="GridContainer" parent="UI/Control/SplitPopup/PanelContainer/VBoxContainer/MarginContainer/HBoxContainer/ScrollContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 columns = 4
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="UI/Control/Fusion/SplitPopup/PanelContainer/VBoxContainer/MarginContainer/HBoxContainer"]
+[node name="VBoxContainer2" type="VBoxContainer" parent="UI/Control/SplitPopup/PanelContainer/VBoxContainer/MarginContainer/HBoxContainer"]
 custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
 
-[node name="SplitNucleusTitle" type="Label" parent="UI/Control/Fusion/SplitPopup/PanelContainer/VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer2"]
+[node name="SplitNucleusTitle" type="Label" parent="UI/Control/SplitPopup/PanelContainer/VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer2"]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_font_sizes/font_size = 24
 theme_override_styles/normal = ExtResource("16_o22y3")
 text = "Placeholder Title"
 
-[node name="SplitNucleusDescription" type="RichTextLabel" parent="UI/Control/Fusion/SplitPopup/PanelContainer/VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer2"]
+[node name="SplitNucleusDescription" type="RichTextLabel" parent="UI/Control/SplitPopup/PanelContainer/VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer2"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
 text = "placeholder description"
 
-[node name="Spacing" type="MarginContainer" parent="UI/Control/Fusion/SplitPopup/PanelContainer/VBoxContainer/MarginContainer/HBoxContainer"]
+[node name="Spacing" type="MarginContainer" parent="UI/Control/SplitPopup/PanelContainer/VBoxContainer/MarginContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="VBoxContainer" type="VBoxContainer" parent="UI/Control/Fusion/SplitPopup/PanelContainer/VBoxContainer/MarginContainer/HBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/Control/SplitPopup/PanelContainer/VBoxContainer/MarginContainer/HBoxContainer"]
 layout_mode = 2
 
-[node name="Spacing" type="MarginContainer" parent="UI/Control/Fusion/SplitPopup/PanelContainer/VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer"]
+[node name="Spacing" type="MarginContainer" parent="UI/Control/SplitPopup/PanelContainer/VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="HBoxContainer" type="HBoxContainer" parent="UI/Control/Fusion/SplitPopup/PanelContainer/VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="UI/Control/SplitPopup/PanelContainer/VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer"]
 custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
 alignment = 1
 
-[node name="SplitLabel" type="Label" parent="UI/Control/Fusion/SplitPopup/PanelContainer/VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer"]
+[node name="SplitLabel" type="Label" parent="UI/Control/SplitPopup/PanelContainer/VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 1
 text = "Splitting 5 Nuclei will provid"
 horizontal_alignment = 2
 
-[node name="TextureRect" type="TextureRect" parent="UI/Control/Fusion/SplitPopup/PanelContainer/VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer"]
+[node name="TextureRect" type="TextureRect" parent="UI/Control/SplitPopup/PanelContainer/VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 texture = ExtResource("8_r6xn1")
 stretch_mode = 3
 
-[node name="ConfirmSplitButton" type="Button" parent="UI/Control/Fusion/SplitPopup/PanelContainer/VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer"]
+[node name="ConfirmSplitButton" type="Button" parent="UI/Control/SplitPopup/PanelContainer/VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 focus_mode = 0
 text = "Split"
 
-[node name="SplitAllButton" type="Button" parent="UI/Control/Fusion/SplitPopup/PanelContainer/VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer"]
+[node name="SplitAllButton" type="Button" parent="UI/Control/SplitPopup/PanelContainer/VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 focus_mode = 0
 text = "Split All Lv. 1"
 
-[node name="CancelSplitButton" type="Button" parent="UI/Control/Fusion/SplitPopup/PanelContainer/VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer"]
+[node name="CancelSplitButton" type="Button" parent="UI/Control/SplitPopup/PanelContainer/VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 focus_mode = 0
 text = "Exit"
-
-[node name="ExitSplitButton" type="Button" parent="UI/Control/Fusion/SplitPopup"]
-unique_name_in_owner = true
-layout_mode = 0
-offset_left = 1651.0
-offset_top = 23.0
-offset_right = 1682.0
-offset_bottom = 61.0
-text = " X "
 
 [node name="TutorialPanel" type="HBoxContainer" parent="UI/Control"]
 unique_name_in_owner = true

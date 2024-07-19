@@ -10,7 +10,7 @@ extends PanelContainer
 @onready var unequip_button = %UnequipButton
 @onready var nuclei_equip_label = %NucleiEquipLabel
 @onready var split_button = %SplitButton
-@onready var split_popup = $SplitPopup
+@onready var split_popup = %SplitPopup
 @onready var upgrade_popup = %UpgradePopup
 @onready var unlocks = %Unlocks
 @onready var entanglements = %Entanglements
