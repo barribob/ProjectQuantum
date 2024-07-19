@@ -89,6 +89,8 @@ func get_fusion_speed_bonus():
     for nucleus in equipped_nuclei:
         if nucleus.def == Registries.NUCLEUS_L:
             bonus += Registries.NUCLEUS_L.get_meta("increase") * nucleus.get_level()
+    if entanglements.is_bought(Registries.ENTANGLE_FUSION):
+        bonus *= 1 + Registries.ENTANGLE_FUSION.get_meta("fusion_speed")
     return bonus
 
 func generate_nucleus(def):

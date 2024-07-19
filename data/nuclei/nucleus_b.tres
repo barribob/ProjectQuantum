@@ -10,4 +10,4 @@ description = "Reduce energy used to dodge by $a
 {\"value\":\"reduction\", \"replace\":\"$a\", \"scale_with_level\": true}"
 visual_color = Color(0, 0.854668, 0.646522, 1)
 visual_circles = 4
-metadata/reduction = 10.0
+metadata/reduction = 5.0

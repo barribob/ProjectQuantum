@@ -14,5 +14,5 @@ name = "8th Dimension"
 description = ""
 cost = 100000.0
 collision_cooldown = 0.05
-num_collisions = 6
+num_collisions = 10
 lines = Array[ExtResource("1_bm5d8")]([ExtResource("1_bg3dr"), ExtResource("2_e7a6y"), ExtResource("3_cqy8u"), ExtResource("4_t16i2"), ExtResource("4_t16i2"), ExtResource("4_t16i2"), ExtResource("4_t16i2")])

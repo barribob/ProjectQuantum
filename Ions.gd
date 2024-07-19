@@ -1,6 +1,7 @@
 class_name Ions extends PanelContainer
 
 signal ions_updated
+signal ion_bought
 
 @onready var buy_ion_button = %BuyIonButton
 @onready var buy_ion_cost = %BuyIonCost
@@ -34,6 +35,7 @@ func _on_buy_ion_button_pressed():
     CurrentRun.waveforms.consume(get_buy_ion_cost())
     ions += 1
     update_ui()
+    ion_bought.emit()
 
 func get_buy_ion_cost():
     return pow(5, get_ions_everywhere()) * 50

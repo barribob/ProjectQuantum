@@ -6,4 +6,4 @@
 script = ExtResource("1_w05ga")
 curve = 0.6
 color = Color(0.0270706, 0.213528, 0.240198, 1)
-dodge_value = 1000.0
+dodge_value = 400.0

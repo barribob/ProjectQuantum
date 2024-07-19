@@ -4,6 +4,7 @@ signal waveforms_updated
 
 @onready var world = %World
 @onready var waveforms_label = $WaveformsLabel
+@onready var ions: Ions = %Ions
 
 var waveforms: float
 
@@ -17,6 +18,7 @@ func dodge(value):
     add_waveforms(value)
 
 func add_waveforms(amt):
+    amt *= 1 + (ions.get_ion_boost(Registries.ION_WAVEFORMS) / 100.0)
     waveforms += amt
     waveforms_updated.emit()
     update_ui()

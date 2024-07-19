@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="EntanglementDef" load_steps=2 format=3 uid="uid://cr52n76q4ae8g"]
+
+[ext_resource type="Script" path="res://EntanglementDef.gd" id="1_omxj6"]
+
+[resource]
+script = ExtResource("1_omxj6")
+id = "fusion_speed"
+name = "Fusion Speed"
+description = "Increase fusion speed by $a
+{\"value\":\"fusion_speed\", \"replace\":\"$a\", \"fmt\": \"%\"}"
+cost = 45000.0
+metadata/fusion_speed = 1.0

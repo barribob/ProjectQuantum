@@ -36,10 +36,12 @@ func _process(delta):
         collision_time = current_dimension.collision_cooldown
         for i in range(current_dimension.num_collisions):
             var line = current_dimension.lines.pick_random()
-            if Utils.geq(energy.energy, get_dodge_energy_usage(line)):
-                energy.consume(get_dodge_energy_usage(line))
+            var energy_usage = get_dodge_energy_usage(line)
+            if Utils.geq(energy.energy, energy_usage):
+                energy.consume(energy_usage)
                 create_collision(true, line, i)
             else:
+                energy.consume(energy_usage)
                 collisions_enabled = false
                 animation_player.play("dissolve")
                 create_collision(false, line, i)

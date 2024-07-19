@@ -24,6 +24,7 @@ func _ready():
     update_ui()
     CurrentRun.waveforms.waveforms_updated.connect(update_ui)
     ions.ions_updated.connect(update_ui)
+    ions.ion_bought.connect(update_ui)
     unlock_button.pressed.connect(_on_unlock_button_pressed)
     assign_button.pressed.connect(_on_assign_button_pressed)
     unassign_button.pressed.connect(_on_unassign_button_pressed)

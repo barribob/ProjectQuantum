@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="IonDef" load_steps=2 format=3 uid="uid://ccog4sar6a3le"]
+
+[ext_resource type="Script" path="res://IonDef.gd" id="1_5xwia"]
+
+[resource]
+script = ExtResource("1_5xwia")
+id = "waveform_gain"
+name = "Waveform Gain"
+description = "Increases max energy by <value>"
+unlock_cost = 13000
+value_per_level = 5.0
