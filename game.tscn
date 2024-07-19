@@ -438,6 +438,7 @@ columns = 4
 
 [node name="Dimensions" type="PanelContainer" parent="UI/Control"]
 unique_name_in_owner = true
+visible = false
 custom_minimum_size = Vector2(1000, 800)
 layout_mode = 1
 anchors_preset = 14
@@ -489,28 +490,23 @@ text = "Current"
 
 [node name="Entanglements" type="PanelContainer" parent="UI/Control"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(1000, 900)
+custom_minimum_size = Vector2(1000, 887)
 layout_mode = 1
 anchors_preset = 14
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
 offset_top = -380.0
-offset_bottom = 520.0
+offset_bottom = 507.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = ExtResource("13_ml6hv")
 script = ExtResource("16_3qqc1")
 
-[node name="MarginContainer" type="MarginContainer" parent="UI/Control/Entanglements"]
-layout_mode = 2
-theme_override_constants/margin_left = 100
-theme_override_constants/margin_right = 100
-
-[node name="VBoxContainer" type="VBoxContainer" parent="UI/Control/Entanglements/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/Control/Entanglements"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="UI/Control/Entanglements/MarginContainer/VBoxContainer"]
+[node name="Label" type="Label" parent="UI/Control/Entanglements/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 0
 theme_override_font_sizes/font_size = 32
@@ -518,65 +514,71 @@ theme_override_styles/normal = ExtResource("16_o22y3")
 text = "Entanglements"
 horizontal_alignment = 1
 
-[node name="HBoxContainer" type="HBoxContainer" parent="UI/Control/Entanglements/MarginContainer/VBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="UI/Control/Entanglements/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 100
+theme_override_constants/margin_right = 100
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UI/Control/Entanglements/VBoxContainer/MarginContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="PanelContainer" type="PanelContainer" parent="UI/Control/Entanglements/MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="PanelContainer" type="PanelContainer" parent="UI/Control/Entanglements/VBoxContainer/MarginContainer/HBoxContainer"]
 custom_minimum_size = Vector2(400, 0)
 layout_mode = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="UI/Control/Entanglements/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="UI/Control/Entanglements/VBoxContainer/MarginContainer/HBoxContainer/PanelContainer"]
 layout_mode = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="UI/Control/Entanglements/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/Control/Entanglements/VBoxContainer/MarginContainer/HBoxContainer/PanelContainer/MarginContainer"]
 layout_mode = 2
 
-[node name="EntanglementName" type="Label" parent="UI/Control/Entanglements/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/MarginContainer/VBoxContainer"]
+[node name="EntanglementName" type="Label" parent="UI/Control/Entanglements/VBoxContainer/MarginContainer/HBoxContainer/PanelContainer/MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 1
 theme_override_font_sizes/font_size = 24
 
-[node name="EntanglementCost" type="HBoxContainer" parent="UI/Control/Entanglements/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/MarginContainer/VBoxContainer"]
+[node name="EntanglementCost" type="HBoxContainer" parent="UI/Control/Entanglements/VBoxContainer/MarginContainer/HBoxContainer/PanelContainer/MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="Label" type="Label" parent="UI/Control/Entanglements/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/MarginContainer/VBoxContainer/EntanglementCost"]
+[node name="Label" type="Label" parent="UI/Control/Entanglements/VBoxContainer/MarginContainer/HBoxContainer/PanelContainer/MarginContainer/VBoxContainer/EntanglementCost"]
 layout_mode = 2
 text = "Cost:"
 
-[node name="TextureRect" type="TextureRect" parent="UI/Control/Entanglements/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/MarginContainer/VBoxContainer/EntanglementCost"]
+[node name="TextureRect" type="TextureRect" parent="UI/Control/Entanglements/VBoxContainer/MarginContainer/HBoxContainer/PanelContainer/MarginContainer/VBoxContainer/EntanglementCost"]
 layout_mode = 2
 texture = ExtResource("7_wiv8f")
 stretch_mode = 3
 
-[node name="EntanglementCostLabel" type="Label" parent="UI/Control/Entanglements/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/MarginContainer/VBoxContainer/EntanglementCost"]
+[node name="EntanglementCostLabel" type="Label" parent="UI/Control/Entanglements/VBoxContainer/MarginContainer/HBoxContainer/PanelContainer/MarginContainer/VBoxContainer/EntanglementCost"]
 unique_name_in_owner = true
 layout_mode = 2
 text = "14.5K"
 
-[node name="EntanglementDescriptionLabel" type="Label" parent="UI/Control/Entanglements/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/MarginContainer/VBoxContainer"]
+[node name="EntanglementDescriptionLabel" type="Label" parent="UI/Control/Entanglements/VBoxContainer/MarginContainer/HBoxContainer/PanelContainer/MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
 autowrap_mode = 2
 
-[node name="ButtonsArea" type="PanelContainer" parent="UI/Control/Entanglements/MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="ButtonsArea" type="PanelContainer" parent="UI/Control/Entanglements/VBoxContainer/MarginContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="ButtonsArea" type="Control" parent="UI/Control/Entanglements/MarginContainer/VBoxContainer/HBoxContainer/ButtonsArea"]
+[node name="ButtonsArea" type="Control" parent="UI/Control/Entanglements/VBoxContainer/MarginContainer/HBoxContainer/ButtonsArea"]
 layout_mode = 2
 
-[node name="TextureRect" type="TextureRect" parent="UI/Control/Entanglements/MarginContainer/VBoxContainer/HBoxContainer/ButtonsArea/ButtonsArea"]
+[node name="TextureRect" type="TextureRect" parent="UI/Control/Entanglements/VBoxContainer/MarginContainer/HBoxContainer/ButtonsArea/ButtonsArea"]
 modulate = Color(0.352941, 0.352941, 0.529412, 0.588235)
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 texture = ExtResource("17_eun44")
 
-[node name="ButtonsContainer" type="Control" parent="UI/Control/Entanglements/MarginContainer/VBoxContainer/HBoxContainer/ButtonsArea/ButtonsArea"]
+[node name="ButtonsContainer" type="Control" parent="UI/Control/Entanglements/VBoxContainer/MarginContainer/HBoxContainer/ButtonsArea/ButtonsArea"]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 15
@@ -585,45 +587,46 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Marker2D2" type="Marker2D" parent="UI/Control/Entanglements/MarginContainer/VBoxContainer/HBoxContainer/ButtonsArea/ButtonsArea/ButtonsContainer"]
+[node name="Marker2D2" type="Marker2D" parent="UI/Control/Entanglements/VBoxContainer/MarginContainer/HBoxContainer/ButtonsArea/ButtonsArea/ButtonsContainer"]
 position = Vector2(195, 261)
 
-[node name="Marker2D" type="Marker2D" parent="UI/Control/Entanglements/MarginContainer/VBoxContainer/HBoxContainer/ButtonsArea/ButtonsArea/ButtonsContainer"]
+[node name="Marker2D" type="Marker2D" parent="UI/Control/Entanglements/VBoxContainer/MarginContainer/HBoxContainer/ButtonsArea/ButtonsArea/ButtonsContainer"]
 position = Vector2(228, 406)
 
-[node name="Marker2D3" type="Marker2D" parent="UI/Control/Entanglements/MarginContainer/VBoxContainer/HBoxContainer/ButtonsArea/ButtonsArea/ButtonsContainer"]
+[node name="Marker2D3" type="Marker2D" parent="UI/Control/Entanglements/VBoxContainer/MarginContainer/HBoxContainer/ButtonsArea/ButtonsArea/ButtonsContainer"]
 position = Vector2(195, 549)
 
-[node name="Marker2D8" type="Marker2D" parent="UI/Control/Entanglements/MarginContainer/VBoxContainer/HBoxContainer/ButtonsArea/ButtonsArea/ButtonsContainer"]
+[node name="Marker2D8" type="Marker2D" parent="UI/Control/Entanglements/VBoxContainer/MarginContainer/HBoxContainer/ButtonsArea/ButtonsArea/ButtonsContainer"]
 position = Vector2(402, 130)
 
-[node name="Marker2D5" type="Marker2D" parent="UI/Control/Entanglements/MarginContainer/VBoxContainer/HBoxContainer/ButtonsArea/ButtonsArea/ButtonsContainer"]
+[node name="Marker2D5" type="Marker2D" parent="UI/Control/Entanglements/VBoxContainer/MarginContainer/HBoxContainer/ButtonsArea/ButtonsArea/ButtonsContainer"]
 position = Vector2(460, 260)
 
-[node name="Marker2D4" type="Marker2D" parent="UI/Control/Entanglements/MarginContainer/VBoxContainer/HBoxContainer/ButtonsArea/ButtonsArea/ButtonsContainer"]
+[node name="Marker2D4" type="Marker2D" parent="UI/Control/Entanglements/VBoxContainer/MarginContainer/HBoxContainer/ButtonsArea/ButtonsArea/ButtonsContainer"]
 position = Vector2(482, 406)
 
-[node name="Marker2D6" type="Marker2D" parent="UI/Control/Entanglements/MarginContainer/VBoxContainer/HBoxContainer/ButtonsArea/ButtonsArea/ButtonsContainer"]
+[node name="Marker2D6" type="Marker2D" parent="UI/Control/Entanglements/VBoxContainer/MarginContainer/HBoxContainer/ButtonsArea/ButtonsArea/ButtonsContainer"]
 position = Vector2(466, 549)
 
-[node name="Marker2D7" type="Marker2D" parent="UI/Control/Entanglements/MarginContainer/VBoxContainer/HBoxContainer/ButtonsArea/ButtonsArea/ButtonsContainer"]
+[node name="Marker2D7" type="Marker2D" parent="UI/Control/Entanglements/VBoxContainer/MarginContainer/HBoxContainer/ButtonsArea/ButtonsArea/ButtonsContainer"]
 position = Vector2(413, 683)
 
-[node name="Marker2D11" type="Marker2D" parent="UI/Control/Entanglements/MarginContainer/VBoxContainer/HBoxContainer/ButtonsArea/ButtonsArea/ButtonsContainer"]
+[node name="Marker2D11" type="Marker2D" parent="UI/Control/Entanglements/VBoxContainer/MarginContainer/HBoxContainer/ButtonsArea/ButtonsArea/ButtonsContainer"]
 position = Vector2(785, 260)
 
-[node name="Marker2D9" type="Marker2D" parent="UI/Control/Entanglements/MarginContainer/VBoxContainer/HBoxContainer/ButtonsArea/ButtonsArea/ButtonsContainer"]
+[node name="Marker2D9" type="Marker2D" parent="UI/Control/Entanglements/VBoxContainer/MarginContainer/HBoxContainer/ButtonsArea/ButtonsArea/ButtonsContainer"]
 position = Vector2(800, 406)
 
-[node name="Marker2D10" type="Marker2D" parent="UI/Control/Entanglements/MarginContainer/VBoxContainer/HBoxContainer/ButtonsArea/ButtonsArea/ButtonsContainer"]
+[node name="Marker2D10" type="Marker2D" parent="UI/Control/Entanglements/VBoxContainer/MarginContainer/HBoxContainer/ButtonsArea/ButtonsArea/ButtonsContainer"]
 position = Vector2(796, 549)
 
-[node name="Origin" type="Marker2D" parent="UI/Control/Entanglements/MarginContainer/VBoxContainer/HBoxContainer/ButtonsArea/ButtonsArea"]
+[node name="Origin" type="Marker2D" parent="UI/Control/Entanglements/VBoxContainer/MarginContainer/HBoxContainer/ButtonsArea/ButtonsArea"]
 unique_name_in_owner = true
 position = Vector2(-51, 407)
 
 [node name="Ions" type="PanelContainer" parent="UI/Control"]
 unique_name_in_owner = true
+visible = false
 custom_minimum_size = Vector2(1000, 800)
 layout_mode = 1
 anchors_preset = 14
@@ -696,6 +699,7 @@ size_flags_horizontal = 3
 
 [node name="Fusion" type="PanelContainer" parent="UI/Control"]
 unique_name_in_owner = true
+visible = false
 custom_minimum_size = Vector2(1000, 800)
 layout_mode = 1
 anchors_preset = 14
