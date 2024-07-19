@@ -8,8 +8,8 @@
 script = ExtResource("1_bdi0o")
 id = "3"
 name = "3nd Dimension"
-description = "Low energy particles, at a higher density"
+description = "Low energy particles, but a lot more"
 cost = 75.0
-collision_cooldown = 0.2
+collision_cooldown = 0.16
 num_collisions = 1
 lines = Array[ExtResource("1_bn38j")]([ExtResource("1_68jox")])

@@ -6,5 +6,5 @@
 script = ExtResource("1_fob87")
 id = "unlock_ions"
 name = "Unlock Ions"
-description = "Unlocks ions, where you can assign ions to power up certain properties"
+description = "Unlocks ions, where you can assign ions to continuously power up the particle"
 cost = 400.0

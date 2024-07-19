@@ -9,7 +9,7 @@
 script = ExtResource("1_ugstx")
 id = "4"
 name = "4th Dimension"
-description = "Low energy particles, but some have higher energy"
+description = "Some particles have higher energy"
 cost = 300.0
 collision_cooldown = 0.2
 num_collisions = 1

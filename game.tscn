@@ -1142,7 +1142,7 @@ script = ExtResource("28_c7e2k")
 
 [node name="Label" type="Label" parent="UI/Control/TutorialPanel"]
 layout_mode = 2
-text = "This particle evades high energy particles"
+text = "This particle evades other high speed particles"
 
 [node name="Button" type="Button" parent="UI/Control/TutorialPanel"]
 custom_minimum_size = Vector2(50, 0)
@@ -1178,9 +1178,9 @@ text = "OK"
 unique_name_in_owner = true
 layout_mode = 2
 offset_left = 779.0
-offset_top = 40.0
+offset_top = 56.0
 offset_right = 1252.0
-offset_bottom = 78.0
+offset_bottom = 94.0
 script = ExtResource("28_c7e2k")
 
 [node name="Label" type="Label" parent="UI/Control/TutorialPanel3"]
@@ -1207,6 +1207,7 @@ layout_mode = 2
 text = "Click \"Energize\" to restore energy."
 
 [node name="Button" type="Button" parent="UI/Control/TutorialPanel4"]
+visible = false
 custom_minimum_size = Vector2(50, 0)
 layout_mode = 2
 theme_override_font_sizes/font_size = 16

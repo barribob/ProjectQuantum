@@ -32,6 +32,7 @@ func _on_tutorial_ok_clicked_3():
 
 func _on_gain_energy_button_pressed():
     energy.gain_energy_button.pressed.disconnect(_on_gain_energy_button_pressed)
+    tutorial_panel_4.hide()
     tutorial_panel_5.display()
     tutorial_panel_5.ok_clicked.connect(_on_tutorial_ok_clicked_5)
 

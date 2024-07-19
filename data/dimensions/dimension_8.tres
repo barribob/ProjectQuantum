@@ -8,7 +8,7 @@
 script = ExtResource("4_momkx")
 id = "8"
 name = "8th Dimension"
-description = ""
+description = "The final dimension"
 cost = 100000.0
 collision_cooldown = 0.05
 num_collisions = 10

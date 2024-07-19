@@ -6,5 +6,5 @@
 script = ExtResource("1_kl0kq")
 id = "unlock_entanglements"
 name = "Unlock Entanglements"
-description = "Unlocks entanglements, each of which improve specific aspects of the particle"
+description = "Unlocks entanglements, to improve various aspects of the particle"
 cost = 20.0

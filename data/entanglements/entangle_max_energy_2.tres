@@ -9,4 +9,4 @@ name = "Max Energy"
 description = "Increases max energy by $a
 {\"value\":\"increase\", \"replace\":\"$a\"}"
 cost = 125.0
-metadata/increase = 25.0
+metadata/increase = 30.0

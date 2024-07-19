@@ -8,7 +8,7 @@
 script = ExtResource("1_onnwu")
 id = "2"
 name = "2nd Dimension"
-description = "Low energy particles, a bit more of them though"
+description = "Low energy particles, but there are more of them"
 cost = 20.0
 collision_cooldown = 0.5
 num_collisions = 1
