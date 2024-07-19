@@ -14,6 +14,7 @@ extends PanelContainer
 @onready var upgrade_popup = %UpgradePopup
 @onready var unlocks = %Unlocks
 @onready var entanglements = %Entanglements
+@onready var ions = %Ions
 
 const NUCLEUS = preload("res://nucleus.tscn")
 
@@ -131,8 +132,17 @@ func get_max_equipped_nuclei():
         value += 1
     return value
 
+const default_fusions = [
+    Registries.NUCLEUS_E,
+    Registries.NUCLEUS_H,
+    Registries.NUCLEUS_L
+]
+
 func pick_random_nucleus():
-    return Registries.nuclei[randi() % Registries.nuclei.size()]
+    if entanglements.is_bought(Registries.ENTANGLE_NUCLEUS):
+        return Registries.nuclei.pick_random()
+    else:
+        return default_fusions.pick_random()
 
 func display():
     show()

@@ -41,6 +41,7 @@ const ENTANGLE_MAX_ENERGY_BONUS = preload("res://data/entanglements/entangle_max
 const ENTANGLE_EQUIPMENT = preload("res://data/entanglements/entangle_equipment.tres")
 const ENTANGLE_MAX_ENERGY_2 = preload("res://data/entanglements/entangle_max_energy_2.tres")
 const ENTANGLE_ENERGIZE_AMOUNT_2 = preload("res://data/entanglements/entangle_energize_amount_2.tres")
+const ENTANGLE_NUCLEUS = preload("res://data/entanglements/entangle_nucleus.tres")
 
 const entanglements = [
     ENTANGLE_MAX_ENERGY_1,
@@ -51,7 +52,8 @@ const entanglements = [
     ENTANGLE_ENERGIZE_AMOUNT_2,
     ENTANGLE_AUTOMATE,
     ENTANGLE_MAX_ENERGY_BONUS,
-    ENTANGLE_EQUIPMENT
+    ENTANGLE_EQUIPMENT,
+    ENTANGLE_NUCLEUS
 ]
 
 const ION_CHARGE = preload("res://data/ions/ion_charge.tres")
@@ -61,17 +63,19 @@ const ION_ENERGIZE = preload("res://data/ions/ion_energize.tres")
 const ions = [
     ION_CHARGE,
     ION_MAX_ENERGY,
-    ION_ENERGIZE
+    ION_ENERGIZE,
 ]
 
 const NUCLEUS_H = preload("res://data/nuclei/nucleus_h.tres")
 const NUCLEUS_E = preload("res://data/nuclei/nucleus_e.tres")
 const NUCLEUS_L = preload("res://data/nuclei/nucleus_l.tres")
+const NUCLEUS_B = preload("res://data/nuclei/nucleus_b.tres")
 
 const nuclei = [
     NUCLEUS_H,
     NUCLEUS_E,
-    NUCLEUS_L
+    NUCLEUS_L,
+    NUCLEUS_B
 ]
 
 var ids_to_unlocks: Dictionary

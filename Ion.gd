@@ -87,7 +87,7 @@ func get_description():
     return "%s%%" % def.description.replace("<value>", Utils.format_number(get_boost_value()))
 
 func get_boost_value():
-    return level * def.value_per_level * 10
+    return level * def.value_per_level
 
 func save_data(data):
     data["unlocked"] = unlocked

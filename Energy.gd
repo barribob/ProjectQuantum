@@ -65,7 +65,7 @@ func get_energy_button_gain():
     return gain
 
 func consume(amount):
-    energy -= amount
+    energy = max(energy - amount, 0)
     _energy_consumed += amount
     energy_consumed.emit()
     if energy <= 0:

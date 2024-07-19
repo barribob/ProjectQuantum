@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="EntanglementDef" load_steps=2 format=3 uid="uid://djg7aiy388cbx"]
+
+[ext_resource type="Script" path="res://EntanglementDef.gd" id="1_jch8g"]
+
+[resource]
+script = ExtResource("1_jch8g")
+id = "nucleus"
+name = "Nucleus"
+description = "A new type of nucleus can appear in fusion"
+cost = 35000.0

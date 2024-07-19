@@ -8,4 +8,4 @@ id = "charge"
 name = "Charge"
 description = "Increases passive energy charge by <value>"
 unlock_cost = 50
-value_per_level = 1.0
+value_per_level = 10.0

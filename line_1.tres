@@ -6,4 +6,4 @@
 script = ExtResource("1_2n4eh")
 curve = 0.2
 color = Color(0.26, 0.1274, 0.12961, 1)
-dodge_value = 4.0
+dodge_value = 5.0

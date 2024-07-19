@@ -10,6 +10,7 @@ const ENTANGLEMENT_BOUGHT = preload("res://entanglement_bought.tres")
 
 var def: EntanglementDef
 var bought: bool = false
+var was_theme_changed = false
 
 func _ready():
     button.text = def.name
@@ -27,10 +28,11 @@ func pressed():
 
 func update_ui():
     if bought:
-        if not button.disabled:
+        if not was_theme_changed:
             button.add_theme_stylebox_override("disabled", ENTANGLEMENT_BOUGHT)
             button.add_theme_color_override("font_disabled_color", Color.BLACK)
             button.disabled = true
+            was_theme_changed = true
     else:
         button.disabled = def.cost > CurrentRun.waveforms.waveforms
 

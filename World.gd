@@ -9,6 +9,7 @@ const PARTICLE_LINE = preload("res://particle_line.tscn")
 @onready var particle = $Particle
 @onready var lines = %Lines
 @onready var afterimages = %Afterimages
+@onready var fusion = %Fusion
 
 var collision_time = Registries.DIMENSION_1.collision_cooldown
 var collisions_enabled = true
@@ -35,14 +36,21 @@ func _process(delta):
         collision_time = current_dimension.collision_cooldown
         for i in range(current_dimension.num_collisions):
             var line = current_dimension.lines.pick_random()
-            if Utils.geq(energy.energy, line.dodge_value):
-                energy.consume(line.dodge_value)
+            if Utils.geq(energy.energy, get_dodge_energy_usage(line)):
+                energy.consume(get_dodge_energy_usage(line))
                 create_collision(true, line, i)
             else:
                 collisions_enabled = false
                 animation_player.play("dissolve")
                 create_collision(false, line, i)
                 break
+
+func get_dodge_energy_usage(line):
+    var value = line.dodge_value
+    for nucleus in fusion.equipped_nuclei:
+        if nucleus.def == Registries.NUCLEUS_B:
+            value = max(0, value - Registries.NUCLEUS_B.get_meta("reduction") * nucleus.level)
+    return value
 
 func create_collision(is_successful: bool, line_properties, collision_number):
     var direction = Vector2(randf_range(-1.0, 1.0), randf_range(-1.0, 1.0)).normalized()

@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="NucleusDef" load_steps=2 format=3 uid="uid://drq5y1qvjx350"]
+
+[ext_resource type="Script" path="res://NucleusDef.gd" id="1_8tvsh"]
+
+[resource]
+script = ExtResource("1_8tvsh")
+id = "nucleus_b"
+name = "Nucleus B"
+description = "Reduce energy used to dodge by $a
+{\"value\":\"reduction\", \"replace\":\"$a\", \"scale_with_level\": true}"
+visual_color = Color(0, 0.854668, 0.646522, 1)
+visual_circles = 4
+metadata/reduction = 10.0

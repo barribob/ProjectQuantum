@@ -8,4 +8,4 @@ id = "max_energy"
 name = "Max Energy"
 description = "Increases max energy by <value>"
 unlock_cost = 400
-value_per_level = 1.0
+value_per_level = 10.0

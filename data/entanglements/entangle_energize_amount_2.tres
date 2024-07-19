@@ -9,4 +9,4 @@ name = "Energize"
 description = "Increases energy restored per second from energize by $a
 {\"value\":\"increase\", \"replace\":\"$a\"}"
 cost = 300.0
-metadata/increase = 3.0
+metadata/increase = 5.0

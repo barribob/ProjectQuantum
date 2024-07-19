@@ -596,6 +596,9 @@ position = Vector2(402, 130)
 [node name="Marker2D9" type="Marker2D" parent="UI/Control/Entanglements/MarginContainer/VBoxContainer/HBoxContainer/ButtonsArea/ButtonsArea/ButtonsContainer"]
 position = Vector2(800, 406)
 
+[node name="Marker2D10" type="Marker2D" parent="UI/Control/Entanglements/MarginContainer/VBoxContainer/HBoxContainer/ButtonsArea/ButtonsArea/ButtonsContainer"]
+position = Vector2(796, 549)
+
 [node name="Origin" type="Marker2D" parent="UI/Control/Entanglements/MarginContainer/VBoxContainer/HBoxContainer/ButtonsArea/ButtonsArea"]
 unique_name_in_owner = true
 position = Vector2(-51, 407)
