@@ -1,9 +1,6 @@
-[gd_resource type="Resource" script_class="DimensionDef" load_steps=7 format=3 uid="uid://b7bimwdmau3da"]
+[gd_resource type="Resource" script_class="DimensionDef" load_steps=4 format=3 uid="uid://b7bimwdmau3da"]
 
-[ext_resource type="Resource" uid="uid://ir26fi7x81al" path="res://line_1.tres" id="1_bg3dr"]
 [ext_resource type="Script" path="res://Line.gd" id="1_bm5d8"]
-[ext_resource type="Resource" uid="uid://cuj4l4l1j7f48" path="res://line_2.tres" id="2_e7a6y"]
-[ext_resource type="Resource" uid="uid://b4u2se83kuj3v" path="res://line_3.tres" id="3_cqy8u"]
 [ext_resource type="Script" path="res://DimensionDef.gd" id="4_momkx"]
 [ext_resource type="Resource" uid="uid://btydqjcqoc3op" path="res://line_4.tres" id="4_t16i2"]
 
@@ -15,4 +12,4 @@ description = ""
 cost = 100000.0
 collision_cooldown = 0.05
 num_collisions = 10
-lines = Array[ExtResource("1_bm5d8")]([ExtResource("1_bg3dr"), ExtResource("2_e7a6y"), ExtResource("3_cqy8u"), ExtResource("4_t16i2"), ExtResource("4_t16i2"), ExtResource("4_t16i2"), ExtResource("4_t16i2")])
+lines = Array[ExtResource("1_bm5d8")]([ExtResource("4_t16i2")])

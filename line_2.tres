@@ -4,6 +4,6 @@
 
 [resource]
 script = ExtResource("1_v6ka4")
-curve = 0.3
-color = Color(0.27, 0.26352, 0.1404, 1)
-dodge_value = 15.0
+curve = 0.4
+color = Color(0.302885, 0.293592, 0.118702, 1)
+dodge_value = 12.0
